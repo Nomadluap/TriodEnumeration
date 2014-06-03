@@ -1,0 +1,40 @@
+connectivityMap(pt, N, T=3)
+  outputs a lists of point connected to pt
+  - always favor staying still, then going towards branch point, then towards endpoint.  If at branch point, favor staying still, then going to leg 0, then leg 1, etc.
+
+
+generateFunction(map, N, M, T=3)
+  take a mapping array and output a function object
+
+
+generateCompletions(partialMap, N, M, T=3, mappingEnd=None)
+  takes partialMap and create an iterator of all completions (up to mappingEnd if given)
+  * order well defined -- this is part of triodConnectivity
+  * most challenging piece of code
+
+
+checkDisjointness(partialMap1, partialMap2, N, M, T=3)
+  checks whether given maps are disjoint (so far)
+  * requires no floating point comparisons
+
+
+checkCommuting(map1, map2, N, M, T=3)
+
+
+
+
+format of partialMap:   [ destination of branch pt,  [destinations of leg 0 pts],  [destinations of leg 1 pts], ... ]
+  if branch pt is None, then all the lists are empty
+  destination lists for each leg have <= N elements
+
+
+Two options for destination pt format:
+    - integer, from "clockwise" ordering
+      * preferable for human readability
+    - (leg, vertex)   0 <= leg < T,  0 <= vertex <= N.
+      * branch pt has T different names
+    - (leg, t)   0 <= leg < T,  0.0 <= t <= 1.0
+      * eg. for interfacing with graphing tools
+
+Helper functions to translate between these formats
+  - translate a partialMap
