@@ -7,7 +7,6 @@ and mapping generators.
 @author: paul
 '''
 def completions(partialMap, N, M, T=3, mappingEnd=None):
-    #TODO: check index out of bounds exception on line 53
     '''
     Generate a series of mappings which are completions of the partial mapping
     mapping_start. 
@@ -33,29 +32,29 @@ def completions(partialMap, N, M, T=3, mappingEnd=None):
             yield mapping_start
             raise EndOfSequence
         #find the first leg in which the length is less than N. 
-        shortLeg = 0
+        shortLeg = 1
         try:
-            while len(mapping_start[shortLeg+1]) >= T:
+            while len(mapping_start[shortLeg]) >= T:
                 shortLeg += 1
         #if we don't find a leg which is too short, the mapping is complete
         #and the recursion is done.
         except IndexError:
             yield mapping_start
             return
+        
         #now shortLeg holds the first leg number which is not large enough.
         #find valid completions of the arm by looking at the lastmost entry in 
         #the arm. 
         #if the arm is empty, then look at the branch point for completions.
-        index = len(mapping_start[shortLeg])
+        index = len(mapping_start[shortLeg]) 
         if index == 0:
             completions = connectivity(mapping_start[0], M, T)
         else:
             completions = connectivity(mapping_start[shortLeg][index-1], M, T)
         #now iterate over those completions
-        print "completions are : {}".format(completions)
         for c in completions:
             mapping_new = list(mapping_start)
-            mapping_new[shortLeg].append(c)
+            mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
             for r in recurse(mapping_new):
                 yield r
     
