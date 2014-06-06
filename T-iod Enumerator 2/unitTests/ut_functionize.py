@@ -28,18 +28,18 @@ class TestFunctionize(unittest.TestCase):
         Test the identity map to ensure that all points map to themselves
         '''
         #mapping is a simple identity map
-        identity = ((0, 0), ((0, 1), (0, 2), (0, 3)), ((1, 1), (1, 2), (1, 3)), ((2, 1), (2, 2), (2, 3)))
-        id = functionize(identity, self.N, self.M, self.T)
+        iden = ((0, 0), ((0, 1), (0, 2), (0, 3)), ((1, 1), (1, 2), (1, 3)), ((2, 1), (2, 2), (2, 3)))
+        identity = functionize(iden, self.N, self.M, self.T)
         #test 100 points over each arm
         for arm in range(self.T):
             for t in linspace(0, self.N, 50):
                 point = (arm, t)
-                self.assertTrue(equals(point, id(point) ))
+                self.assertTrue(equals(point, identity(point) ))
         #test the key points
         for arm in range(self.T):
             for t in range(1, self.N+1):
                 point = (arm, t)
-                self.assertTrue(equals(point, id(point) ))
+                self.assertTrue(equals(point, identity(point) ))
                 
     def test_rotation(self):
         '''
