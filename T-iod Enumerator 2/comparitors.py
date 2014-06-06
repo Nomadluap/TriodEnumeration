@@ -52,7 +52,7 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     return True
         
 
-def checkCommuting(map1, map2, N, M, T=3):
+def checkCommutativity(map1, map2, N, M, T=3):
     '''
     Test the composite maps of map1 and map2 to determine if they both map to 
     the same point for any point p
@@ -70,6 +70,7 @@ def checkCommuting(map1, map2, N, M, T=3):
     #compose
     fog = lambda p: f(g(p))
     gof = lambda p: g(f(p))
+    #generate both the list of test points and the epsilon value.
     #there will be N^2/M test points per arm. 
     testpoints = []
     divisions = int(N**2/M)
@@ -79,7 +80,7 @@ def checkCommuting(map1, map2, N, M, T=3):
             testpoints.append((arm, increment * n))
     
     epsilon = 1/(N*M*2)
-    
+    #now do the actual testing
     for p in testpoints:
         if abs(fog(p) - gof(p)) < epsilon:
             continue

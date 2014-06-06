@@ -4,7 +4,7 @@ A collection of functions which translate from one coordinate space to another
 
 @author: paul
 '''
-from future import division
+from __future__ import division
 #There are three types of coordinate to translate between.
 #first, there is the integer index space, where points on the triod are in the
 #form 0<=t<=3*N*T, where T is the number of legs and N is the number of points
