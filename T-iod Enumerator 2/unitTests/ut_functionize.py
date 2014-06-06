@@ -7,6 +7,7 @@ from __future__ import division
 import unittest
 from generators import functionize, linspace
 from comparitors import equals
+from T_od import Point
 
 
 
@@ -33,13 +34,13 @@ class TestFunctionize(unittest.TestCase):
         #test 100 points over each arm
         for arm in range(self.T):
             for t in linspace(0, self.N, 50):
-                point = (arm, t)
-                self.assertTrue(equals(point, identity(point) ))
+                point = Point(arm, t)
+                self.assertEquals(point, identity(point) )
         #test the key points
         for arm in range(self.T):
             for t in range(1, self.N+1):
-                point = (arm, t)
-                self.assertTrue(equals(point, identity(point) ))
+                point = Point(arm, t)
+                self.assertEquals(point, identity(point) )
                 
     def test_rotation(self):
         '''
@@ -51,12 +52,12 @@ class TestFunctionize(unittest.TestCase):
         #test 100 points over each arm
         for arm in range(self.T):
             for t in linspace(0, self.N, 50):
-                point = (arm, t)
+                point = Point(arm, t)
                 self.assertTrue(equals(((arm+1)%self.T, t), f(point) ))
         #test the key points
         for arm in range(self.T):
             for t in range(1, self.N+1):
-                point = (arm, t)
+                point = Point(arm, t)
                 self.assertTrue(equals(((arm+1)%self.T, t), f(point) ))
                 
     def test_tripleRotation(self):
