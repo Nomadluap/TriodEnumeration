@@ -37,7 +37,7 @@ def index2Tuple(index, N):
 
     return (arm, vertex)
 
-def tuple2index(tup, N):
+def tuple2Index(tup, N):
     '''
     Convert an (arm, vertex) tuple to an integer index
 
@@ -88,7 +88,7 @@ def index2Normed(index, N):
     '''
     return tuple2Normed(index2Tuple(index, N), N)
 
-def Normed3Index(tup, N):
+def Normed2Index(tup, N):
     '''
     Convert a normed tuple to its index representation
 
@@ -97,6 +97,6 @@ def Normed3Index(tup, N):
 
     @return the index representing the point
     '''
-    return tuple2Index(Normed2Tuple(tup, N), N)
+    return tuple2Index(normed2Tuple(tup, N), N)
 
 
