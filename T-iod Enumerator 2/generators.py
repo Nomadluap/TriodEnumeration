@@ -90,11 +90,13 @@ def functionize(mapping, N, M, T=3):
             vHigh = N
         #dereference vLow
         if vLow == 0: #look at branchpoint
-            fLow = mapping[0]
+            fLow = mapping[0][1]
         else:
-            fLow = mapping[arm+1][vLow]
+            fLow = mapping[arm+1][vLow-1][1]
         #dereference vHigh
-        fHigh = mapping[arm+1][vHigh]
+        fHigh = mapping[arm+1][vHigh-1][1]
+        #find the arm that the new point now resides on
+        fArm = mapping[arm+1][vHigh-1][0]
         #decimal portion of vertex indicates where it lies between fLow and
         #fHigh.
         vP = vertex % 1.0
@@ -106,7 +108,11 @@ def functionize(mapping, N, M, T=3):
             f = fLow
         else:
             f = fLow - vP
-        return (arm, f)
+        #the zero point should always lie on the zero-arm for testing purposes.
+        if f == 0:
+            fArm = 0
+        return (fArm, f)
+    
     f = lambda point: mappingDereference(mapping, N, M, point)
     f.mapping = mapping
     return f
@@ -137,6 +143,17 @@ def connectivity(pt, N, T=3):
         return (pt, (arm, t-1))
     else:
         return (pt, (arm, t-1), (arm, t+1))
+    
+def linspace(start, stop, n):
+    '''
+    creates a linspace of n divisions in the interval [start, stop]
+    '''
+    if n == 1:
+        yield stop
+        return
+    h = (stop - start) / (n - 1)
+    for i in range(n):
+        yield start + h * i
     
 if __name__ == "__main__":
     n, m = 3, 2

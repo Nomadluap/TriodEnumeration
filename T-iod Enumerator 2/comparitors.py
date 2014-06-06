@@ -3,8 +3,8 @@ Created on Jun 4, 2014
 
 @author: paul
 '''
-from generators import functionize
 from __future__ import division
+from generators import functionize
 def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     '''
     Compares two partial T-od maps to ensure that existing aprts are properly
@@ -91,9 +91,13 @@ def checkCommutativity(map1, map2, N, M, T=3):
 
 def equals(pointA, pointB):
     '''
-    Test whether two points in tuple form are equal
+    Test whether two points in tuple form are equal.
+    If we don't use this equals() function, then points which should be 
+    equal sometimes will not be, since we have three definitions of the 
+    branch point.
     @return True if equal, False otherwise.
     '''
+    
     if pointA == pointB:
         return True
     #special case for common zero point
