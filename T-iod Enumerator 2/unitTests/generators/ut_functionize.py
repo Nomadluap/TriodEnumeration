@@ -6,8 +6,7 @@ Created on Jun 6, 2014
 from __future__ import division
 import unittest
 from generators import functionize, linspace
-from comparitors import equals
-from T_od import Point
+from T_od import Point as p
 
 
 
@@ -34,12 +33,12 @@ class TestFunctionize(unittest.TestCase):
         #test 100 points over each arm
         for arm in range(self.T):
             for t in linspace(0, self.N, 50):
-                point = Point(arm, t)
+                point = p(arm, t)
                 self.assertEquals(point, identity(point) )
         #test the key points
         for arm in range(self.T):
             for t in range(1, self.N+1):
-                point = Point(arm, t)
+                point = p(arm, t)
                 self.assertEquals(point, identity(point) )
                 
     def test_rotation(self):
@@ -52,13 +51,13 @@ class TestFunctionize(unittest.TestCase):
         #test 100 points over each arm
         for arm in range(self.T):
             for t in linspace(0, self.N, 50):
-                point = Point(arm, t)
-                self.assertTrue(equals(((arm+1)%self.T, t), f(point) ))
+                point = p(arm, t)
+                self.assertEqual(p((arm+1)%self.T, t), f(point) )
         #test the key points
         for arm in range(self.T):
             for t in range(1, self.N+1):
-                point = Point(arm, t)
-                self.assertTrue(equals(((arm+1)%self.T, t), f(point) ))
+                point = p(arm, t)
+                self.assertEquals(p((arm+1)%self.T, t), f(point) )
                 
     def test_tripleRotation(self):
         '''
@@ -69,27 +68,27 @@ class TestFunctionize(unittest.TestCase):
         #test 100 points over each arm
         for arm in range(self.T):
             for t in linspace(0, self.N, 50):
-                point = (arm, t)
-                self.assertTrue(equals(point, f(f(f(point))) ))
+                point = p(arm, t)
+                self.assertEquals(point, f(f(f( point ))) )
         #test the key points
         for arm in range(self.T):
             for t in range(1, self.N+1):
-                point = (arm, t)
-                self.assertTrue(equals(point, f(f(f(point))) ))
+                point = p(arm, t)
+                self.assertEquals(point, f(f(f( point ))) ) #this could easliy be mistaken for common LISP
     
     def test_armTransition(self):
         '''
         Make sure functionize works correctly when going from one arm to 
         another.
         '''
-        mapping = ( (0, 2), ((0, 3), (0, 3), (0, 3)), ((0, 1), (0, 0), (1, 1)),  ((0, 3), (0, 3), (0, 3)) )
+        mapping = ( p(0, 2), (p(0, 3), p(0, 3), p(0, 3)), (p(0, 1), p(0, 0), p(1, 1)),  (p(0, 3), p(0, 3), p(0, 3)) )
         f = functionize(mapping, self.N, self.M, self.T)
         #make sure branch point maps correctly
-        self.assertEqual((0, 2), f((0, 0)) )
+        self.assertEqual(p(0, 2), f(p(0, 0)) )
         #now follow the second leg and make sure the points line up as they should
-        self.assertEqual(f((1, 1)), (0, 1))
-        self.assertEqual(f((1, 2)), (0,0))
-        self.assertEqual(f((1, 3)), (1, 1))
+        self.assertEqual(f(p(1, 1)), p(0, 1))
+        self.assertEqual(f(p(1, 2)), p(0,0))
+        self.assertEqual(f(p(1, 3)), p(1, 1))
         
 
 if __name__ == "__main__":

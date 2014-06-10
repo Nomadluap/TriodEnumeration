@@ -5,6 +5,7 @@ Created on Jun 4, 2014
 '''
 from __future__ import division
 from generators import functionize
+from T_od import Point
 def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     '''
     Compares two partial T-od maps to ensure that existing aprts are properly
@@ -25,10 +26,10 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     #check for common base, remember that the base poi
     if baseA == baseB or baseA[1] == baseB[1] == 0:
         return False
-    curA = 0
-    curB = 0
-    prevA = 0
-    prevB = 0
+    curA = Point(0, 0)
+    curB = Point(0, 0)
+    prevA = Point(0, 0)
+    prevB = Point(0, 0)
     #compare each pair of arms
     for tArm in zip(armsA, armsB):
         armA, armB = tArm
@@ -37,12 +38,12 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
         prevB = baseB
         #now step through every mutually defined point
         for i in xrange(min(len(armA, armB))):
-            curA = armA[i]
-            curB = armB[i]
+            curA = Point(armA[i])
+            curB = Point(armB[i])
             #if we find an issue, return false at every case.
-            if equals(curA, curB):
+            if curA == curB:
                 return False
-            elif equals(curA, prevB) and equals(curB, prevA):
+            elif curA==prevB and curB==prevA:
                 return False
             else:
                 prevA = curA
@@ -77,10 +78,11 @@ def checkCommutativity(map1, map2, N, M, T=3):
     increment = N/ divisions
     for arm in xrange(T):
         for n in xrange(divisions+1):
-            testpoints.append((arm, increment * n))
+            testpoints.append(Point(arm, increment * n))
     
     epsilon = 1/(N*M*2)
     #now do the actual testing
+    #TODO: change this to work properly with tuples.
     for p in testpoints:
         if abs(fog(p) - gof(p)) < epsilon:
             continue
@@ -89,19 +91,3 @@ def checkCommutativity(map1, map2, N, M, T=3):
     #if we haven't returned False, then all points are equal
     return True
 
-def equals(pointA, pointB):
-    '''
-    Test whether two points in tuple form are equal.
-    If we don't use this equals() function, then points which should be 
-    equal sometimes will not be, since we have three definitions of the 
-    branch point.
-    @return True if equal, False otherwise.
-    '''
-    
-    if pointA == pointB:
-        return True
-    #special case for common zero point
-    elif pointA[1] == pointB[1] == 0:
-        return True
-    else:
-        return False

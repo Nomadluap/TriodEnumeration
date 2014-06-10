@@ -5,6 +5,7 @@ A collection of functions which translate from one coordinate space to another
 @author: paul
 '''
 from __future__ import division
+from T_od import Point
 #There are three types of coordinate to translate between.
 #first, there is the integer index space, where points on the triod are in the
 #form 0<=t<=3*N*T, where T is the number of legs and N is the number of points
@@ -35,7 +36,7 @@ def index2Tuple(index, N):
     #now the vertex is the remainder of the division
     vertex = index % N
 
-    return (arm, vertex)
+    return Point(arm, vertex)
 
 def tuple2Index(tup, N):
     '''
@@ -62,7 +63,7 @@ def tuple2Normed(tup, N):
     '''
     arm , vertex = tup
     t = vertex / N
-    return (arm, t)
+    return Point(arm, t)
 
 def normed2Tuple(tup, N):
     '''
@@ -75,7 +76,7 @@ def normed2Tuple(tup, N):
     '''
     arm, t = tup
     vertex = t * N
-    return (arm, vertex)
+    return Point(arm, vertex)
 
 def index2Normed(index, N):
     '''

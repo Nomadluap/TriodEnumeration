@@ -6,37 +6,43 @@ Created on Jun 6, 2014
 @author: paul
 '''
 
-class Point(object):
+class Point(tuple):
     '''
     A class which abstracts a tuple. In basic usage, it is used simply to 
     overload the __eq__ operator, so that tuple-based points handle the 
     base point correctly. 
     '''
-    def __init__(self, arm, vertex):
+    def __init__(self, a, b=None):
+        if b is not None:
+            a = (a, b)
+        tuple.__init__(self, a)
+        
+    def __new__(self, a, b=None):
         '''
-        Construct a point using (arm, vertex) tuple elements. 
+        Redefinition of the tuple method so that points can be constructed
+        as p(1, 2) as opposed to p((1, 2)).
         '''
-        self.pt = (arm, vertex)
+        #apparently we need this because tuples are immutable.
+        if b is not None:
+            a = (a, b)
+        return tuple.__new__(self, a)
     
     def __eq__(self, y):
         '''
-        True if and only if x == y
+        True if and only if x == y.
+        Takes into account the three-definitions for the zero-point
         '''
         #additionally true iff both coords are at zero, regardless
         #of arm. 
-        if self.pt[1] == y.pt[1] == 0:
+        if self[1] == y[1] == 0:
             return True
         else:
-            return self.pt == y.pt
-    
-    def __getitem__(self, k):
-        '''
-        passthough for array indexing
-        '''
-        return self.pt[k]
-    
+            return tuple.__eq__(self, y)
+        
     def __str__(self):
-        return "Point" + str(self.pt)
+        '''for easy debugging'''
+        return "Point" + tuple(self).__str__()
     
     def __repr__(self):
-        return self.__str__()
+        '''for easy debugging'''
+        return "Point" + tuple(self).__repr__()

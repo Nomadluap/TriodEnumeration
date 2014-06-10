@@ -6,6 +6,7 @@ and mapping generators.
 
 @author: paul
 '''
+from T_od import Point
 def completions(partialMap, N, M, T=3, mappingEnd=None):
     '''
     Generate a series of mappings which are completions of the partial mapping
@@ -111,7 +112,7 @@ def functionize(mapping, N, M, T=3):
         #the zero point should always lie on the zero-arm for testing purposes.
         if f == 0:
             fArm = 0
-        return (fArm, f)
+        return Point(fArm, f)
     
     f = lambda point: mappingDereference(mapping, N, M, point)
     f.mapping = mapping
@@ -137,12 +138,12 @@ def connectivity(pt, N, T=3):
     arm, t = pt
     #special case for the branch point
     if t == 0:
-        return ((0, 0),) + tuple((i, 1) for i in range(T))
+        return (Point(0, 0),) + Point((i, 1) for i in range(T))
     #endpoint condition
     elif t == N:
-        return (pt, (arm, t-1))
+        return (Point(pt), Point(arm, t-1))
     else:
-        return (pt, (arm, t-1), (arm, t+1))
+        return (Point(pt), Point(arm, t-1), Point(arm, t+1))
     
 def linspace(start, stop, n):
     '''
