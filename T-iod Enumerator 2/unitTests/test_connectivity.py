@@ -8,7 +8,7 @@ from generators import connectivity as con
 from T_od import Point as p
 
 
-class Test(unittest.TestCase):
+class Test_connectivity(unittest.TestCase):
 
 
     def test_1(self):

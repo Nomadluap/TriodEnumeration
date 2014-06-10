@@ -10,7 +10,7 @@ from T_od import Point as p
 
 
 
-class TestFunctionize(unittest.TestCase):
+class Test_Functionize(unittest.TestCase):
 
     def setUp(self):
         self.N = 3

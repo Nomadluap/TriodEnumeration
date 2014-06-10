@@ -8,7 +8,7 @@ from comparitors import checkPartialDisjointness as cpd
 from T_od import Point as p
 
 
-class Test(unittest.TestCase):
+class Test_checkPartialDisjointness(unittest.TestCase):
 
 
     def test_basePoint(self):
