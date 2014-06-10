@@ -28,7 +28,7 @@ class TestFunctionize(unittest.TestCase):
         Test the identity map to ensure that all points map to themselves
         '''
         #mapping is a simple identity map
-        iden = ((0, 0), ((0, 1), (0, 2), (0, 3)), ((1, 1), (1, 2), (1, 3)), ((2, 1), (2, 2), (2, 3)))
+        iden = (p(0, 0), (p(0, 1), p(0, 2), p(0, 3)), (p(1, 1), p(1, 2), p(1, 3)), (p(2, 1), p(2, 2), p(2, 3)))
         identity = functionize(iden, self.N, self.M, self.T)
         #test 100 points over each arm
         for arm in range(self.T):

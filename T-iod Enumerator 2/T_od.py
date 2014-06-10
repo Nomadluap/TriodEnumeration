@@ -39,6 +39,18 @@ class Point(tuple):
         else:
             return tuple.__eq__(self, y)
         
+    def __sub__(self, y):
+        '''
+        Defines subtraction between two Points such that the distance between
+        two points is returned, using a railway metric.
+        '''
+        #if both points lie on the same arm, then use simple subtraction
+        if self[0] == y[0]:
+            return self[1] - y[1]
+        #otherwise return the sum of distances of each point from the center
+        else:
+            return self[1] + y[1]
+        
     def __str__(self):
         '''for easy debugging'''
         return "Point" + tuple(self).__str__()
