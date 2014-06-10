@@ -19,9 +19,9 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     
     @return True if the mappings are disjoint, False otherwise.
     '''
-    baseA = partialMap1[0]
+    baseA = Point(partialMap1[0])
     armsA = partialMap1[1:]
-    baseB = partialMap2[0]
+    baseB = Point(partialMap2[0])
     armsB = partialMap2[1:]
     #check for common base, remember that the base poi
     if baseA == baseB or baseA[1] == baseB[1] == 0:
@@ -37,7 +37,7 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
         prevA = baseA
         prevB = baseB
         #now step through every mutually defined point
-        for i in xrange(min(len(armA, armB))):
+        for i in xrange(min(len(armA), len(armB))):
             curA = Point(armA[i])
             curB = Point(armB[i])
             #if we find an issue, return false at every case.
