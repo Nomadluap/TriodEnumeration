@@ -11,11 +11,21 @@ Created on Jun 9, 2014
 from __future__ import division
 from T_od import Point
 from itertools import combinations
+from generators import completions
+from comparitors import checkPartialDisjointness, checkCommutativity
+from multiprocessing import Pool, Manager
+from threading import Thread
+from datetime import datetime
+
 #globals. These are important
 
 N = 3
-M = 2
+M = 3
 T = 3
+FILENAME='results.txt'
+QUEUE_SIZE = 10000
+#list to hold pairs which pass the test
+
 
 
 
@@ -40,6 +50,9 @@ def generate_basepoints():
 
 
 def main():
+    man = Manager()
+    pairQueue = man.Queue(QUEUE_SIZE) # holds pairs which pass
+
     basepoints = generate_basepoints()
     #now construct an empty mapping for each basepoint
     empty_mappings = []
@@ -54,10 +67,87 @@ def main():
     #since two maps with the same basepoint are definitely going to fail the
     #test, we can use the simple itertools.combinations() to get this list
     empty_pairs = combinations(empty_mappings, 2)
-    #at this point we'd probably want to split into threads or something
-    #but a loop is fine too
-    for pair in empty_pairs:
-        pass
+    
+    #file to hold results
+    f = open(FILENAME, 'a')
+    f.write("new test:: started: {}\n".format( str(datetime.now()) ))
+    
+    #readerThread logs the results of the calculations
+    readerThread = Thread(target=result_reader, args=(pairQueue, f))
+    readerThread.start()
+    
+    #since we only have a small number of cores, we probably 
+    #want to spawn a thread for every pair here.
+    pool = Pool(processes=4)
+    #we need to pack q in with the iterable since that's how map works.
+    pool.map(pairWorker, iterable=( (pairQueue,pair) for pair in empty_pairs))
+    #now wait on the queue for things to be passed back
+    #once the pool has finished its work, send a sentinel value
+    #into the queue to tell the writer thread to stop what it's doing
+    pairQueue.put("DONE")
+    
+    #now join the readerThread
+    readerThread.join()
+    #and now we should be done.
+    f.close()
+
+
+        
+
+def result_reader(q, f):
+    '''
+    Grabs the results of the pairWorker pool and writes results to both a file
+    and to stdout. 
+    @param q the queue to read results from
+    @param f the file to write to
+    '''
+    result = q.get()
+    while result != "DONE":
+        print "FOUND ONE:"
+        print "\tmap 1: {} \n\tmap 2: {}".format(*result)
+        f.write("FOUND ONE:\n")
+        f.write("\tmap 1: {} \n\tmap 2: {}\n".format(*result))
+        result = q.get()
+    print 'finished checking :: time: {}'.format(str(datetime.now()))
+    f.write("finished checking :: time: {}\n".format(str(datetime.now())))
+    return
+
+    
+def pairWorker(q_and_pair):
+
+    #now we have a pair of empty maps. At this point we should generate
+    #completions for each and test them against eachother.
+    #to speed up execution a bit, a disjointness check will be completed
+    #about halfway through generation, so that we do not waste resources 
+    #on maps that fail early. 
+    q, pair = q_and_pair
+    print "Starting pair: {}".format(pair)
+    empty1, empty2 = pair
+    for partial1 in completions(empty1, N, M, T, length=N//2):
+        for partial2 in completions(empty2, N, M, T, length=N//2):
+            #check disjointness, only proceed if true
+            if checkPartialDisjointness(partial1, partial2, N, M, T)==False:
+                continue
+            #if we pass the partial disjointness check at this point, then
+            #we may continue with this part of the generation
+            for map1 in completions(partial1, N, M, T):
+                for map2 in completions(partial2, N, M, T):
+                    #now we should have two complete maps. We can now check
+                    #for both disjointness and commutivity
+                    #checkDisjointness is the faster function, so do it 
+                    #first
+                    if checkPartialDisjointness(map1, map2, N, M, T)==True:
+                        #debug bypass the commutivity checker---------------V
+                        if checkCommutativity(map1, map2, N, M, T)==True or True:
+                            #now we have found a pair which passes the test.
+                            #append it to the good list.
+                            q.put((map1, map2))
+
+    #now we're done.
+                        
+                    
+                
+        
 
 if __name__ == "__main__":
     main()

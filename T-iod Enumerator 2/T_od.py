@@ -53,8 +53,8 @@ class Point(tuple):
         
     def __str__(self):
         '''for easy debugging'''
-        return "Point" + tuple(self).__str__()
+        return "p" + tuple(self).__str__()
     
     def __repr__(self):
         '''for easy debugging'''
-        return "Point" + tuple(self).__repr__()
+        return "p" + tuple(self).__repr__()

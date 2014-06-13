@@ -7,7 +7,8 @@ and mapping generators.
 @author: paul
 '''
 from T_od import Point
-def completions(partialMap, N, M, T=3, mappingEnd=None):
+
+def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
     '''
     Generate a series of mappings which are completions of the partial mapping
     mapping_start. 
@@ -20,6 +21,8 @@ def completions(partialMap, N, M, T=3, mappingEnd=None):
     @param T the number of legs
     @param mapping_end an optional argument specifying a mapping on which to
     stop generating
+    @param length the maximum number of values to populate each arm with. By
+    default this will be N.
     
     @return a generator of complete mappings.
     '''
@@ -35,7 +38,7 @@ def completions(partialMap, N, M, T=3, mappingEnd=None):
         #find the first leg in which the length is less than N. 
         shortLeg = 1
         try:
-            while len(mapping_start[shortLeg]) >= T:
+            while len(mapping_start[shortLeg]) >= length:
                 shortLeg += 1
         #if we don't find a leg which is too short, the mapping is complete
         #and the recursion is done.
@@ -58,7 +61,11 @@ def completions(partialMap, N, M, T=3, mappingEnd=None):
             mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
             for r in recurse(mapping_new):
                 yield r
-    
+    #adjust length if called as None
+    if length > N:
+        raise ValueError, "length may not exceed N"
+    if length is None:
+        length = N
     try:
         for r in recurse(partialMap):
             yield r
@@ -138,7 +145,7 @@ def connectivity(pt, N, T=3):
     arm, t = pt
     #special case for the branch point
     if t == 0:
-        return (Point(0, 0),) + Point((i, 1) for i in range(T))
+        return (Point(0, 0),) + tuple(Point(i, 1) for i in range(T))
     #endpoint condition
     elif t == N:
         return (Point(pt), Point(arm, t-1))
@@ -158,8 +165,8 @@ def linspace(start, stop, n):
     
 if __name__ == "__main__":
     n, m = 3, 2
-    mapping = ((0, 0), (), (), ())
-    for c in completions(mapping, n, m):
+    mapping = (Point(0, 0), (), (), ())
+    for c in completions(mapping, n, m, length=1):
         print c
         
         
