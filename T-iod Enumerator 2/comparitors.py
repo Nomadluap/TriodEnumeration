@@ -6,6 +6,7 @@ Created on Jun 4, 2014
 from __future__ import division
 from generators import functionize
 from T_od import Point
+from itertools import chain
 def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     '''
     Compares two partial T-od maps to ensure that existing aprts are properly
@@ -91,3 +92,27 @@ def checkCommutativity(map1, map2, N, M, T=3):
     #if we haven't returned False, then all points are equal
     return True
 
+def checkSurjectivity(mapping, N, M, T=3):
+    '''
+    Test a mapping for surjectivity
+    
+    @param mapping the mapping to test
+    @param N the number of nodes per leg in the domain triod
+    @param M the number of nodes per leg in the codomain triod
+    @param T the number of legs
+    
+    @return True if the map is surjective, False otherwise.
+    '''
+    #If the mapping reaches all of the endpoints, then it is reasonable to
+    #expect that it is surjective.
+    #first, make a list of endpoints of the codomain triod
+    endpoints = [(t, M) for t in range(T)]
+    #flatten the mapping
+    mapPoints = mapping[0] + list(chain(*mapping[1:]))
+    #now index for each of the endpoints independently
+    for endpoint in endpoints:
+        try:
+            mapPoints.index(endpoint)
+        except ValueError:
+            return False
+    return True

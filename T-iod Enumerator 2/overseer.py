@@ -12,26 +12,24 @@ from __future__ import division
 from T_od import Point
 from itertools import combinations
 from generators import completions
-from comparitors import checkPartialDisjointness, checkCommutativity
+from comparitors import checkPartialDisjointness, checkCommutativity, checkSurjectivity
 from multiprocessing import Pool, Manager
 from threading import Thread
 from datetime import datetime
 
 #globals. These are important
 
-N = 3
+N = 5
 M = 3
 T = 3
+#filename to save results to
 FILENAME='results.txt'
+#maximum size of queue to report results to
 QUEUE_SIZE = 10000
-#list to hold pairs which pass the test
-
-
-
-
-
-
-
+#number of mapping worker-processes
+NUM_THREADS = 4
+#whether to discard mappings which are not surjective
+CHECK_SURJECTIVITY=True
 
 def generate_basepoints():
     """
@@ -78,7 +76,7 @@ def main():
     
     #since we only have a small number of cores, we probably 
     #want to spawn a thread for every pair here.
-    pool = Pool(processes=4)
+    pool = Pool(processes=NUM_THREADS)
     #we need to pack q in with the iterable since that's how map works.
     pool.map(pairWorker, iterable=( (pairQueue,pair) for pair in empty_pairs))
     #now wait on the queue for things to be passed back
@@ -119,26 +117,33 @@ def pairWorker(q_and_pair):
     #completions for each and test them against eachother.
     #to speed up execution a bit, a disjointness check will be completed
     #about halfway through generation, so that we do not waste resources 
-    #on maps that fail early. 
+    #on maps that fail early.
+    
+    #we needed to pack the queue object with the pair to work with Pool.map() 
     q, pair = q_and_pair
     print "Starting pair: {}".format(pair)
     empty1, empty2 = pair
     for partial1 in completions(empty1, N, M, T, length=N//2):
         for partial2 in completions(empty2, N, M, T, length=N//2):
-            #check disjointness, only proceed if true
+            #check partial disjointness, only proceed if true
             if checkPartialDisjointness(partial1, partial2, N, M, T)==False:
                 continue
             #if we pass the partial disjointness check at this point, then
             #we may continue with this part of the generation
             for map1 in completions(partial1, N, M, T):
+                #optionally skip a mapping if it is not surjective
+                if CHECK_SURJECTIVITY and not checkSurjectivity(map1, N, M, T):
+                    continue
                 for map2 in completions(partial2, N, M, T):
+                    if CHECK_SURJECTIVITY and not checkSurjectivity(map2, N, M, T):
+                        continue
                     #now we should have two complete maps. We can now check
                     #for both disjointness and commutivity
                     #checkDisjointness is the faster function, so do it 
                     #first
                     if checkPartialDisjointness(map1, map2, N, M, T)==True:
                         #debug bypass the commutivity checker---------------V
-                        if checkCommutativity(map1, map2, N, M, T)==True or True:
+                        if checkCommutativity(map1, map2, N, M, T)==True:
                             #now we have found a pair which passes the test.
                             #append it to the good list.
                             q.put((map1, map2))
