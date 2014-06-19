@@ -108,7 +108,7 @@ def checkSurjectivity(mapping, N, M, T=3):
     #first, make a list of endpoints of the codomain triod
     endpoints = [(t, M) for t in range(T)]
     #flatten the mapping
-    mapPoints = mapping[0] + list(chain(*mapping[1:]))
+    mapPoints = [mapping[0]] + list(chain(*mapping[1:]))
     #now index for each of the endpoints independently
     for endpoint in endpoints:
         try:

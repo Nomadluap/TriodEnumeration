@@ -23,11 +23,11 @@ N = 5
 M = 3
 T = 3
 #filename to save results to
-FILENAME='results.txt'
+FILENAME='mapping_results.txt'
 #maximum size of queue to report results to
 QUEUE_SIZE = 10000
 #number of mapping worker-processes
-NUM_THREADS = 4
+NUM_THREADS = 3
 #whether to discard mappings which are not surjective
 CHECK_SURJECTIVITY=True
 
@@ -66,12 +66,9 @@ def main():
     #test, we can use the simple itertools.combinations() to get this list
     empty_pairs = combinations(empty_mappings, 2)
     
-    #file to hold results
-    f = open(FILENAME, 'a')
-    f.write("new test:: started: {}\n".format( str(datetime.now()) ))
     
     #readerThread logs the results of the calculations
-    readerThread = Thread(target=result_reader, args=(pairQueue, f))
+    readerThread = Thread(target=result_reader, args=(pairQueue,))
     readerThread.start()
     
     #since we only have a small number of cores, we probably 
@@ -87,27 +84,32 @@ def main():
     #now join the readerThread
     readerThread.join()
     #and now we should be done.
-    f.close()
+
 
 
         
 
-def result_reader(q, f):
+def result_reader(q):
     '''
     Grabs the results of the pairWorker pool and writes results to both a file
     and to stdout. 
     @param q the queue to read results from
     @param f the file to write to
     '''
+    f = open(FILENAME, 'a')
+    f.write("new test:: started: {}\n".format( str(datetime.now()) ))
+    f.flush()
     result = q.get()
     while result != "DONE":
         print "FOUND ONE:"
         print "\tmap 1: {} \n\tmap 2: {}".format(*result)
         f.write("FOUND ONE:\n")
         f.write("\tmap 1: {} \n\tmap 2: {}\n".format(*result))
+        f.flush()
         result = q.get()
     print 'finished checking :: time: {}'.format(str(datetime.now()))
     f.write("finished checking :: time: {}\n".format(str(datetime.now())))
+    f.close()
     return
 
     
@@ -160,5 +162,5 @@ if __name__ == "__main__":
     
     
     
-    
+#TODO: don't make so many new variables. 
     
