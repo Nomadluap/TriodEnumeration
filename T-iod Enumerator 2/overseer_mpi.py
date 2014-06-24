@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 '''
 The overseer module is the module that actually handles the generation of the
 functions, and orchestrates all the other functions. In the future, this
@@ -11,7 +12,6 @@ Created on Jun 9, 2014
 from __future__ import division
 from T_od import Point
 from itertools import combinations
-from threading import Thread
 from datetime import datetime
 from mpi4py import MPI
 from mpiGlobals import *
@@ -29,7 +29,8 @@ NUM_WORKERS = 4
 #whether to discard mappings which are not surjective
 CHECK_SURJECTIVITY = True
 #name of the worker process to execute
-WORKER_EXEC = 'overseer-mpi-worker.py'
+WORKER_EXEC = 'python'
+WORKER_ARGV = ['overseer_mpi_worker.py']
 
 
 def generate_basepoints():
@@ -50,7 +51,8 @@ def generate_basepoints():
 
 def main():
     #spawn worker processes and establish an intercommunicator
-    comm = MPI.COMM_SELF.Spawn(WORKER_EXEC, maxprocs=NUM_WORKERS)
+    print "About to try to spawn {} workers.".format(NUM_WORKERS)
+    comm = MPI.COMM_SELF.Spawn(WORKER_EXEC, args=WORKER_ARGV, maxprocs=NUM_WORKERS)
     num_workers = comm.Get_remote_size()
 
     basepoints = generate_basepoints()
@@ -68,9 +70,12 @@ def main():
     #test, we can use the simple itertools.combinations() to get this list
     empty_pairs = combinations(empty_mappings, 2)
 
-    #readerThread logs the results of the calculations
-    readerThread = Thread(target=result_reader, args=(comm,))
-    readerThread.start()
+    #Open file for writing
+    f = open(FILENAME, 'a')
+    #header
+    f.write("new test:: started: {}\n".format(str(datetime.now())))
+    print "new test:: started: {}\n".format(str(datetime.now()))
+    f.flush()
 
     #now make a list of what each process is doing.
     #a value of True means that the process is currently doing work.
@@ -81,55 +86,43 @@ def main():
         pair = empty_pairs.next()
         comm.send(pair, dest=i, tag=TAG_WORKER_COMMAND)
     #now we need to wait for one of the processes to report that it is
-    #done with a pair. Then, go through and keep on sending new pairs
-    for pair in empty_pairs:
-        #wait for a process to report that it is done with a pair
-        #it will then send its worker rank back
-        worker_rank = comm.recv(source=MPI.ANY_SOURCE, tag=TAG_DONE_PAIR)
-        #and send that worker a new pair
-        comm.send(pair, dest=worker_rank, tag=TAG_WORKER_COMMAND)
-    #at this point, we have exhausted all pairs. Now, when a process reports
-    #that it is done, we send it the 'stop' command.
-    #worker process 0 is special: it will send the 'stop' command to the
-    #reader thread.
-    while True not in status:
-        worker_rank = comm.recv(source=MPI.ANY_SOURCE, tag=TAG_DONE_PAIR)
-        status[worker_rank] = False
-        #don't send to rank 0 until they have all stopped
-        if worker_rank != 0:
-            comm.send(COMMAND_STOP, dest=worker_rank, tag=TAG_WORKER_COMMAND)
-    #now all processes have stopped, send the stop command to worker 0
-    comm.send(COMMAND_STOP, dest=0, tag=TAG_WORKER_COMMAND)
-    #worker 0 will tell the thread to stop, now we must join it
-    readerThread.join()
-    #and now we should be done.
-    MPI.Finalize()
 
+    while True in status:
+        kind, result = comm.recv(source=MPI.ANY_SOURCE, tag=TAG_WORKER_REPORT)
+        #if we found a pair, send a new pair
+        if kind == REPORT_DONEPAIR:
+            try:
+                #send a new pair if one is available
+                newpair = empty_pairs.next()
+                comm.send(newpair, dest=result, tag=TAG_WORKER_COMMAND)
+            except StopIteration:
+                #if we have no pairs left to test, tell the process to stop
+                status[result] = False
+                comm.send(COMMAND_STOP, dest=result, tag=TAG_WORKER_COMMAND)
+        #log any reports of success
+        elif kind == REPORT_FOUNDPAIR:
+            result_writer(result, f)
 
-def result_reader(comm):
-    '''
-    Listens for results from the worker processes and logs the results to a
-    file.
-    @param comm the intercommunicator to the worker processes
-    '''
-    f = open(FILENAME, 'a')
-    #header
-    f.write("new test:: started: {}\n".format(str(datetime.now())))
-    f.flush()
-
-    result = comm.recv(source=MPI.ANY_SOURCE, tag=TAG_REPORT_SUCCESS)
-    while result != COMMAND_STOP:
-        print "FOUND ONE:"
-        print "\tmap 1: {} \n\tmap 2: {}".format(*result)
-        f.write("FOUND ONE:\n")
-        f.write("\tmap 1: {} \n\tmap 2: {}".format(*result))
-        f.flush()
-        result = comm.recv(source=MPI.ANY_SOURCE, tag=TAG_REPORT_SUCCESS)
-    #footer
+    #and finish the file.
     print 'finished checking :: time: {}'.format(str(datetime.now()))
     f.write("finished checking :: time: {}\n".format(str(datetime.now())))
     f.close()
-    return
+
+    #and now we should be done.
+    comm.Barrier()
+    MPI.Finalize()
+
+
+def result_writer(result, f):
+    '''
+    commits a pair to the log
+    '''
+
+    print "FOUND ONE:"
+    print "\tmap 1: {} \n\tmap 2: {}".format(*result)
+    f.write("FOUND ONE:\n")
+    f.write("\tmap 1: {} \n\tmap 2: {}\n".format(*result))
+    f.flush()
 
 if __name__ == "__main__":
     main()

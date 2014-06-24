@@ -12,20 +12,20 @@ def main():
     #at this point, we have just been spawned. We need go get the comm object
     comm = MPI.Comm.Get_parent()
     rank = comm.Get_rank()
+    print "I am worker process {}".format(rank)
     #now we loop and await a command
     command = comm.recv(tag=TAG_WORKER_COMMAND)
     while command != COMMAND_STOP:
         #if command is not COMMAND_STOP, then we assume that it's a pair to
         #operate on. Therefore, operate on it.
-        pairWorker(command, comm)
+        dummyWorker(command, comm)
         #report to the main thread that we are done and would like a new pair
-        comm.send(rank, tag=TAG_DONE_PAIR)
+        comm.send((REPORT_DONEPAIR, rank), tag=TAG_WORKER_REPORT)
         #and get the next command
         command = comm.recv(tag=TAG_WORKER_COMMAND)
     #we got a stop,now wait and quit
     #if we are rank zero, then we have to signal the reader thread to quit
-    if rank == 0:
-        comm.send(COMMAND_STOP, tag=TAG_REPORT_SUCCESS)
+    comm.Barrier()
     MPI.Finalize()
 
 
@@ -44,6 +44,7 @@ def pairWorker(pair, comm):
     #on maps that fail early.
 
     #we needed to pack the queue object with the pair to work with Pool.map()
+    print "starting pair: {}".format(pair)
     empty1, empty2 = pair
     for partial1 in completions(empty1, N, M, T, length=N//2):
         for partial2 in completions(empty2, N, M, T, length=N//2):
@@ -79,4 +80,16 @@ def reportSuccess(pair, comm):
     @param comm
     the comm channel to send the message to
     '''
-    comm.send(pair, tag=TAG_REPORT_SUCCESS)
+    comm.send((REPORT_FOUNDPAIR, pair), tag=TAG_WORKER_REPORT)
+
+
+def dummyWorker(pair, comm):
+    '''
+    A dummy worker used for testing to ensure that the messages get passed
+    corretcly where they need to go
+
+    '''
+    reportSuccess(pair, comm)
+
+if __name__ == "__main__":
+    main()
