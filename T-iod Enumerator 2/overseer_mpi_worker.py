@@ -4,6 +4,7 @@ from generators import completions
 from comparitors import checkPartialDisjointness, checkCommutativity
 from comparitors import checkSurjectivity
 from overseer_mpi import CHECK_SURJECTIVITY, N, M, T, STATUS_UPDATE_INTERVAL
+from overseer_mpi import PREWORKER_COMPLETION_LENGTH
 from mpiGlobals import *
 from mpi4py import MPI
 #globals
@@ -54,9 +55,12 @@ def pairWorker(pair, comm):
               'commutativity': 0, 'total': 0}
     #we needed to pack the queue object with the pair to work with Pool.map()
     empty1, empty2 = pair
-    #TODO: change length logic
-    for partial1 in completions(empty1, N, M, T, length=N//2):
-        for partial2 in completions(empty2, N, M, T, length=N//2):
+    #partial completed length is computed using current length of the pairs.
+    preLength = PREWORKER_COMPLETION_LENGTH
+    partialLength = preLength + (N - preLength)//2
+
+    for partial1 in completions(empty1, N, M, T, length=partialLength):
+        for partial2 in completions(empty2, N, M, T, length=partialLength):
             #check partial disjointness, only proceed if true
             if checkPartialDisjointness(partial1, partial2, N, M, T) is False:
                 counts['total'] += 1

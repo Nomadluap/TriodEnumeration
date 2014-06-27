@@ -18,18 +18,26 @@ from itertools import combinations
 from datetime import datetime
 from mpi4py import MPI
 from mpiGlobals import *
+from generators import completions
 
 #globals. These are important
 
 N = 3
 M = 2
 T = 3
+#filename to write results to
 FILENAME = 'mapping_results.txt'
+#number of worker processes to spawn
 NUM_WORKERS = 3
+#check for surjectivity of maps before checking commutativity
 CHECK_SURJECTIVITY = True
+#worker spawn parameters
 WORKER_EXEC = 'python'
 WORKER_ARGV = ['overseer_mpi_worker.py']
+#how often workers report status updates back to the main process
 STATUS_UPDATE_INTERVAL = 1000000
+#amount to complete each map before sending to workers.
+PREWORKER_COMPLETION_LENGTH = 0
 
 
 def generate_basepoints():
@@ -48,6 +56,38 @@ def generate_basepoints():
     return basepoints
 
 
+def generate_pairs(basepoints):
+    '''
+    generate the list of pairs to send to the workers.
+    '''
+    #first generate some empty mappings
+    empty_mappings = []
+    for bp in basepoints:
+        thisMap = [bp]
+        for i in xrange(T):
+            thisMap.append(tuple())
+        empty_mappings.append(thisMap)
+    #now we need to pre-complete each map to the specified length.
+    #and return every possible combination of these partial mappings.
+    if PREWORKER_COMPLETION_LENGTH == 0:
+        return combinations(empty_mappings, 2)
+    #generate every completion
+    partialMaps = []
+    for emptyMap in empty_mappings:
+        for partial in completions(emptyMap, N, M, T,
+                                   length=PREWORKER_COMPLETION_LENGTH):
+            partialMaps.append(partial)
+    #now every combination. Throw away any pair which shares the same basepoint
+    partialPairs = []
+    for pair in combinations(partialMaps, 2):
+        m1, m2 = pair
+        if m1[0] == m2[0]:
+            continue
+        else:
+            partialPairs.append(pair)
+    return partialPairs.__iter__()
+
+
 def main():
     #spawn worker processes and establish an intercommunicator
     print "About to try to spawn {} workers.".format(NUM_WORKERS)
@@ -56,20 +96,7 @@ def main():
     num_workers = comm.Get_remote_size()
 
     basepoints = generate_basepoints()
-    #now construct an empty mapping for each basepoint
-    empty_mappings = []
-    for bp in basepoints:
-        thisMap = [bp]
-        #add correct number of empty legs
-        for i in xrange(T):
-            thisMap.append(tuple())
-        empty_mappings.append(tuple(thisMap))
-    #now we have a list of empty maps
-    #now we can pull every combination of these and start the comparison.
-    #since two maps with the same basepoint are definitely going to fail the
-    #test, we can use the simple itertools.combinations() to get this list
-    empty_pairs = combinations(empty_mappings, 2)
-
+    empty_pairs = generate_pairs(basepoints)
     #Open file for writing
     f = open(FILENAME, 'a')
     #header

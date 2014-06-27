@@ -1,0 +1,6 @@
+- surjectivity check of each function before comparing (in mapping generator)
+- check to make sure all tips are mapped to
+\
+
+- sharcnet sample program needs to be completed
+- 

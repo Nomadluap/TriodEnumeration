@@ -1,0 +1,11 @@
+- start with more partially completed maps
+- log more stuff to file - DONE
+    - core identification on new pair, etc - DONE
+- finish up partial reports of pair activity
+- m=2 should be good for now
+- aim for higher N
+- MOAR CORES
+- consider T=4
+- run in the big leagues
+- do disjointness check before sending to worker
+
