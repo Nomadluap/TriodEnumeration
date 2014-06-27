@@ -9,3 +9,4 @@ TAG_WORKER_COMMAND = 3
 COMMAND_STOP = 'stop'
 REPORT_DONEPAIR = 'donepair'
 REPORT_FOUNDPAIR = 'foundpair'
+REPORT_STATUS = 'status'

@@ -5,6 +5,9 @@ functions, and orchestrates all the other functions. In the future, this
 module will be the one that dispatches threads or worker nodes in a cluster
 environment.
 
+
+"--mca mpi_yield_when_idle 1" to stop busy-waiting of threads.
+
 Created on Jun 9, 2014
 
 @author: paul
@@ -18,19 +21,15 @@ from mpiGlobals import *
 
 #globals. These are important
 
-N = 5
-M = 3
+N = 3
+M = 2
 T = 3
-#filename to save results to
 FILENAME = 'mapping_results.txt'
-
-#number of mapping worker-processes
-NUM_WORKERS = 4
-#whether to discard mappings which are not surjective
+NUM_WORKERS = 3
 CHECK_SURJECTIVITY = True
-#name of the worker process to execute
 WORKER_EXEC = 'python'
 WORKER_ARGV = ['overseer_mpi_worker.py']
+STATUS_UPDATE_INTERVAL = 1000000
 
 
 def generate_basepoints():
@@ -52,7 +51,8 @@ def generate_basepoints():
 def main():
     #spawn worker processes and establish an intercommunicator
     print "About to try to spawn {} workers.".format(NUM_WORKERS)
-    comm = MPI.COMM_SELF.Spawn(WORKER_EXEC, args=WORKER_ARGV, maxprocs=NUM_WORKERS)
+    comm = MPI.COMM_SELF.Spawn(WORKER_EXEC, args=WORKER_ARGV,
+                               maxprocs=NUM_WORKERS)
     num_workers = comm.Get_remote_size()
 
     basepoints = generate_basepoints()
@@ -84,6 +84,9 @@ def main():
     #Now we need to send an initial pair to each worker.
     for i in range(num_workers):
         pair = empty_pairs.next()
+        print "Worker # {} starting pair: {}".format(i, pair)
+        f.write("Worker # {} starting pair: {}".format(i, pair))
+        f.flush()
         comm.send(pair, dest=i, tag=TAG_WORKER_COMMAND)
     #now we need to wait for one of the processes to report that it is
 
@@ -94,6 +97,9 @@ def main():
             try:
                 #send a new pair if one is available
                 newpair = empty_pairs.next()
+                print "Worker # {} starting pair: {}".format(result, newpair)
+                f.write("Worker # {} starting pair: {}".format(result, newpair))
+                f.flush()
                 comm.send(newpair, dest=result, tag=TAG_WORKER_COMMAND)
             except StopIteration:
                 #if we have no pairs left to test, tell the process to stop
@@ -102,10 +108,16 @@ def main():
         #log any reports of success
         elif kind == REPORT_FOUNDPAIR:
             result_writer(result, f)
+        elif kind == REPORT_STATUS:
+            #unpack and print a pretty message
+            workerRank, counts = result
+            print "Worker # {} status: {}".format(workerRank, counts)
+            f.write("Worker # {} status: {}\n".format(workerRank, counts))
+            f.flush()
 
     #and finish the file.
     print 'finished checking :: time: {}'.format(str(datetime.now()))
-    f.write("finished checking :: time: {}\n".format(str(datetime.now())))
+    f.write("finished checking :: time: {}\n\n".format(str(datetime.now())))
     f.close()
 
     #and now we should be done.
