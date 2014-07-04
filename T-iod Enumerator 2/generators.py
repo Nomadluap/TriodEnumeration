@@ -8,11 +8,12 @@ and mapping generators.
 '''
 from T_od import Point
 
+
 def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
     '''
     Generate a series of mappings which are completions of the partial mapping
-    mapping_start. 
-    
+    mapping_start.
+
     Generation will continue until the mapping generated is equivalent to
     mapping_end, or until all completions are exhausted if mapping_end is None.
     @param mapping_start the partially-complete mapping to iterate over
@@ -23,19 +24,20 @@ def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
     stop generating
     @param length the maximum number of values to populate each arm with. By
     default this will be N.
-    
+
     @return a generator of complete mappings.
     '''
     class EndOfSequence(Exception):
         ''' Exception used to signify that mapping_end has been reached.'''
         def __init__(self):
             pass
+
     def recurse(mapping_start):
         #check for optional end-condition
         if mappingEnd is not None and mapping_start == mappingEnd:
             yield mapping_start
             raise EndOfSequence
-        #find the first leg in which the length is less than N. 
+        #find the first leg in which the length is less than N.
         shortLeg = 1
         try:
             while len(mapping_start[shortLeg]) >= length:
@@ -45,12 +47,12 @@ def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
         except IndexError:
             yield mapping_start
             return
-        
+
         #now shortLeg holds the first leg number which is not large enough.
-        #find valid completions of the arm by looking at the lastmost entry in 
-        #the arm. 
+        #find valid completions of the arm by looking at the lastmost entry in
+        #the arm.
         #if the arm is empty, then look at the branch point for completions.
-        index = len(mapping_start[shortLeg]) 
+        index = len(mapping_start[shortLeg])
         if index == 0:
             completions = connectivity(mapping_start[0], M, T)
         else:
@@ -63,25 +65,26 @@ def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
                 yield r
     #adjust length if called as None
     if length > N:
-        raise ValueError, "length may not exceed N"
+        raise ValueError("length may not exceed N")
     if length is None:
         length = N
     try:
         for r in recurse(partialMap):
             yield r
     except EndOfSequence:
-        return #done early, mappingEnd has been reached
-            
+        return  # done early, mappingEnd has been reached
+
+
 def functionize(mapping, N, M, T=3):
     '''
-    Generate a function object assosciated with the supplied triod mapping. 
-    
-    The returned function may be called with arguments as a tuple of 
-    (arm, t), where arm is the index of the domain arm, and t is the position 
-    on that arm, with 0 being the branch point, and 1 being the end point of the
-    arm. The mapping used to generate the function will be saved as the
-    f.mapping member variable.
-    
+    Generate a function object assosciated with the supplied triod mapping.
+
+    The returned function may be called with arguments as a tuple of (arm, t),
+    where arm is the index of the domain arm, and t is the position on that
+    arm, with 0 being the branch point, and 1 being the end point of the arm.
+    The mapping used to generate the function will be saved as the f.mapping
+    member variable.
+
     @param mapping the triod mapping used to generate the function
     @param N the number of nodes per leg in the domain triod
     @param M the number of onodes per leg in the codomain triod
@@ -94,10 +97,10 @@ def functionize(mapping, N, M, T=3):
         #find nearest integers to vertex
         vLow = int(vertex)
         vHigh = int(vertex+1)
-        if vHigh > N: #gone past endpoint, therefore vertex is the endpoint
+        if vHigh > N:  # gone past endpoint, therefore vertex is the endpoint
             vHigh = N
         #dereference vLow
-        if vLow == 0: #look at branchpoint
+        if vLow == 0:  # look at branchpoint
             fLow = mapping[0][1]
         else:
             fLow = mapping[arm+1][vLow-1][1]
@@ -120,10 +123,11 @@ def functionize(mapping, N, M, T=3):
         if f == 0:
             fArm = 0
         return Point(fArm, f)
-    
+
     f = lambda point: mappingDereference(mapping, N, M, point)
     f.mapping = mapping
     return f
+
 
 def connectivity(pt, N, T=3):
     '''
@@ -134,12 +138,12 @@ def connectivity(pt, N, T=3):
     - point(s) farther from the branch point
     If the point supplied is the branch point, then points will be supplied in
     order of decreasing index.
-    
+
     @param pt: the point tuple for which to generate the connectivity
-    map. 
+    map.
     @param N: the number of points per leg of the T-od
     @param T: the number of legs of the T-od
-    
+
     @return a tuple of points ajacent to the given point in tuple form.
     '''
     arm, t = pt
@@ -151,7 +155,8 @@ def connectivity(pt, N, T=3):
         return (Point(pt), Point(arm, t-1))
     else:
         return (Point(pt), Point(arm, t-1), Point(arm, t+1))
-    
+
+
 def linspace(start, stop, n):
     '''
     creates a linspace of n divisions in the interval [start, stop]
@@ -162,12 +167,9 @@ def linspace(start, stop, n):
     h = (stop - start) / (n - 1)
     for i in range(n):
         yield start + h * i
-    
+
 if __name__ == "__main__":
     n, m = 3, 2
     mapping = (Point(0, 0), (), (), ())
     for c in completions(mapping, n, m, length=1):
         print c
-        
-        
-            
