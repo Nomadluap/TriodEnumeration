@@ -7,6 +7,7 @@ and mapping generators.
 @author: paul
 '''
 from T_od import Point
+from itertools import permutations
 
 
 def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
@@ -73,6 +74,167 @@ def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
             yield r
     except EndOfSequence:
         return  # done early, mappingEnd has been reached
+
+
+def completions_surjective(partialMap, N, M, T=3,
+                           length=None, endpointMap=None):
+    '''
+    Generate a series of mappings which are completions of the partial mapping
+    mapping_start.
+
+    Generation will continue until the mapping generated is equivalent to
+    mapping_end, or until all completions are exhausted if mapping_end is None.
+
+    This mapping is different in that it will attempt to generate only maps
+    that are surjective. This should help in processing speed in certain
+    scenarios.
+
+    @param mapping_start the partially-complete mapping to iterate over
+    @param N the number of nodes per leg in the domain T-od
+    @param M the number of nodes per leg in the codomain T-od
+    @param T the number of legs
+    @param length the maximum number of values to populate each arm with. By
+    default this will be N.
+    @param endpointMap a list specifying which points map to which endpoints
+    for surjectivity assertion
+
+    @return a generator of complete mappings.
+    '''
+    def recurse(mapping_start, endpoint_map):
+        '''
+        The recursive function which does the generation
+
+        1. Find the first leg which is incomplete.
+        2. check the endpoint list to determine if any endpoints are to be
+        mapped to the undefined portion of that leg.
+            a. if not, add an ajacent point and then recusively continue.
+            b. if yes, then take the distance between the most recent domain
+            point and the one listed in the endpoint map (X), and compare it to
+            the distance between that endpoint coordinate and the most recent
+            codomain point. (Y)
+                i. if X < Y then there is no way for the mapping to connect in
+                the way specified. return immediately without yielding.
+                ii. If X == Y then connect the points directly and recursively
+                continue.
+                iii. If X > Y  then we have room to wiggle. Make the next
+                codomain point a point connected to the current one, and then
+                recursively continue.
+        '''
+        shortLeg = 1
+        try:
+            while len(mapping_start[shortLeg]) >= length:
+                shortLeg += 1
+        #mapping is already complete and we should just return it. 
+        except IndexError:
+            yield mapping_start
+            return
+        index = len(mapping_start[shortLeg])
+        endPointNumber = -1
+        #check for defined endpoints in this leg.
+        for i in range(T):
+            arm = endpoint_map[i][0]
+            #if any defined endpoints lie on this arm
+            if arm == shortLeg:
+                #if they haven't already been asigned
+                dist = endpoint_map[i][1]
+                if dist >= index:
+                    #take only the  first-defined point in the empty space.
+                    if dist < endpoint_map[endPointNumber][1]:
+                        endPointNumber = i
+
+        #no endpoints on this leg. Just do a simple recursion lilke before
+        if endPointNumber == -1:
+            if index == 0:
+                completions = connectivity(mapping_start[0], M, T)
+            else:
+                completions = \
+                    connectivity(mapping_start[shortLeg][index-1], M, T)
+            #now iterate over those completions
+            for c in completions:
+                mapping_new = list(mapping_start)
+                mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
+                for r in recurse(mapping_new, endpoint_map):
+                    yield r
+
+        #unassigned endpoint on this arm. This is where things get interesting
+        else:
+            endpoint_dist = endpoint_map[endPointNumber][1]
+            #find distances in both the domain and the codomain.
+            X = endpoint_dist - index
+            Y = None
+            if index == 0:
+                Y = Point(endPointNumber, M) - mapping_start[0]
+            else:
+                Y = Point(endPointNumber, M) - mapping_start[shortLeg][index-1]
+            #now compare X and Y
+            if X < Y:
+                #unable to create a surjective map. Return without yielding.
+                return
+            elif X == Y:
+                #fill in a direct path between points
+                #we need to go in a direction toward the endpoint.
+                ftCurrent = None
+                if index == 0:
+                    ftCurrent = mapping_start[0]
+                else:
+                    ftCurrent = mapping_start[shortLeg][index-1]
+                c = None
+
+                #if ftCurrent is the branch point, then go up the proper leg.
+                if ftCurrent == Point(0, 0):
+                    c = Point(endPointNumber, 1)
+
+                #if ftCurrent is on a different branch than the target
+                #endpoint, then go toward the branch point
+                elif ftCurrent[0] != endPointNumber:
+                    c = Point(ftCurrent[0], ftCurrent[1]-1)
+
+                #otherwise we are on the same arm. Go toward the endpoint.
+                else:
+                    c = Point(ftCurrent[0], ftCurrent[1]+1)
+
+                #now sub in the completion and recurse
+                mapping_new = list(mapping_start)
+                mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
+                for r in recurse(mapping_new, endpoint_map):
+                    yield r
+
+            else:
+                #room to wiggle. Just do a regular completion and recursively
+                #continue.
+                if index == 0:
+                    completions = connectivity(mapping_start[0], M, T)
+                else:
+                    completions = \
+                        connectivity(mapping_start[shortLeg][index-1], M, T)
+                #now iterate over those completions
+                for c in completions:
+                    mapping_new = list(mapping_start)
+                    mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
+                    for r in recurse(mapping_new, endpoint_map):
+                        yield r
+
+    if length is None:
+        length = N
+    elif length > N:
+        raise ValueError("length may not exceed N")
+
+    #check for existance of the endpointMap. If it exists, use it.
+    if endpointMap is not None:
+        if len(endpointMap) != T:
+            raise ValueError("endpointMap is not of the correct size")
+        for r in recurse(partialMap, endpointMap):
+            yield r
+    #otherwise, we need to generate every endpointMap from scratch.
+    else:
+        points = []
+        for arm in range(0, T):
+            for t in range(0, N):
+                points.append(Point(arm, t))
+        #take every three-permutation of points
+        for epm in permutations(points, 3):
+            for r in recurse(partialMap, epm):
+                yield r
 
 
 def functionize(mapping, N, M, T=3):
