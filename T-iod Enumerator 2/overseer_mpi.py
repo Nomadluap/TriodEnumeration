@@ -19,11 +19,13 @@ from datetime import datetime
 from mpi4py import MPI
 from mpiGlobals import *
 from generators import completions
+from comparitors import checkPartialDisjointness
+
 
 #globals. These are important
 
-N = 3
-M = 2
+N = 4
+M = 3
 T = 3
 #filename to write results to
 FILENAME = 'mapping_results.txt'
@@ -81,7 +83,7 @@ def generate_pairs(basepoints):
     partialPairs = []
     for pair in combinations(partialMaps, 2):
         m1, m2 = pair
-        if m1[0] == m2[0]:
+        if not checkPartialDisjointness(m1, m2, N, M, T):
             continue
         else:
             partialPairs.append(pair)
@@ -112,7 +114,7 @@ def main():
     for i in range(num_workers):
         pair = empty_pairs.next()
         print "Worker # {} starting pair: {}".format(i, pair)
-        f.write("Worker # {} starting pair: {}".format(i, pair))
+        f.write("Worker # {} starting pair: {}\n".format(i, pair))
         f.flush()
         comm.send(pair, dest=i, tag=TAG_WORKER_COMMAND)
     #now we need to wait for one of the processes to report that it is
@@ -125,7 +127,7 @@ def main():
                 #send a new pair if one is available
                 newpair = empty_pairs.next()
                 print "Worker # {} starting pair: {}".format(result, newpair)
-                f.write("Worker # {} starting pair: {}".format(result, newpair))
+                f.write("Worker # {} starting pair: {}\n".format(result, newpair))
                 f.flush()
                 comm.send(newpair, dest=result, tag=TAG_WORKER_COMMAND)
             except StopIteration:

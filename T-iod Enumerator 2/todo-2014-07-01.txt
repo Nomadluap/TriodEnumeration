@@ -1,0 +1,16 @@
+change completion generator to create only surjective maps. 
+- assign points that become endpoints(triple)
+- define map coming away from those points
+- disregard any 'impossible' mapping that forces itself to become continouos
+
+- when you arrive at the point that should become the endpoint,
+
+
+
+
+a1, a2, a3 distinguished
+
+f(u) ius assigned, v is ajacent to u
+
+dist(v, a1) >= dist(f(v), tip1)
+
