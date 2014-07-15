@@ -1963,3 +1963,24 @@ Worker # 2 status: {'commutativity': 0, 'total': 1000000, 'disjointness': 1, 'pa
 Worker # 3 status: {'commutativity': 0, 'total': 2000000, 'disjointness': 0, 'passed': 0, 'surjectivity': 2000000}
 Worker # 2 status: {'commutativity': 0, 'total': 2000000, 'disjointness': 2, 'passed': 0, 'surjectivity': 1999998}
 Worker # 1 status: {'commutativity': 0, 'total': 2000000, 'disjointness': 20, 'passed': 0, 'surjectivity': 1999980}
+new test:: started: 2014-07-15 14:42:25.227118
+Worker # 1 starting pair: ([p(0, 0), (), (), ()], [p(0, 1), (), (), ()])
+Worker # 2 starting pair: ([p(0, 0), (), (), ()], [p(0, 2), (), (), ()])
+Worker # 3 starting pair: ([p(0, 0), (), (), ()], [p(0, 3), (), (), ()])
+Worker # 3 status: {'commutativity': 0, 'total': 1000000, 'disjointness': 0, 'passed': 0, 'surjectivity': 1000000}
+Worker # 2 status: {'commutativity': 0, 'total': 1000000, 'disjointness': 1, 'passed': 0, 'surjectivity': 999999}
+Worker # 1 status: {'commutativity': 0, 'total': 1000000, 'disjointness': 5, 'passed': 0, 'surjectivity': 999995}
+Worker # 3 status: {'commutativity': 0, 'total': 2000000, 'disjointness': 0, 'passed': 0, 'surjectivity': 2000000}
+Worker # 2 status: {'commutativity': 0, 'total': 2000000, 'disjointness': 2, 'passed': 0, 'surjectivity': 1999998}
+Worker # 1 status: {'commutativity': 0, 'total': 2000000, 'disjointness': 20, 'passed': 0, 'surjectivity': 1999980}
+Worker # 3 status: {'commutativity': 0, 'total': 3000000, 'disjointness': 0, 'passed': 0, 'surjectivity': 3000000}
+Worker # 2 status: {'commutativity': 0, 'total': 3000000, 'disjointness': 3, 'passed': 0, 'surjectivity': 2999997}
+Worker # 1 status: {'commutativity': 0, 'total': 3000000, 'disjointness': 65, 'passed': 0, 'surjectivity': 2999935}
+Worker # 3 status: {'commutativity': 0, 'total': 4000000, 'disjointness': 0, 'passed': 0, 'surjectivity': 4000000}
+Worker # 2 status: {'commutativity': 0, 'total': 4000000, 'disjointness': 4, 'passed': 0, 'surjectivity': 3999996}
+Worker # 1 status: {'commutativity': 0, 'total': 4000000, 'disjointness': 70, 'passed': 0, 'surjectivity': 3999930}
+Worker # 3 status: {'commutativity': 0, 'total': 5000000, 'disjointness': 0, 'passed': 0, 'surjectivity': 5000000}
+Worker # 2 status: {'commutativity': 0, 'total': 5000000, 'disjointness': 13, 'passed': 0, 'surjectivity': 4999987}
+Worker # 1 status: {'commutativity': 0, 'total': 5000000, 'disjointness': 176, 'passed': 0, 'surjectivity': 4999824}
+Worker # 3 status: {'commutativity': 0, 'total': 6000000, 'disjointness': 0, 'passed': 0, 'surjectivity': 6000000}
+Worker # 2 status: {'commutativity': 0, 'total': 6000000, 'disjointness': 14, 'passed': 0, 'surjectivity': 5999986}

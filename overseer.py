@@ -35,7 +35,7 @@ CHECK_SURJECTIVITY = True
 #how often workers report status updates back to the main process
 STATUS_UPDATE_INTERVAL = 1000000
 #amount to complete each map before sending to workers.
-PREWORKER_COMPLETION_LENGTH = 0
+PREWORKER_COMPLETION_LENGTH = 2
 
 
 def generate_basepoints():
@@ -106,11 +106,14 @@ def main_master(comm):
     status[0] = False
     #Now we need to send an initial pair to each worker.
     for i in range(1, num_workers):
-        pair = empty_pairs.next()
-        print "Worker # {} starting pair: {}".format(i, pair)
-        f.write("Worker # {} starting pair: {}\n".format(i, pair))
-        f.flush()
-        comm.send(pair, dest=i, tag=TAG_WORKER_COMMAND)
+        try:
+            pair = empty_pairs.next()
+            print "Worker # {} starting pair: {}".format(i, pair)
+            f.write("Worker # {} starting pair: {}\n".format(i, pair))
+            f.flush()
+            comm.send(pair, dest=i, tag=TAG_WORKER_COMMAND)
+        except StopIteration:
+            break
     #now we need to wait for one of the processes to report that it is
 
     while True in status:
