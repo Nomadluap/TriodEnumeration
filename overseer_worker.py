@@ -3,19 +3,18 @@ from __future__ import division
 from generators import completions
 from comparitors import checkPartialDisjointness, checkCommutativity
 from comparitors import checkSurjectivity
-from overseer_mpi import CHECK_SURJECTIVITY, N, M, T, STATUS_UPDATE_INTERVAL
-from overseer_mpi import PREWORKER_COMPLETION_LENGTH
+from overseer import CHECK_SURJECTIVITY, N, M, T, STATUS_UPDATE_INTERVAL
+from overseer import PREWORKER_COMPLETION_LENGTH
 from mpiGlobals import *
 from mpi4py import MPI
 #globals
 
-rank = ""
+rank = None
 
 
-def main_worker():
+def main_worker(comm):
     global rank, totalProcessed
     #at this point, we have just been spawned. We need go get the comm object
-    comm = MPI.Comm.Get_parent()
     rank = comm.Get_rank()
     print "I am worker process {}".format(rank)
     #now we loop and await a command

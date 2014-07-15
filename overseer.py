@@ -20,23 +20,18 @@ from mpi4py import MPI
 from mpiGlobals import *
 from generators import completions
 from comparitors import checkPartialDisjointness
-from overseer_worker import main_worker
 
 
 #globals. These are important
 
-N = 4
+N = 5
 M = 3
 T = 3
 #filename to write results to
 FILENAME = 'mapping_results.txt'
-#number of worker processes to spawn
-NUM_WORKERS = 3
 #check for surjectivity of maps before checking commutativity
 CHECK_SURJECTIVITY = True
 #worker spawn parameters
-WORKER_EXEC = 'python'
-WORKER_ARGV = ['overseer_mpi_worker.py']
 #how often workers report status updates back to the main process
 STATUS_UPDATE_INTERVAL = 1000000
 #amount to complete each map before sending to workers.
@@ -108,8 +103,9 @@ def main_master(comm):
     #a value of True means that the process is currently doing work.
     #a value of False means that it has been stopped.
     status = [True for i in range(num_workers)]
+    status[0] = False
     #Now we need to send an initial pair to each worker.
-    for i in range(num_workers):
+    for i in range(1, num_workers):
         pair = empty_pairs.next()
         print "Worker # {} starting pair: {}".format(i, pair)
         f.write("Worker # {} starting pair: {}\n".format(i, pair))
@@ -167,7 +163,8 @@ if __name__ == "__main__":
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
     if rank == 0:
-        main_master()
+        main_master(comm)
     else:
-        main_worker()
+        from overseer_worker import main_worker
+        main_worker(comm)
 #TODO: don't make so many new variables.
