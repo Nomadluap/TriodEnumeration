@@ -7,7 +7,7 @@ and mapping generators.
 @author: paul
 '''
 from T_od import Point
-from itertools import permutations
+from itertools import permutations, combinations
 
 
 def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
@@ -134,12 +134,14 @@ def completions_surjective(partialMap, N, M, T=3,
         for i in range(T):
             arm = endpoint_map[i][0]
             #if any defined endpoints lie on this arm
-            if arm == shortLeg:
+            if arm == shortLeg-1:
                 #if they haven't already been asigned
                 dist = endpoint_map[i][1]
                 if dist >= index:
                     #take only the  first-defined point in the empty space.
-                    if dist < endpoint_map[endPointNumber][1]:
+                    if endPointNumber == -1:
+                        endPointNumber = i
+                    elif dist < endpoint_map[endPointNumber][1]:
                         endPointNumber = i
 
         #no endpoints on this leg. Just do a simple recursion lilke before
@@ -178,26 +180,29 @@ def completions_surjective(partialMap, N, M, T=3,
                     ftCurrent = mapping_start[0]
                 else:
                     ftCurrent = mapping_start[shortLeg][index-1]
-                c = None
+                completions = None
 
                 #if ftCurrent is the branch point, then go up the proper leg.
                 if ftCurrent == Point(0, 0):
-                    c = Point(endPointNumber, 1)
+                    completions = [Point(endPointNumber, 1)]
 
                 #if ftCurrent is on a different branch than the target
                 #endpoint, then go toward the branch point
                 elif ftCurrent[0] != endPointNumber:
-                    c = Point(ftCurrent[0], ftCurrent[1]-1)
+                    completions = [Point(ftCurrent[0], ftCurrent[1]-1)]
 
                 #otherwise we are on the same arm. Go toward the endpoint.
-                else:
-                    c = Point(ftCurrent[0], ftCurrent[1]+1)
+                elif X != 0:
+                    completions = [Point(ftCurrent[0], ftCurrent[1]+1)]
+                else:  # special case when X==Y==0
+                    completions = connectivity(ftCurrent, M, T)
 
                 #now sub in the completion and recurse
-                mapping_new = list(mapping_start)
-                mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
-                for r in recurse(mapping_new, endpoint_map):
-                    yield r
+                for c in completions:
+                    mapping_new = list(mapping_start)
+                    mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
+                    for r in recurse(mapping_new, endpoint_map):
+                        yield r
 
             else:
                 #room to wiggle. Just do a regular completion and recursively
@@ -223,6 +228,13 @@ def completions_surjective(partialMap, N, M, T=3,
     if endpointMap is not None:
         if len(endpointMap) != T:
             raise ValueError("endpointMap is not of the correct size")
+
+        #check to make sure that every defined base point in the list is at
+        #least 2M distance away from the others.
+        for p1, p2 in combinations(endpointMap, 2):
+            if p2 - p1 < 2*M:
+                return
+
         for r in recurse(partialMap, endpointMap):
             yield r
     #otherwise, we need to generate every endpointMap from scratch.
@@ -233,6 +245,14 @@ def completions_surjective(partialMap, N, M, T=3,
                 points.append(Point(arm, t))
         #take every three-permutation of points
         for epm in permutations(points, 3):
+            #enforce proper seperation of endpoint terms.
+            try:
+                for p1, p2 in combinations(epm, 2):
+                    if p2 - p1 < 2*M:
+                        raise ValueError
+            except ValueError:
+                continue
+
             for r in recurse(partialMap, epm):
                 yield r
 
@@ -331,7 +351,9 @@ def linspace(start, stop, n):
         yield start + h * i
 
 if __name__ == "__main__":
-    n, m = 3, 2
-    mapping = (Point(0, 0), (), (), ())
-    for c in completions(mapping, n, m, length=1):
+    n, m = 5, 3
+    #there should only be one valid completion for this one.
+    mapping = (Point(0, 1), (), (), ())
+    endpts = (Point(0, 3), Point(1, 3), Point(2, 3))
+    for c in completions_surjective(mapping, n, m, endpointMap=endpts):
         print c
