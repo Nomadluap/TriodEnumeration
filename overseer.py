@@ -35,7 +35,7 @@ CHECK_SURJECTIVITY = True
 #how often workers report status updates back to the main process
 STATUS_UPDATE_INTERVAL = 1000000
 #amount to complete each map before sending to workers.
-PREWORKER_COMPLETION_LENGTH = 2
+PREWORKER_COMPLETION_LENGTH = 1
 
 
 def generate_basepoints():
