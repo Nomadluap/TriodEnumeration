@@ -12,7 +12,7 @@ from mpi4py import MPI
 rank = ""
 
 
-def main():
+def main_worker():
     global rank, totalProcessed
     #at this point, we have just been spawned. We need go get the comm object
     comm = MPI.Comm.Get_parent()
@@ -136,4 +136,4 @@ def dummyWorker(pair, comm):
     reportSuccess(pair, comm)
 
 if __name__ == "__main__":
-    main()
+    main_worker()

@@ -20,6 +20,7 @@ from mpi4py import MPI
 from mpiGlobals import *
 from generators import completions
 from comparitors import checkPartialDisjointness
+from overseer_mpi_worker import main_worker
 
 
 #globals. These are important
@@ -90,7 +91,7 @@ def generate_pairs(basepoints):
     return partialPairs.__iter__()
 
 
-def main():
+def main_master():
     #spawn worker processes and establish an intercommunicator
     print "About to try to spawn {} workers.".format(NUM_WORKERS)
     comm = MPI.COMM_SELF.Spawn(WORKER_EXEC, args=WORKER_ARGV,
@@ -166,5 +167,5 @@ def result_writer(result, f):
     f.flush()
 
 if __name__ == "__main__":
-    main()
+    main_master()
 #TODO: don't make so many new variables.
