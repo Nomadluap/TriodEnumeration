@@ -5,6 +5,7 @@ from comparitors import checkPartialDisjointness, checkCommutativity
 from comparitors import checkSurjectivity
 from overseer import CHECK_SURJECTIVITY, N, M, T, STATUS_UPDATE_INTERVAL
 from overseer import PREWORKER_COMPLETION_LENGTH
+from overseer import GENERATOR_FUNC
 from mpiGlobals import *
 from mpi4py import MPI
 #globals
@@ -58,8 +59,8 @@ def pairWorker(pair, comm):
     preLength = PREWORKER_COMPLETION_LENGTH
     partialLength = preLength + (N - preLength)//2
 
-    for partial1 in completions(empty1, N, M, T, length=partialLength):
-        for partial2 in completions(empty2, N, M, T, length=partialLength):
+    for partial1 in GENERATOR_FUNC(empty1, N, M, T, length=partialLength):
+        for partial2 in GENERATOR_FUNC(empty2, N, M, T, length=partialLength):
             #check partial disjointness, only proceed if true
             if checkPartialDisjointness(partial1, partial2, N, M, T) is False:
                 counts['total'] += 1
@@ -68,14 +69,14 @@ def pairWorker(pair, comm):
                 continue
             #if we pass the partial disjointness check at this point, then
             #we may continue with this part of the generation
-            for map1 in completions(partial1, N, M, T):
+            for map1 in GENERATOR_FUNC(partial1, N, M, T):
                 #optionally skip a mapping if it is not surjective
                 if CHECK_SURJECTIVITY and not checkSurjectivity(map1, N, M, T):
                     counts['surjectivity'] += 1
                     counts['total'] += 1
                     reportStatus(counts, comm)
                     continue
-                for map2 in completions(partial2, N, M, T):
+                for map2 in GENERATOR_FUNC(partial2, N, M, T):
                     if CHECK_SURJECTIVITY and not checkSurjectivity(
                             map2, N, M, T):
                         counts['total'] += 1

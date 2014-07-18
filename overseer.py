@@ -18,24 +18,26 @@ from itertools import combinations
 from datetime import datetime
 from mpi4py import MPI
 from mpiGlobals import *
-from generators import completions
+import generators
 from comparitors import checkPartialDisjointness
 
 
 #globals. These are important
 
-N = 5
-M = 3
+N = 4
+M = 2
 T = 3
 #filename to write results to
 FILENAME = 'mapping_results.txt'
 #check for surjectivity of maps before checking commutativity
 CHECK_SURJECTIVITY = True
-#worker spawn parameters
+#function the worker uses to generate completions
+#either generators.completions_surjective or generators.completions
+GENERATOR_FUNC = generators.completions_surjective
 #how often workers report status updates back to the main process
 STATUS_UPDATE_INTERVAL = 1000000
 #amount to complete each map before sending to workers.
-PREWORKER_COMPLETION_LENGTH = 1
+PREWORKER_COMPLETION_LENGTH = 0
 
 
 def generate_basepoints():
@@ -72,8 +74,8 @@ def generate_pairs(basepoints):
     #generate every completion
     partialMaps = []
     for emptyMap in empty_mappings:
-        for partial in completions(emptyMap, N, M, T,
-                                   length=PREWORKER_COMPLETION_LENGTH):
+        for partial in generators.completions(emptyMap, N, M, T,
+                                              length=PREWORKER_COMPLETION_LENGTH):
             partialMaps.append(partial)
     #now every combination. Throw away any pair which shares the same basepoint
     partialPairs = []
