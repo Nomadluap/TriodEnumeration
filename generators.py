@@ -101,8 +101,6 @@ def completions_surjective(partialMap, N, M, T=3,
     @return a generator of complete mappings.
     '''
     def recurse(mapping_start, endpoint_map):
-        print "-------------"
-        print "(working with mapping: {})".format(mapping_start)
         '''
         The recursive function which does the generation
 
@@ -130,7 +128,6 @@ def completions_surjective(partialMap, N, M, T=3,
         except IndexError:
             yield mapping_start
             return
-        print "LEG NUMBER: {}".format(shortLeg-1)
         index = len(mapping_start[shortLeg])
         endPointNumber = -1
         #check for defined endpoints in this leg.
@@ -148,7 +145,6 @@ def completions_surjective(partialMap, N, M, T=3,
                         endPointNumber = i
 
         #no endpoints on this leg. Just do a simple recursion lilke before
-        #print "ENDPOINTNUMBER: {}".format(endPointNumber)
         if endPointNumber == -1:
             if index == 0:
                 completions = connectivity(mapping_start[0], M, T)
@@ -164,8 +160,6 @@ def completions_surjective(partialMap, N, M, T=3,
 
         #unassigned endpoint on this arm. This is where things get interesting
         else:
-            print "Unassigned endpoint so far"
-            print "index: {}".format(index)
             endpoint_dist = endpoint_map[endPointNumber][1]
             #find distances in both the domain and the codomain.
             X = endpoint_dist - index
@@ -175,7 +169,6 @@ def completions_surjective(partialMap, N, M, T=3,
             else:
                 Y = Point(endPointNumber, M) - mapping_start[shortLeg][index-1]
             #now compare X and Y
-            print "X IS: {} Y IS: {}".format(X, Y)
 
             if X == 1 and Y == 0:
                 #second conditional is for special case when we are one-off
@@ -194,7 +187,6 @@ def completions_surjective(partialMap, N, M, T=3,
                         yield r
 
             elif X == Y:
-                print "Action: go direcltly to endpoint"
                 #fill in a direct path between points
                 #we need to go in a direction toward the endpoint.
                 ftCurrent = None
@@ -227,13 +219,11 @@ def completions_surjective(partialMap, N, M, T=3,
                         yield r
 
             elif X < Y:
-                print "Action: failure. Distance not satisfied"
                 #unable to create a surjective map. Return without yielding.
                 return
 
             else:
                 #x > Y
-                print "Action: room to wiggle"
                 #room to wiggle. Just do a regular completion and recursively
                 #continue.
                 if index == 0:
@@ -270,17 +260,17 @@ def completions_surjective(partialMap, N, M, T=3,
     else:
         points = []
         for arm in range(0, T):
-            for t in range(0, N):
+            for t in range(0, N+1):
                 points.append(Point(arm, t))
         #take every three-permutation of points
         for epm in permutations(points, 3):
-#            #enforce proper seperation of endpoint terms.
-#            try:
-#                for p1, p2 in combinations(epm, 2):
-#                    if p2 - p1 < 2*M:
-#                        raise ValueError
-#            except ValueError:
-#                continue
+            #enforce proper seperation of endpoint terms.
+            try:
+                for p1, p2 in combinations(epm, 2):
+                    if p2 - p1 < 2*M:
+                        raise ValueError
+            except ValueError:
+                continue
 
             for r in recurse(partialMap, epm):
                 yield r
@@ -380,10 +370,10 @@ def linspace(start, stop, n):
         yield start + h * i
 
 if __name__ == "__main__":
-    n, m = 4, 3
+    n, m = 6, 3
     #there should only be one valid completion for this one.
     mapping = (Point(0, 1), (), (), ())
     endpts = (Point(0, 4), Point(1, 4), Point(2, 4))
-    for c in completions_surjective(mapping, n, m, endpointMap=endpts):
-        print "RETURNED MAPPING:", c
+    for c in completions_surjective(mapping, n, m, endpointMap=None):
+        print c
     print "DONE"
