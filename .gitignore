@@ -1,4 +1,4 @@
 *.pyc
 *.swp
 mapping_results.txt
-out.*.sharcnet
+out.*.(sharcnet|txt)
