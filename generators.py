@@ -124,7 +124,7 @@ def completions_surjective(partialMap, N, M, T=3,
         try:
             while len(mapping_start[shortLeg]) >= length:
                 shortLeg += 1
-        #mapping is already complete and we should just return it. 
+        #mapping is already complete and we should just return it.
         except IndexError:
             yield mapping_start
             return
@@ -242,6 +242,9 @@ def completions_surjective(partialMap, N, M, T=3,
         length = N
     elif length > N:
         raise ValueError("length may not exceed N")
+    elif length == 0:
+        yield partialMap
+        return
 
     #check for existance of the endpointMap. If it exists, use it.
     if endpointMap is not None:
@@ -256,6 +259,14 @@ def completions_surjective(partialMap, N, M, T=3,
 
         for r in recurse(partialMap, endpointMap):
             yield r
+
+    #check to see if a pre-completion of this map has been performed
+    elif partialMap[0].epm is not None:
+        epm = partialMap[0].epm
+        print "this one was partialcompleted with {}".format(epm)
+        for r in recurse(partialMap, epm):
+            yield r
+
     #otherwise, we need to generate every endpointMap from scratch.
     else:
         points = []
@@ -273,6 +284,10 @@ def completions_surjective(partialMap, N, M, T=3,
                 continue
 
             for r in recurse(partialMap, epm):
+                #if we are pre-completing, then set the epm in the base point
+                #to be retrieved later.
+                if length > 0:
+                    r[0].epm = epm
                 yield r
 
 
@@ -371,15 +386,18 @@ def linspace(start, stop, n):
 
 if __name__ == "__main__":
     from comparitors import checkSurjectivity as csj
-    n, m = 4, 2
+    n, m = 6, 3
     #there should only be one valid completion for this one.
     mapping = (Point(0, 2), (), (), ())
     endpts = (Point(0, 4), Point(1, 4), Point(2, 4))
-    for c in completions_surjective(mapping, n, m, endpointMap=None):
-        print "---"
-        print c
-        if csj(c, n, m):
-            print 'pass'
-        else:
-            print 'false'
+    partialLength = 0
+    for c_partial in completions_surjective(mapping, n, m, endpointMap=None, length=partialLength):
+        print "partial: {}".format(c_partial)
+        for c in completions_surjective(c_partial, n, m, endpointMap=None):
+            print "---"
+            print c
+            if csj(c, n, m):
+                print 'pass'
+            else:
+                print 'fail'
     print "DONE"

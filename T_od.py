@@ -17,6 +17,7 @@ class Point(tuple):
         if b is not None:
             a = (a, b)
         tuple.__init__(self, a)
+        self.epm = None
 
     def __new__(self, a, b=None):
         '''
