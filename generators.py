@@ -263,7 +263,6 @@ def completions_surjective(partialMap, N, M, T=3,
     #check to see if a pre-completion of this map has been performed
     elif partialMap[0].epm is not None:
         epm = partialMap[0].epm
-        print "this one was partialcompleted with {}".format(epm)
         for r in recurse(partialMap, epm):
             yield r
 
