@@ -39,6 +39,8 @@ STATUS_UPDATE_INTERVAL = 1000000
 #amount to complete each map before sending to workers.
 PREWORKER_COMPLETION_LENGTH = 0
 
+#file object used by the logger
+f = None
 
 def generate_basepoints():
     """
@@ -89,6 +91,7 @@ def generate_pairs(basepoints):
 
 
 def main_master(comm):
+    global f
     #spawn worker processes and establish an intercommunicator
     num_workers = comm.Get_size()
 
@@ -97,9 +100,11 @@ def main_master(comm):
     #Open file for writing
     f = open(FILENAME, 'a')
     #header
-    f.write("new test:: started: {}\n".format(str(datetime.now())))
-    print "new test:: started: {}\n".format(str(datetime.now()))
-    f.flush()
+    log("new test:: started: {}".format(str(datetime.now())))
+    log("N = {}, M = {}, T = {}".format(N, M, T))
+    log("CHECK_SURJECTIVITY: {}, GENERATOR_FUNC: {}".format(
+        CHECK_SURJECTIVITY, str(GENERATOR_FUNC).split()[1]))
+    log("-----")
 
     #now make a list of what each process is doing.
     #a value of True means that the process is currently doing work.
@@ -110,9 +115,7 @@ def main_master(comm):
     for i in range(1, num_workers):
         try:
             pair = empty_pairs.next()
-            print "Worker # {} starting pair: {}".format(i, pair)
-            f.write("Worker # {} starting pair: {}\n".format(i, pair))
-            f.flush()
+            log("Worker # {} starting pair: {}".format(i, pair))
             comm.send(pair, dest=i, tag=TAG_WORKER_COMMAND)
         except StopIteration:
             break
@@ -125,9 +128,7 @@ def main_master(comm):
             try:
                 #send a new pair if one is available
                 newpair = empty_pairs.next()
-                print "Worker # {} starting pair: {}".format(result, newpair)
-                f.write("Worker # {} starting pair: {}\n".format(result, newpair))
-                f.flush()
+                log("Worker # {} starting pair: {}".format(result, newpair))
                 comm.send(newpair, dest=result, tag=TAG_WORKER_COMMAND)
             except StopIteration:
                 #if we have no pairs left to test, tell the process to stop
@@ -139,13 +140,10 @@ def main_master(comm):
         elif kind == REPORT_STATUS:
             #unpack and print a pretty message
             workerRank, counts = result
-            print "Worker # {} status: {}".format(workerRank, counts)
-            f.write("Worker # {} status: {}\n".format(workerRank, counts))
-            f.flush()
+            log("Worker # {} status: {}".format(workerRank, counts))
 
     #and finish the file.
-    print 'finished checking :: time: {}'.format(str(datetime.now()))
-    f.write("finished checking :: time: {}\n\n".format(str(datetime.now())))
+    log("finished checking :: time: {}".format(str(datetime.now())))
     f.close()
 
     #and now we should be done.
@@ -158,10 +156,17 @@ def result_writer(result, f):
     commits a pair to the log
     '''
 
-    print "FOUND ONE:"
-    print "\tmap 1: {} \n\tmap 2: {}".format(*result)
-    f.write("FOUND ONE:\n")
-    f.write("\tmap 1: {} \n\tmap 2: {}\n".format(*result))
+    log("FOUND ONE:")
+    log("\tmap 1: {} \n\tmap 2: {}".format(*result))
+
+
+def log(string):
+    '''
+    logs the string to both the console and the file
+    '''
+    global f
+    print string
+    f.write(string + "\n")
     f.flush()
 
 if __name__ == "__main__":
