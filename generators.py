@@ -370,10 +370,16 @@ def linspace(start, stop, n):
         yield start + h * i
 
 if __name__ == "__main__":
-    n, m = 6, 3
+    from comparitors import checkSurjectivity as csj
+    n, m = 4, 2
     #there should only be one valid completion for this one.
-    mapping = (Point(0, 1), (), (), ())
+    mapping = (Point(0, 2), (), (), ())
     endpts = (Point(0, 4), Point(1, 4), Point(2, 4))
     for c in completions_surjective(mapping, n, m, endpointMap=None):
+        print "---"
         print c
+        if csj(c, n, m):
+            print 'pass'
+        else:
+            print 'false'
     print "DONE"
