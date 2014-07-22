@@ -58,7 +58,6 @@ def pairWorker(pair, comm):
     #partial completed length is computed using current length of the pairs.
     preLength = PREWORKER_COMPLETION_LENGTH
     partialLength = preLength + (N - preLength)//2
-    partialLength=0
 
     for partial1 in GENERATOR_FUNC(empty1, N, M, T, length=partialLength):
         for partial2 in GENERATOR_FUNC(empty2, N, M, T, length=partialLength):

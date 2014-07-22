@@ -22,10 +22,9 @@ import generators
 from comparitors import checkPartialDisjointness
 
 
-#globals. These are important
-
-N = 4
-M = 2
+#---GLOBAL VARIABLES---
+N = 6
+M = 3
 T = 3
 #filename to write results to
 FILENAME = 'mapping_results.txt'
@@ -37,7 +36,8 @@ GENERATOR_FUNC = generators.completions_surjective
 #how often workers report status updates back to the main process
 STATUS_UPDATE_INTERVAL = 1000000
 #amount to complete each map before sending to workers.
-PREWORKER_COMPLETION_LENGTH = 0
+PREWORKER_COMPLETION_LENGTH = 1
+#---END GLOBAL VARIABLES---
 
 #file object used by the logger
 f = None
@@ -62,6 +62,7 @@ def generate_pairs(basepoints):
     '''
     generate the list of pairs to send to the workers.
     '''
+    log("Beginning generation of pairs...")
     #first generate some empty mappings
     empty_mappings = []
     for bp in basepoints:
@@ -72,11 +73,12 @@ def generate_pairs(basepoints):
     #now we need to pre-complete each map to the specified length.
     #and return every possible combination of these partial mappings.
     if PREWORKER_COMPLETION_LENGTH == 0:
+        log("Ending genreeation of pairs...")
         return combinations(empty_mappings, 2)
     #generate every completion
     partialMaps = []
     for emptyMap in empty_mappings:
-        for partial in generators.completions(emptyMap, N, M, T,
+        for partial in GENERATOR_FUNC(emptyMap, N, M, T,
                                               length=PREWORKER_COMPLETION_LENGTH):
             partialMaps.append(partial)
     #now every combination. Throw away any pair which shares the same basepoint
@@ -87,18 +89,19 @@ def generate_pairs(basepoints):
             continue
         else:
             partialPairs.append(pair)
+    log("Ending genreeation of pairs...")
     return partialPairs.__iter__()
 
 
 def main_master(comm):
     global f
+    #Open file for writing
+    f = open(FILENAME, 'a')
     #spawn worker processes and establish an intercommunicator
     num_workers = comm.Get_size()
 
     basepoints = generate_basepoints()
     empty_pairs = generate_pairs(basepoints)
-    #Open file for writing
-    f = open(FILENAME, 'a')
     #header
     log("new test:: started: {}".format(str(datetime.now())))
     log("N = {}, M = {}, T = {}".format(N, M, T))
