@@ -9,6 +9,8 @@ and mapping generators.
 from T_od import Point
 from itertools import permutations, combinations
 
+DEBUG_PRINT = False
+
 
 def completions(partialMap, N, M, T=3, mappingEnd=None, length=None):
     '''
@@ -100,7 +102,11 @@ def completions_surjective(partialMap, N, M, T=3,
 
     @return a generator of complete mappings.
     '''
-    def recurse(mapping_start, endpoint_map):
+    def dbp(string):
+        if DEBUG_PRINT:
+            print "***", string
+
+    def recurse(mapping_start, endpoint_map, level=0):
         '''
         The recursive function which does the generation
 
@@ -120,6 +126,10 @@ def completions_surjective(partialMap, N, M, T=3,
                 codomain point a point connected to the current one, and then
                 recursively continue.
         '''
+        dbp("")
+        dbp("entering recursion level: {}".format(level))
+        dbp("mapping_start: {}".format(mapping_start))
+        dbp("endpoint_map: {}".format(endpoint_map))
         shortLeg = 1
         try:
             while len(mapping_start[shortLeg]) >= length:
@@ -128,7 +138,10 @@ def completions_surjective(partialMap, N, M, T=3,
         except IndexError:
             yield mapping_start
             return
+        dbp("level {}: found shortLeg={}".format(level, shortLeg))
         index = len(mapping_start[shortLeg])
+        dbp("level {}: index number={}".format(level, index))
+
         endPointNumber = -1
         #check for defined endpoints in this leg.
         for i in range(T):
@@ -143,9 +156,11 @@ def completions_surjective(partialMap, N, M, T=3,
                     #take only the  first-defined point in the empty space.
                     if dist < endpoint_map[endPointNumber][1]:
                         endPointNumber = i
-
+        
+        dbp("level {}: endPointNumber={}".format(level, endPointNumber))
         #no endpoints on this leg. Just do a simple recursion lilke before
         if endPointNumber == -1:
+            dbp("level {}: No completions found on this arm".format(level))
             if index == 0:
                 completions = connectivity(mapping_start[0], M, T)
             else:
@@ -155,12 +170,14 @@ def completions_surjective(partialMap, N, M, T=3,
             for c in completions:
                 mapping_new = list(mapping_start)
                 mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
-                for r in recurse(mapping_new, endpoint_map):
+                for r in recurse(mapping_new, endpoint_map, level=level+1):
                     yield r
 
         #unassigned endpoint on this arm. This is where things get interesting
         else:
+            dbp("level {}: found an endpoint on this arm".format(level))
             endpoint_dist = endpoint_map[endPointNumber][1]
+            dbp("level {}: endpoint_dist={}".format(level, endpoint_dist))
             #find distances in both the domain and the codomain.
             X = endpoint_dist - index
             Y = None
@@ -169,6 +186,7 @@ def completions_surjective(partialMap, N, M, T=3,
             else:
                 Y = Point(endPointNumber, M) - mapping_start[shortLeg][index-1]
             #now compare X and Y
+            dbp("level {}: X={}, Y={}".format(level, X, Y))
 
             if X == 1 and Y == 0:
                 #second conditional is for special case when we are one-off
@@ -183,7 +201,7 @@ def completions_surjective(partialMap, N, M, T=3,
                 for c in completions:
                     mapping_new = list(mapping_start)
                     mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
-                    for r in recurse(mapping_new, endpoint_map):
+                    for r in recurse(mapping_new, endpoint_map, level=level+1):
                         yield r
 
             elif X == Y:
@@ -215,7 +233,7 @@ def completions_surjective(partialMap, N, M, T=3,
                 for c in completions:
                     mapping_new = list(mapping_start)
                     mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
-                    for r in recurse(mapping_new, endpoint_map):
+                    for r in recurse(mapping_new, endpoint_map, level=level+1):
                         yield r
 
             elif X < Y:
@@ -235,7 +253,7 @@ def completions_surjective(partialMap, N, M, T=3,
                 for c in completions:
                     mapping_new = list(mapping_start)
                     mapping_new[shortLeg] = mapping_new[shortLeg] + (c,)
-                    for r in recurse(mapping_new, endpoint_map):
+                    for r in recurse(mapping_new, endpoint_map, level=level+1):
                         yield r
 
     if length is None:
@@ -274,10 +292,16 @@ def completions_surjective(partialMap, N, M, T=3,
                 points.append(Point(arm, t))
         #take every three-permutation of points
         for epm in permutations(points, 3):
-            #enforce proper seperation of endpoint terms.
+            #if we're trying to map the basepoint to and endpoint and it isn't
+            #already there, then skip this permutation
+            #also enforce proper seperation of endpoint terms.
             try:
                 for p1, p2 in combinations(epm, 2):
                     if p2 - p1 < 2*M:
+                        raise ValueError
+                for arm in range(3):
+                    if epm[arm] == Point(0, 0) and \
+                       partialMap[0] != Point(arm, M):
                         raise ValueError
             except ValueError:
                 continue
@@ -385,12 +409,12 @@ def linspace(start, stop, n):
 
 if __name__ == "__main__":
     from comparitors import checkSurjectivity as csj
-    n, m = 6, 3
+    n, m = 6, 3 
     #there should only be one valid completion for this one.
     mapping = (Point(0, 2), (), (), ())
     endpts = (Point(0, 4), Point(1, 4), Point(2, 4))
-    partialLength = 0
-    for c_partial in completions_surjective(mapping, n, m, endpointMap=None, length=partialLength):
+    partialLength = 1
+    for c_partial in completions(mapping, n, m, length=partialLength):
         print "partial: {}".format(c_partial)
         for c in completions_surjective(c_partial, n, m, endpointMap=None):
             print "---"
