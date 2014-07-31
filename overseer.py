@@ -23,8 +23,8 @@ from comparitors import checkPartialDisjointness
 
 
 #---GLOBAL VARIABLES---
-N = 6
-M = 3
+N = 10
+M = 4
 T = 3
 #filename to write results to
 FILENAME = 'mapping_results.txt'
