@@ -23,8 +23,8 @@ from comparitors import checkPartialDisjointness
 
 
 #---GLOBAL VARIABLES---
-N = 10
-M = 4
+N = 8
+M = 2
 T = 3
 #filename to write results to
 FILENAME = 'mapping_results.txt'
@@ -36,7 +36,9 @@ GENERATOR_FUNC = generators.completions_surjective
 #how often workers report status updates back to the main process
 STATUS_UPDATE_INTERVAL = 1000000
 #amount to complete each map before sending to workers.
-PREWORKER_COMPLETION_LENGTH = 1
+PREWORKER_COMPLETION_LENGTH = 0
+#Generate empty mappings with endpoint maps pre-defined
+PREWORKER_GENERATE_ENDPOINT_MAPS = True
 #---END GLOBAL VARIABLES---
 
 #file object used by the logger
@@ -72,32 +74,64 @@ def generate_pairs(basepoints):
         empty_mappings.append(thisMap)
     #now we need to pre-complete each map to the specified length.
     #and return every possible combination of these partial mappings.
-    if PREWORKER_COMPLETION_LENGTH == 0:
+    if PREWORKER_GENERATE_ENDPOINT_MAPS:
+        epm_mappings = []
+        for mapping in empty_mappings:
+            points = [Point(0, 0)]
+            for arm in range(0, T):
+                for t in range(1, N+1):
+                    points.append(Point(arm, t))
+            #take every three-permutation of points
+            for epm in permutations(points, 3):
+                #if we're trying to map the basepoint to and endpoint and it isn't
+                #already there, then skip this permutation
+                #also enforce proper seperation of endpoint terms.
+                try:
+                    #test for proper distances
+                    for p1, p2 in combinations(epm, 2):
+                        if p2 - p1 < 2*M:
+                            raise ValueError
+                    #check for tricky zero-values
+                    for arm in range(3):
+                        if epm[arm] == Point(0, 0) and \
+                           mapping[0] != Point(arm, M):
+                            raise ValueError
+                except ValueError:
+                    continue
+                #set the epm
+                mapping.epm = epm
+                epm_mappings.append(mapping)
+        return combinations(epm_mappings, 2)
+
+    elif PREWORKER_COMPLETION_LENGTH == 0:
         log("Ending genreeation of pairs...")
         return combinations(empty_mappings, 2)
+    
+    #else do a partial generation
     #generate every completion
-    partialMaps = []
-    for emptyMap in empty_mappings:
-        for partial in GENERATOR_FUNC(emptyMap, N, M, T,
-                                              length=PREWORKER_COMPLETION_LENGTH):
-            partialMaps.append(partial)
-    #now every combination. Throw away any pair which shares the same basepoint
-    partialPairs = []
-    for pair in combinations(partialMaps, 2):
-        m1, m2 = pair
-        if not checkPartialDisjointness(m1, m2, N, M, T):
-            continue
-        else:
-            partialPairs.append(pair)
-    log("Ending genreeation of pairs...")
-    return partialPairs.__iter__()
+    else:
+        partialMaps = []
+        for emptyMap in empty_mappings:
+            for partial in generators.completions(emptyMap, N, M, T,
+                                                  length=PREWORKER_COMPLETION_LENGTH):
+                partialMaps.append(partial)
+        #now every combination. Throw away any pair which shares the same basepoint
+        partialPairs = []
+        for pair in combinations(partialMaps, 2):
+            m1, m2 = pair
+            if not checkPartialDisjointness(m1, m2, N, M, T):
+                continue
+            else:
+                partialPairs.append(pair)
+        log("Ending genreeation of pairs...")
+        return partialPairs.__iter__()
 
 
 def main_master(comm):
     global f
     #Open file for writing
     f = open(FILENAME, 'a')
-    #spawn worker processes and establish an intercommunicator
+    #spawn worker processes and establish an intracommunicator
     num_workers = comm.Get_size()
 
     basepoints = generate_basepoints()
@@ -107,6 +141,9 @@ def main_master(comm):
     log("N = {}, M = {}, T = {}".format(N, M, T))
     log("CHECK_SURJECTIVITY: {}, GENERATOR_FUNC: {}".format(
         CHECK_SURJECTIVITY, str(GENERATOR_FUNC).split()[1]))
+    log("PREWORKER_COMPLETION_LENGTH: {}".format(PREWORKER_COMPLETION_LENGTH))
+    log("PREWORKER_GENERATE_ENDPOINT_MAPS: {}".format(
+        PREWORKER_GENERATE_ENDPOINT_MAPS))
     log("-----")
 
     #now make a list of what each process is doing.

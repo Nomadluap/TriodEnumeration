@@ -286,9 +286,9 @@ def completions_surjective(partialMap, N, M, T=3,
 
     #otherwise, we need to generate every endpointMap from scratch.
     else:
-        points = []
+        points = [Point(0, 0)]
         for arm in range(0, T):
-            for t in range(0, N+1):
+            for t in range(1, N+1):
                 points.append(Point(arm, t))
         #take every three-permutation of points
         for epm in permutations(points, 3):
