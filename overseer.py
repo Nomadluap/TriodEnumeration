@@ -14,16 +14,17 @@ Created on Jun 9, 2014
 '''
 from __future__ import division
 from T_od import Point
-from itertools import combinations
+from itertools import combinations, permutations
 from datetime import datetime
 from mpi4py import MPI
 from mpiGlobals import *
 import generators
 from comparitors import checkPartialDisjointness
+import sys
 
 
 #---GLOBAL VARIABLES---
-N = 8
+N = 6
 M = 2
 T = 3
 #filename to write results to
@@ -77,6 +78,7 @@ def generate_pairs(basepoints):
     if PREWORKER_GENERATE_ENDPOINT_MAPS:
         epm_mappings = []
         for mapping in empty_mappings:
+            print "mapping: {}".format(mapping)
             points = [Point(0, 0)]
             for arm in range(0, T):
                 for t in range(1, N+1):
@@ -96,11 +98,21 @@ def generate_pairs(basepoints):
                         if epm[arm] == Point(0, 0) and \
                            mapping[0] != Point(arm, M):
                             raise ValueError
+                    #verify that dist(image of basepoint, endpoint)
+                    #<= dist(Point(0, 0), preimage of endpoint)
+                    for arm in range(3):
+                        if (mapping[0] - Point(arm, M)) >\
+                           (Point(0, 0) - epm[arm]):
+                            raise ValueError
+                    #set the epm
+                    mapping_new = list(mapping)
+                    mapping_new[0] = Point(mapping_new[0])
+                    mapping_new[0].epm = list(epm)
+
+                    epm_mappings.append(mapping_new)
                 except ValueError:
                     continue
-                #set the epm
-                mapping.epm = epm
-                epm_mappings.append(mapping)
+        log("Ending genreeation of pairs...")
         return combinations(epm_mappings, 2)
 
     elif PREWORKER_COMPLETION_LENGTH == 0:
@@ -145,6 +157,9 @@ def main_master(comm):
     log("PREWORKER_GENERATE_ENDPOINT_MAPS: {}".format(
         PREWORKER_GENERATE_ENDPOINT_MAPS))
     log("-----")
+    comm.Barrier()
+    #wait for all workers to print initilization
+    comm.Barrier()
 
     #now make a list of what each process is doing.
     #a value of True means that the process is currently doing work.
@@ -156,6 +171,8 @@ def main_master(comm):
         try:
             pair = empty_pairs.next()
             log("Worker # {} starting pair: {}".format(i, pair))
+            log("\twith endpointMaps: {} | {}".format(
+                pair[0][0].epm, pair[1][0].epm))
             comm.send(pair, dest=i, tag=TAG_WORKER_COMMAND)
         except StopIteration:
             break
@@ -169,6 +186,8 @@ def main_master(comm):
                 #send a new pair if one is available
                 newpair = empty_pairs.next()
                 log("Worker # {} starting pair: {}".format(result, newpair))
+                log("\t with endpointMaps: {} | {}".format(
+                    pair[0][0].epm, pair[1][0].epm))
                 comm.send(newpair, dest=result, tag=TAG_WORKER_COMMAND)
             except StopIteration:
                 #if we have no pairs left to test, tell the process to stop

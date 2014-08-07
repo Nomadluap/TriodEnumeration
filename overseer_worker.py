@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from __future__ import division
-from generators import completions
 from comparitors import checkPartialDisjointness, checkCommutativity
 from comparitors import checkSurjectivity
 from overseer import CHECK_SURJECTIVITY, N, M, T, STATUS_UPDATE_INTERVAL
@@ -16,9 +15,11 @@ rank = None
 def main_worker(comm):
     global rank, totalProcessed
     #at this point, we have just been spawned. We need go get the comm object
+    comm.Barrier()
     rank = comm.Get_rank()
     print "I am worker process {}".format(rank)
     #now we loop and await a command
+    comm.Barrier()
     command = comm.recv(tag=TAG_WORKER_COMMAND)
     while command != COMMAND_STOP:
         totalProcessed = 0
