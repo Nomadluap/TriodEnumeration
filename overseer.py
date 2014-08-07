@@ -78,7 +78,6 @@ def generate_pairs(basepoints):
     if PREWORKER_GENERATE_ENDPOINT_MAPS:
         epm_mappings = []
         for mapping in empty_mappings:
-            print "mapping: {}".format(mapping)
             points = [Point(0, 0)]
             for arm in range(0, T):
                 for t in range(1, N+1):
@@ -187,7 +186,7 @@ def main_master(comm):
                 newpair = empty_pairs.next()
                 log("Worker # {} starting pair: {}".format(result, newpair))
                 log("\t with endpointMaps: {} | {}".format(
-                    pair[0][0].epm, pair[1][0].epm))
+                    newpair[0][0].epm, newpair[1][0].epm))
                 comm.send(newpair, dest=result, tag=TAG_WORKER_COMMAND)
             except StopIteration:
                 #if we have no pairs left to test, tell the process to stop
