@@ -21,7 +21,7 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     @param T the number of legs
 
     @return the closest distance between mappings if they are disjoint,
-        False otherwise.
+        0 if they are not disjoint.
     '''
     baseA = Vertex(partialMap1[0])
     armsA = partialMap1[1:]
@@ -48,9 +48,9 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
             curB = Vertex(armB[i])
             #if we find an issue, return false at every case.
             if curA == curB:
-                return False
+                return 0
             elif curA == prevB and curB == prevA:
-                return False
+                return 0
             else:
                 prevA = curA
                 prevB = curB
