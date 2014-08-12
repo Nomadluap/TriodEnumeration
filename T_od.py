@@ -61,3 +61,11 @@ class Point(tuple):
     def __repr__(self):
         '''for easy debugging'''
         return "p" + tuple(self).__repr__()
+
+
+class Vertex(Point):
+    def __str(self):
+        return "v" + tuple(self).__str__()
+
+    def __repr__(self):
+        return "v" + tuple(self).__str__()

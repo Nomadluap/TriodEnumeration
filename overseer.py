@@ -13,14 +13,13 @@ Created on Jun 9, 2014
 @author: paul
 '''
 from __future__ import division
-from T_od import Point
+from T_od import Vertex
 from itertools import combinations, permutations
 from datetime import datetime
 from mpi4py import MPI
 from mpiGlobals import *
 import generators
 from comparitors import checkPartialDisjointness
-import sys
 
 
 #---GLOBAL VARIABLES---
@@ -45,6 +44,7 @@ PREWORKER_GENERATE_ENDPOINT_MAPS = True
 #file object used by the logger
 f = None
 
+
 def generate_basepoints():
     """
     Generate a list of possible basepoints.
@@ -54,10 +54,10 @@ def generate_basepoints():
     In this way we can reduce the problem into (3M+1 choose 2) - M problems,
     each of which may be solved individually. This is a good start.
     """
-    basepoints = [Point(0, 0)]
+    basepoints = [Vertex(0, 0)]
     for arm in xrange(T):
         for t in range(1, M+1):
-            basepoints.append(Point(arm, t))
+            basepoints.append(Vertex(arm, t))
     return basepoints
 
 
@@ -78,10 +78,10 @@ def generate_pairs(basepoints):
     if PREWORKER_GENERATE_ENDPOINT_MAPS:
         epm_mappings = []
         for mapping in empty_mappings:
-            points = [Point(0, 0)]
+            points = [Vertex(0, 0)]
             for arm in range(0, T):
                 for t in range(1, N+1):
-                    points.append(Point(arm, t))
+                    points.append(Vertex(arm, t))
             #take every three-permutation of points
             for epm in permutations(points, 3):
                 #if we're trying to map the basepoint to and endpoint and it isn't
@@ -94,18 +94,18 @@ def generate_pairs(basepoints):
                             raise ValueError
                     #check for tricky zero-values
                     for arm in range(3):
-                        if epm[arm] == Point(0, 0) and \
-                           mapping[0] != Point(arm, M):
+                        if epm[arm] == Vertex(0, 0) and \
+                           mapping[0] != Vertex(arm, M):
                             raise ValueError
                     #verify that dist(image of basepoint, endpoint)
-                    #<= dist(Point(0, 0), preimage of endpoint)
+                    #<= dist(Vertex(0, 0), preimage of endpoint)
                     for arm in range(3):
-                        if (mapping[0] - Point(arm, M)) >\
-                           (Point(0, 0) - epm[arm]):
+                        if (mapping[0] - Vertex(arm, M)) >\
+                           (Vertex(0, 0) - epm[arm]):
                             raise ValueError
                     #set the epm
                     mapping_new = list(mapping)
-                    mapping_new[0] = Point(mapping_new[0])
+                    mapping_new[0] = Vertex(mapping_new[0])
                     mapping_new[0].epm = list(epm)
 
                     epm_mappings.append(mapping_new)

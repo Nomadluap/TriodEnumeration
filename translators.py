@@ -36,7 +36,7 @@ def index2Tuple(index, N):
     #now the vertex is the remainder of the division
     vertex = index % N
 
-    return Point(arm, vertex)
+    return Vertex(arm, vertex)
 
 def tuple2Index(tup, N):
     '''
@@ -76,7 +76,7 @@ def normed2Tuple(tup, N):
     '''
     arm, t = tup
     vertex = t * N
-    return Point(arm, vertex)
+    return Vertex(arm, vertex)
 
 def index2Normed(index, N):
     '''

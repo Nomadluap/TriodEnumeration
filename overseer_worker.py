@@ -89,7 +89,8 @@ def pairWorker(pair, comm):
                     #checkDisjointness is the faster function, so do it
                     #first
                     if checkPartialDisjointness(map1, map2, N, M, T) is True:
-                        if checkCommutativity(map1, map2, N, M, T) is True:
+                        dist = checkCommutativity(map1, map2, N, M, T)
+                        if dist < 1/(N*M*2):
                             #now we have found a pair which passes the test.
                             #append it to the good list.
                             reportSuccess((map1, map2), comm)

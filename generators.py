@@ -6,7 +6,7 @@ and mapping generators.
 
 @author: paul
 '''
-from T_od import Point
+from T_od import Point, Vertex
 from itertools import permutations, combinations
 
 DEBUG_PRINT = False
@@ -182,9 +182,9 @@ def completions_surjective(partialMap, N, M, T=3,
             X = endpoint_dist - index
             Y = None
             if index == 0:
-                Y = Point(endPointNumber, M) - mapping_start[0]
+                Y = Vertex(endPointNumber, M) - mapping_start[0]
             else:
-                Y = Point(endPointNumber, M) - mapping_start[shortLeg][index-1]
+                Y = Vertex(endPointNumber, M) - mapping_start[shortLeg][index-1]
             #now compare X and Y
             dbp("level {}: X={}, Y={}".format(level, X, Y))
 
@@ -215,17 +215,17 @@ def completions_surjective(partialMap, N, M, T=3,
                 completions = None
 
                 #if ftCurrent is the branch point, then go up the proper leg.
-                if ftCurrent == Point(0, 0):
-                    completions = [Point(endPointNumber, 1)]
+                if ftCurrent == Vertex(0, 0):
+                    completions = [Vertex(endPointNumber, 1)]
 
                 #if ftCurrent is on a different branch than the target
                 #endpoint, then go toward the branch point
                 elif ftCurrent[0] != endPointNumber:
-                    completions = [Point(ftCurrent[0], ftCurrent[1]-1)]
+                    completions = [Vertex(ftCurrent[0], ftCurrent[1]-1)]
 
                 #otherwise we are on the same arm. Go toward the endpoint.
                 elif X != 0:
-                    completions = [Point(ftCurrent[0], ftCurrent[1]+1)]
+                    completions = [Vertex(ftCurrent[0], ftCurrent[1]+1)]
                 else:  # special case when X==Y==0
                     completions = connectivity(ftCurrent, M, T)
 
@@ -286,10 +286,10 @@ def completions_surjective(partialMap, N, M, T=3,
 
     #otherwise, we need to generate every endpointMap from scratch.
     else:
-        points = [Point(0, 0)]
+        points = [Vertex(0, 0)]
         for arm in range(0, T):
             for t in range(1, N+1):
-                points.append(Point(arm, t))
+                points.append(Vertex(arm, t))
         #take every three-permutation of points
         for epm in permutations(points, 3):
             #if we're trying to map the basepoint to and endpoint and it isn't
@@ -300,8 +300,8 @@ def completions_surjective(partialMap, N, M, T=3,
                     if p2 - p1 < 2*M:
                         raise ValueError
                 for arm in range(3):
-                    if epm[arm] == Point(0, 0) and \
-                       partialMap[0] != Point(arm, M):
+                    if epm[arm] == Vertex(0, 0) and \
+                       partialMap[0] != Vertex(arm, M):
                         raise ValueError
             except ValueError:
                 continue
@@ -388,12 +388,12 @@ def connectivity(pt, N, T=3):
     arm, t = pt
     #special case for the branch point
     if t == 0:
-        return (Point(0, 0),) + tuple(Point(i, 1) for i in range(T))
+        return (Vertex(0, 0),) + tuple(Vertex(i, 1) for i in range(T))
     #endpoint condition
     elif t == N:
-        return (Point(pt), Point(arm, t-1))
+        return (Vertex(pt), Vertex(arm, t-1))
     else:
-        return (Point(pt), Point(arm, t-1), Point(arm, t+1))
+        return (Vertex(pt), Vertex(arm, t-1), Vertex(arm, t+1))
 
 
 def linspace(start, stop, n):
@@ -411,8 +411,8 @@ if __name__ == "__main__":
     from comparitors import checkSurjectivity as csj
     n, m = 6, 3 
     #there should only be one valid completion for this one.
-    mapping = (Point(0, 2), (), (), ())
-    endpts = (Point(0, 4), Point(1, 4), Point(2, 4))
+    mapping = (Vertex(0, 2), (), (), ())
+    endpts = (Vertex(0, 4), Vertex(1, 4), Vertex(2, 4))
     partialLength = 1
     for c_partial in completions(mapping, n, m, length=partialLength):
         print "partial: {}".format(c_partial)
