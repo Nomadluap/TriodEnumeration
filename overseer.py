@@ -112,11 +112,25 @@ def generate_pairs(basepoints):
                 except ValueError:
                     continue
         log("Ending genreeation of pairs...")
-        return combinations(epm_mappings, 2)
+        for pair in combinations(epm_mappings, 2):
+            #simple partial disjointness check to weed out obvious failures
+            if checkPartialDisjointness(pair[0], pair[1], N, M, T) is False:
+                continue
+            epm1 = pair[0][0].epm
+            epm2 = pair[1][0].epm
+            try:
+                for i in range(T):
+                    if epm1[i] == epm2[i]:
+                        raise ValueError
+            except ValueError:
+                continue
+            else:
+                yield pair
 
     elif PREWORKER_COMPLETION_LENGTH == 0:
         log("Ending genreeation of pairs...")
-        return combinations(empty_mappings, 2)
+        for pair in combinations(empty_mappings, 2):
+            yield pair
     
     #else do a partial generation
     #generate every completion
@@ -130,12 +144,14 @@ def generate_pairs(basepoints):
         partialPairs = []
         for pair in combinations(partialMaps, 2):
             m1, m2 = pair
-            if not checkPartialDisjointness(m1, m2, N, M, T):
+            if checkPartialDisjointness(m1, m2, N, M, T) is False:
                 continue
             else:
+                print pair
                 partialPairs.append(pair)
         log("Ending genreeation of pairs...")
-        return partialPairs.__iter__()
+        for pair in partialPairs.__iter__():
+            yield pair
 
 
 def main_master(comm):
@@ -169,6 +185,8 @@ def main_master(comm):
     for i in range(1, num_workers):
         try:
             pair = empty_pairs.next()
+            d = checkPartialDisjointness(pair[0], pair[1], N, M, T)
+            print "distance is ", d
             log("Worker # {} starting pair: {}".format(i, pair))
             log("\twith endpointMaps: {} | {}".format(
                 pair[0][0].epm, pair[1][0].epm))

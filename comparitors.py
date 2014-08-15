@@ -39,6 +39,9 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     #compare each pair of arms
     for tArm in zip(armsA, armsB):
         armA, armB = tArm
+        #if all arms are empty, our job is easy.
+        if len(armA) == 0 and len(armB) == 0:
+            continue
         #both arms start at the basepoint
         prevA = baseA
         prevB = baseB
@@ -62,6 +65,8 @@ def checkPartialDisjointness(partialMap1, partialMap2, N, M, T=3):
     #at this point, if we haven't returned, we've found nothing
     if smallDist == 0:
         raise ValueError("smallDist should not be zero")
+    elif smallDist == -1:
+        smallDist = baseA - baseB
     return smallDist
 
 
