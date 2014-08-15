@@ -126,10 +126,6 @@ def completions_surjective(partialMap, N, M, T=3,
                 codomain point a point connected to the current one, and then
                 recursively continue.
         '''
-        dbp("")
-        dbp("entering recursion level: {}".format(level))
-        dbp("mapping_start: {}".format(mapping_start))
-        dbp("endpoint_map: {}".format(endpoint_map))
         shortLeg = 1
         try:
             while len(mapping_start[shortLeg]) >= length:
@@ -138,9 +134,7 @@ def completions_surjective(partialMap, N, M, T=3,
         except IndexError:
             yield mapping_start
             return
-        dbp("level {}: found shortLeg={}".format(level, shortLeg))
         index = len(mapping_start[shortLeg])
-        dbp("level {}: index number={}".format(level, index))
 
         endPointNumber = -1
         #check for defined endpoints in this leg.
@@ -157,10 +151,8 @@ def completions_surjective(partialMap, N, M, T=3,
                     if dist < endpoint_map[endPointNumber][1]:
                         endPointNumber = i
         
-        dbp("level {}: endPointNumber={}".format(level, endPointNumber))
         #no endpoints on this leg. Just do a simple recursion lilke before
         if endPointNumber == -1:
-            dbp("level {}: No completions found on this arm".format(level))
             if index == 0:
                 completions = connectivity(mapping_start[0], M, T)
             else:
@@ -175,9 +167,7 @@ def completions_surjective(partialMap, N, M, T=3,
 
         #unassigned endpoint on this arm. This is where things get interesting
         else:
-            dbp("level {}: found an endpoint on this arm".format(level))
             endpoint_dist = endpoint_map[endPointNumber][1]
-            dbp("level {}: endpoint_dist={}".format(level, endpoint_dist))
             #find distances in both the domain and the codomain.
             X = endpoint_dist - index
             Y = None
@@ -186,7 +176,6 @@ def completions_surjective(partialMap, N, M, T=3,
             else:
                 Y = Vertex(endPointNumber, M) - mapping_start[shortLeg][index-1]
             #now compare X and Y
-            dbp("level {}: X={}, Y={}".format(level, X, Y))
 
             if X == 1 and Y == 0:
                 #second conditional is for special case when we are one-off
