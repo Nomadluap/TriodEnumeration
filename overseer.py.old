@@ -114,7 +114,7 @@ def generate_pairs(basepoints):
         log("Ending genreeation of pairs...")
         for pair in combinations(epm_mappings, 2):
             #simple partial disjointness check to weed out obvious failures
-            if checkPartialDisjointness(pair[0], pair[1], N, M, T) is False:
+            if checkPartialDisjointness(pair[0], pair[1], N, M, T) == 0:
                 continue
             epm1 = pair[0][0].epm
             epm2 = pair[1][0].epm
@@ -144,7 +144,7 @@ def generate_pairs(basepoints):
         partialPairs = []
         for pair in combinations(partialMaps, 2):
             m1, m2 = pair
-            if checkPartialDisjointness(m1, m2, N, M, T) is False:
+            if checkPartialDisjointness(m1, m2, N, M, T) == 0:
                 continue
             else:
                 print pair

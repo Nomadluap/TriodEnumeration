@@ -63,7 +63,7 @@ def pairWorker(pair, comm):
     for partial1 in GENERATOR_FUNC(empty1, N, M, T, length=partialLength):
         for partial2 in GENERATOR_FUNC(empty2, N, M, T, length=partialLength):
             #check partial disjointness, only proceed if true
-            if checkPartialDisjointness(partial1, partial2, N, M, T) is False:
+            if checkPartialDisjointness(partial1, partial2, N, M, T) == 0:
                 counts['total'] += 1
                 counts['disjointness'] += 1
                 reportStatus(counts, comm)
@@ -88,7 +88,7 @@ def pairWorker(pair, comm):
                     #for both disjointness and commutivity
                     #checkDisjointness is the faster function, so do it
                     #first
-                    if checkPartialDisjointness(map1, map2, N, M, T) is True:
+                    if checkPartialDisjointness(map1, map2, N, M, T) != 0:
                         dist = checkCommutativity(map1, map2, N, M, T)
                         if dist < 1/(N*M*2):
                             #now we have found a pair which passes the test.
