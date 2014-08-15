@@ -129,7 +129,7 @@ class Mapping(object):
         if len(args) == 1:
             if type(args[0]) is Point:
                     point = args[0]
-                    #do point stuff here
+                    return self._mappingDereference(point)
             elif type(args[0]) is Vertex:
                 vertex = args[0]
                 if vertex == Vertex(0, 0):
@@ -157,4 +157,35 @@ class Mapping(object):
         l = [] + self._basepoint + self._legs
         return l
 
-
+    def _mappingDereference(self, point):
+        #point is in non-normalized tuple form
+        arm, vertex = point
+        #find nearest integers to vertex
+        vLow = int(vertex)
+        vHigh = int(vertex+1)
+        if vHigh > N:  # gone past endpoint, therefore vertex is the endpoint
+            vHigh = N
+        #dereference vLow
+        if vLow == 0:  # look at branchpoint
+            fLow = self(0, 1)
+        else:
+            fLow = self(arm+1, vLow-1)[1]
+        #dereference vHigh
+        fHigh = self(arm+1, vHigh-1)[1]
+        #find the arm that the new point now resides on
+        fArm = self(arm+1, vHigh-1)[0]
+        #decimal portion of vertex indicates where it lies between fLow and
+        #fHigh.
+        vP = vertex % 1.0
+        #now go uP distance from fLow to fHigh. If order of fHigh, fLow is
+        #reversed, then we need to subtract rather than add.
+        if fLow < fHigh:
+            f = fLow + vP
+        elif fLow == fHigh:
+            f = fLow
+        else:
+            f = fLow - vP
+        #the zero point should always lie on the zero-arm for testing purposes.
+        if f == 0:
+            fArm = 0
+        return Point(fArm, f)
