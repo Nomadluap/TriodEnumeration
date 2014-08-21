@@ -3,6 +3,7 @@ mapping.py - contains definitions of Point, Vertex, and Mapping classes
 '''
 from config import N, M, T
 
+
 class Point(tuple):
     '''
     A class which abstracts a tuple. In basic usage, it is used simply to
@@ -57,6 +58,18 @@ class Point(tuple):
         '''for easy debugging'''
         return "p" + tuple(self).__repr__()
 
+    def arm(self):
+        '''
+        Returns the arm of the current point
+        '''
+        return self[0]
+
+    def dist(self):
+        '''
+        returns the distance of the current point up its arm
+        '''
+        return self[1]
+
 
 class Vertex(Point):
     def __str__(self):
@@ -64,6 +77,81 @@ class Vertex(Point):
 
     def __repr__(self):
         return "v" + tuple(self).__str__()
+
+    def _ajacent(self, i):
+        '''
+        Return a tuple of domain verticies which are ajacent to this point.
+        Points will always be in a well-defined order, as follows:
+        - the point itself
+        - point(s) closer to the branch point
+        - point(s) farther from the branch point
+        If the point supplied is the
+        branch point, then points will be supplied in order of decreasing
+        index.
+        '''
+        arm, t = self
+        #special case for the branch point
+        if t == 0:
+            return (Vertex(0, 0),) + tuple(Vertex(i, 1) for i in range(T))
+        #endpoint condition
+        elif t == i:
+            return (self, Vertex(arm, t-1))
+        else:
+            return (self, Vertex(arm, t-1), Vertex(arm, t+1))
+
+    def ajacent_domain(self):
+        '''
+        Return a tuple of domain verticies which are ajacent to this point.
+        Points will always be in a well-defined order, as follows:
+        - the point itself
+        - point(s) closer to the branch point
+        - point(s) farther from the branch point
+        If the point supplied is the
+        branch point, then points will be supplied in order of decreasing
+        index.
+        '''
+        return self._ajacent(N)
+
+    def ajacent_codomain(self):
+        '''
+        Return a tuple of codomain verticies which are ajacent to this point.
+        Points will always be in a well-defined order, as follows:
+        - the point itself
+        - point(s) closer to the branch point
+        - point(s) farther from the branch point
+        If the point supplied is the
+        branch point, then points will be supplied in order of decreasing
+        index.
+        '''
+        return self._ajacent(M)
+
+    def is_domain(self):
+        '''
+        Determine whether this vertex represents a valid point in the domain.
+        Returns True if the vertex lies in the domain
+        '''
+        #test leg number
+        if self.arm < 0 or self.arm >= T:
+            return False
+        #test distance
+        if self.dist < 0 or self.dist > N:
+            return False
+        #otherwise good
+        return True
+
+    def is_codomain(self):
+        '''
+        Determine whether this vertex represents a valid point in the codomain.
+        Returns True if the vertex lies in the domain
+        '''
+        #test leg number
+        if self.arm < 0 or self.arm >= T:
+            return False
+        #test distance
+        if self.dist < 0 or self.dist > M:
+            return False
+        #otherwise good
+        return True
 
 
 class Mapping(object):
@@ -98,6 +186,10 @@ class Mapping(object):
 
         if endpointMap is not None:
             self.endpointMap = endpointMap
+        #append the ends of leg lists to pad to proper lengths
+        for leg in self._legs:
+            while len(leg) < N:
+                leg.append(None)
 
     def __call__(self, *args):
         '''
@@ -108,6 +200,9 @@ class Mapping(object):
         result.
         If the mapping is called with two integers, it is assumed that those
         two integers form the definition of a Vertex.
+
+        If the mapping is undefined at the point specified, a value of None is
+        returned.
         '''
         if len(args) not in (1, 2):
             raise ValueError("Calling the mapping expects one or two values")
@@ -149,7 +244,7 @@ class Mapping(object):
 
     def __repr__(self):
         return self.__str__()
-    
+
     def getList(self):
         '''
         Returns the list representation of this mapping.
@@ -157,6 +252,22 @@ class Mapping(object):
         l = [] + self._basepoint + self._legs
         return l
 
+    def set(self, vertex, value):
+        '''
+        Set the value to which a particular vertex will dereference.
+        set will throw a ValueError if continuity with ajacent points is not
+        upheld.
+        '''
+        #special case for base point
+        if vertex == Vertex(0, 0):
+            #check that new point satisfies continuity for all legs.
+            for leg in self._legs:
+                if leg[0] is not None:
+                    if value not in leg[0].ajacent_codomain():
+                        raise ValueError("Point would not satisfy continuity\
+                                with point: {}".format(str(leg[0])))
+            #if valueError has not been raised, we're good
+            self._basepoint = value
     def _mappingDereference(self, point):
         #point is in non-normalized tuple form
         arm, vertex = point
