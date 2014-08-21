@@ -6,9 +6,11 @@ from config import N, M, T
 
 class Point(tuple):
     '''
-    A class which abstracts a tuple. In basic usage, it is used simply to
-    overload the __eq__ operator, so that tuple-based points handle the
-    base point correctly.
+    A class which abstracts a tuple. 
+    A point is defined as having an integer arm value and a floating-point dist
+    value where:
+    0<=arm<T
+    0<=dist<=1
     '''
     def __init__(self, a, b=None):
         if b is not None:
@@ -32,6 +34,8 @@ class Point(tuple):
         '''
         #additionally true iff both coords are at zero, regardless
         #of arm. 
+        if type(self) is not type(y):
+            raise ValueError('operands are of differing type')
         if self[1] == y[1] == 0:
             return True
         else:
@@ -43,6 +47,8 @@ class Point(tuple):
         two points is returned, using a railway metric. The result returned is
         always in absolute value.
         '''
+        if type(self) is not type(y):
+            raise ValueError('operands are of differing type')
         #if both points lie on the same arm, then use simple subtraction
         if self[0] == y[0]:
             return abs(self[1] - y[1])
@@ -99,7 +105,7 @@ class Vertex(Point):
         else:
             return (self, Vertex(arm, t-1), Vertex(arm, t+1))
 
-    def ajacent_domain(self):
+    def ajacentDomain(self):
         '''
         Return a tuple of domain verticies which are ajacent to this point.
         Points will always be in a well-defined order, as follows:
@@ -112,7 +118,7 @@ class Vertex(Point):
         '''
         return self._ajacent(N)
 
-    def ajacent_codomain(self):
+    def ajacentCodomain(self):
         '''
         Return a tuple of codomain verticies which are ajacent to this point.
         Points will always be in a well-defined order, as follows:
@@ -125,7 +131,7 @@ class Vertex(Point):
         '''
         return self._ajacent(M)
 
-    def is_domain(self):
+    def isDomain(self):
         '''
         Determine whether this vertex represents a valid point in the domain.
         Returns True if the vertex lies in the domain
@@ -139,7 +145,7 @@ class Vertex(Point):
         #otherwise good
         return True
 
-    def is_codomain(self):
+    def isCodomain(self):
         '''
         Determine whether this vertex represents a valid point in the codomain.
         Returns True if the vertex lies in the domain
@@ -258,16 +264,40 @@ class Mapping(object):
         set will throw a ValueError if continuity with ajacent points is not
         upheld.
         '''
+        #type checking
+        if type(vertex) is not Vertex or type(value) is not Vertex:
+            raise ValueError('both arguments must be of type Vertex')
+        if not vertex.isDomain():
+            raise ValueError('vertex argument must lie in domain')
+        if not value.isCodomain():
+            raise ValueError('vertex argument must lie in domain')
         #special case for base point
         if vertex == Vertex(0, 0):
             #check that new point satisfies continuity for all legs.
             for leg in self._legs:
-                if leg[0] is not None:
-                    if value not in leg[0].ajacent_codomain():
-                        raise ValueError("Point would not satisfy continuity\
-                                with point: {}".format(str(leg[0])))
+                if leg[0] is None:
+                    continue
+                if value not in leg[0].ajacentCodomain():
+                    raise ValueError("Point would not satisfy continuity\
+                            with point: {}".format(str(leg[0])))
             #if valueError has not been raised, we're good
             self._basepoint = value
+        else:
+            #make sure value we're trying to set is ajacent to values of
+            #neibhouring points, if they are defined. 
+            for p in vertex.ajacentDomain():
+                #dereference p
+                fp = self(p)
+                if fp is None:
+                    continue
+                #ensure this point is in the ajacent set of the value we're
+                #trying to set.
+                if fp not in value.ajacentCodomain():
+                    raise ValueError('Ajacent vertex {} -> {} causes\
+                        discontinuity'.format(str(p), str(fp)))
+            #otherwise we're good
+            self._legs[vertex.arm][vertex.dist] = value
+
     def _mappingDereference(self, point):
         #point is in non-normalized tuple form
         arm, vertex = point
