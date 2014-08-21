@@ -25,3 +25,39 @@ class MappingIterator(object):
 
     def next(self):
         raise StopIteration
+
+
+class EmptyMappingIterator(MappingIterator):
+    '''
+    A mapping iterator which does not return full mappings. Returns nothing.
+    '''
+    def __init__(self):
+        pass
+
+    def next(self):
+        raise StopIteration
+
+
+class FullMappingIterator(MappingIterator):
+    '''
+    A mapping iterator which returns mappings based on an existing mapping. This
+    iterator simply returns its constructor mapping.
+    '''
+    def __init__(self, mapping):
+        if type(mapping) is not Mapping:
+            raise TypeError("mapping must be of type 'Mapping'")
+        self.mapping = mapping
+        self.hasReturned = False
+
+    def next(self):
+        if not self.hasReturned:
+            self.hasReturned = True
+            return self.mapping
+        else:
+            raise StopIteration
+
+
+class BasicEmptyMapIterator(EmptyMappingIterator):
+    '''
+    An empty mapping iterator which returns a mapping for each point in the
+    codomain. Each mapping returned contains only this point as the basepoint.

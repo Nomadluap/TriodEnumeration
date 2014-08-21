@@ -2,16 +2,16 @@
 mapping.py - contains definitions of Point, Vertex, and Mapping classes
 '''
 from config import N, M, T
+from abc import ABCMeta
 
 
-class Point(tuple):
+class AbstractPoint(tuple):
     '''
-    A class which abstracts a tuple. 
-    A point is defined as having an integer arm value and a floating-point dist
-    value where:
-    0<=arm<T
-    0<=dist<=1
+    An abstract base class which is used as the superclass for both Point and
+    Vertex.
     '''
+    __metaclass_ = ABCMeta
+
     def __init__(self, a, b=None):
         if b is not None:
             a = (a, b)
@@ -33,9 +33,9 @@ class Point(tuple):
         Takes into account the three-definitions for the zero-point
         '''
         #additionally true iff both coords are at zero, regardless
-        #of arm. 
+        #of arm.
         if type(self) is not type(y):
-            raise ValueError('operands are of differing type')
+            raise TypeError('operands are of differing type')
         if self[1] == y[1] == 0:
             return True
         else:
@@ -48,21 +48,13 @@ class Point(tuple):
         always in absolute value.
         '''
         if type(self) is not type(y):
-            raise ValueError('operands are of differing type')
+            raise TypeError('operands are of differing type')
         #if both points lie on the same arm, then use simple subtraction
         if self[0] == y[0]:
             return abs(self[1] - y[1])
         #otherwise return the sum of distances of each point from the center
         else:
             return self[1] + y[1]
-
-    def __str__(self):
-        '''for easy debugging'''
-        return "p" + tuple(self).__str__()
-
-    def __repr__(self):
-        '''for easy debugging'''
-        return "p" + tuple(self).__repr__()
 
     def arm(self):
         '''
@@ -77,7 +69,22 @@ class Point(tuple):
         return self[1]
 
 
-class Vertex(Point):
+class Point(AbstractPoint):
+    '''
+    A class which represents a triod point.
+    A point is defined as having an integer arm value and a floating-point dist
+    value where:
+    0<=arm<T
+    0<=dist<=1
+    '''
+    def __str__(self):
+        return "p" + tuple(self).__str__()
+
+    def __repr__(self):
+        return self.__str__()
+
+
+class Vertex(AbstractPoint):
     '''
     A class which abstracts a tuple. 
     A point is defined as having an integer arm value and a floating-point dist
@@ -89,7 +96,7 @@ class Vertex(Point):
         return "v" + tuple(self).__str__()
 
     def __repr__(self):
-        return "v" + tuple(self).__str__()
+        return self.__str__()
 
     def _ajacent(self, i):
         '''
@@ -191,13 +198,13 @@ class Mapping(object):
         self._basepoint = Vertex(0, 0)
         if mapList is not None:
             if type(mapList) is not list:
-                raise ValueError("mapList must be a list")
+                raise TypeError("mapList must be a list")
             self._basepoint = mapList[0]
             self._legs = mapList[1:]
         elif basepoint is not None:
             #type-checking
             if type(basepoint) is not Vertex:
-                raise ValueError("Basepoint must be of vertex type")
+                raise TypeError("Basepoint must be of vertex type")
             self._basepoint = basepoint
             self._legs += ([list() for i in range(T)])
         else:
@@ -224,12 +231,12 @@ class Mapping(object):
         returned.
         '''
         if len(args) not in (1, 2):
-            raise ValueError("Calling the mapping expects one or two values")
+            raise TypeError("Calling the mapping expects one or two values")
         if len(args) == 2:
             a, b = args
             #sanity checking
             if type(a) is not int or type(b) is not int:
-                raise ValueError("Two arguments of type 'int' are expected")
+                raise TypeError("Two arguments of type 'int' are expected")
             if a < 0 or a >= T:
                 raise ValueError("First argument must lie in [0, T)")
             if b < 0 or b > N:
@@ -251,7 +258,7 @@ class Mapping(object):
                 else:
                     return self._legs[vertex[0]][vertex[1]]
             else:
-                raise ValueError("Argument must be of type 'Point' or type \
+                raise TypeError("Argument must be of type 'Point' or type \
                 'Vertex'")
 
     def __str__(self):
@@ -279,7 +286,7 @@ class Mapping(object):
         '''
         #type checking
         if type(vertex) is not Vertex or type(value) is not Vertex:
-            raise ValueError('both arguments must be of type Vertex')
+            raise TypeError('both arguments must be of type Vertex')
         if not vertex.isDomain():
             raise ValueError('vertex argument must lie in domain')
         if not value.isCodomain():
