@@ -78,6 +78,13 @@ class Point(tuple):
 
 
 class Vertex(Point):
+    '''
+    A class which abstracts a tuple. 
+    A point is defined as having an integer arm value and a floating-point dist
+    value where:
+    0<=arm<T
+    0<=dist<=N
+    '''
     def __str__(self):
         return "v" + tuple(self).__str__()
 
@@ -115,7 +122,10 @@ class Vertex(Point):
         If the point supplied is the
         branch point, then points will be supplied in order of decreasing
         index.
+        Returns None if the point is not on the domain.
         '''
+        if not self.isDomain():
+            return None
         return self._ajacent(N)
 
     def ajacentCodomain(self):
@@ -128,7 +138,10 @@ class Vertex(Point):
         If the point supplied is the
         branch point, then points will be supplied in order of decreasing
         index.
+        Returns None if the point is not on the codomain.
         '''
+        if not self.isCodomain():
+            return None
         return self._ajacent(M)
 
     def isDomain(self):
