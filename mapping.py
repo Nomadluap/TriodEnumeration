@@ -10,7 +10,7 @@ class AbstractPoint(tuple):
     An abstract base class which is used as the superclass for both Point and
     Vertex.
     '''
-    __metaclass_ = ABCMeta
+    __metaclass__ = ABCMeta
 
     def __init__(self, a, b=None):
         if b is not None:
