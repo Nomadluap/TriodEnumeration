@@ -2,15 +2,18 @@
 mappingIterators.py - classes which facilitate iterating over different types of
 mappings.
 
-There are two distinct types of mapping iterators in this file: empty mapping
-iterators and full mapping iterators.
+The class heirarchy is as follows:
+MappingIterator
+    ->EmptyMappingIterator
+        ->BasicEmptyMapIterator
+        ->EndpointEmptyMappingIterator
+    ->FullMappingIterator
 
-Empty mapping iterators are intended for the overseer thread and are generally
-in charge of generating pairs of empty maps which will eventually get sent to
-worker threads.
+Empty mapping iterators take no starting mapping, and generally return
+non-complete mappings that need to be further completed. 
 
-Full mapping iterators are intended to be utilized inside worker threads in
-order to complete the empty mappings given to them by the overseer thread. 
+Partial mapping iterators usually take a starting mapping, and generate full
+completions. They are generally used in the worker processes.
 '''
 from config import N, M, T
 from mapping import Mapping, Vertex
