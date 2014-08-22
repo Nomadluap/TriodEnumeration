@@ -12,25 +12,6 @@ class AbstractPoint(tuple):
     '''
     __metaclass__ = ABCMeta
 
-    def __init__(self, *args):
-        if len(args) == 1:
-            a = args[0]
-            if type(a) is not type(self):
-                raise TypeError("First arg must be of type {}".format(
-                    str(type(self))[7:-2]))
-            tuple.__init__(self, a)
-        elif len(args) == 2:
-            # subclasses should perform their own bounds checking
-            arm, t = args
-            if not isinstance(arm, int):
-                raise TypeError("First argument must be of type 'int'")
-            if not isinstance(t, (int, float)):
-                raise TypeError("Second argument must be of type 'int' or\
-                        'float'")
-            tuple.__init__(self, (arm, t))
-        else:
-            raise TypeError("Constructor must be called with 1 or 2 arguments")
-
     def __new__(self, *args):
         '''
         Redefinition of the tuple method so that points can be constructed
@@ -50,6 +31,10 @@ class AbstractPoint(tuple):
             if not isinstance(t, (int, float)):
                 raise TypeError("Second argument must be of type 'int' or\
                         'float'")
+            if arm < 0:
+                raise ValueError("First argument must be non-negative")
+            if t < 0:
+                raise ValueError("Second argument must be non-negative")
             tuple.__new__(self, (arm, t))
         else:
             raise TypeError("Constructor must be called with 1 or 2 arguments")
@@ -104,6 +89,13 @@ class Point(AbstractPoint):
     0<=arm<T
     0<=dist<=1
     '''
+    def __new__(self, *args):
+        if len(args) == 2:
+            arm, t = args
+            if t < 0.0 or t > 1.0:
+                raise ValueError("Second argument must be in range [0, 1]")
+        super().__new__(self, *args)
+
     def __str__(self):
         return "p" + tuple(self).__str__()
 
@@ -119,6 +111,13 @@ class Vertex(AbstractPoint):
     0<=arm<T
     0<=dist<=N
     '''
+    def __new__(self, *args):
+        if len(args) == 2:
+            arm, t = args
+            if not isinstance(t, int):
+                raise TypeError("Second argument must be of type 'int'.")
+        super().__new__(self, *args)
+        
     def __str__(self):
         return "v" + tuple(self).__str__()
 
@@ -271,8 +270,11 @@ class Mapping(object):
             self._basepoint = a[0]
             for i in range(T):
                 self._legs[i] = list(a[i+1])
-            # and now pack the lists
-            self._pad_lists()
+        else:
+            raise TypeError("Argument of wrong type")
+        # and now pack the lists
+        self._pad_lists()
+
 
     def _pad_lists(self):
         '''
@@ -383,6 +385,7 @@ class Mapping(object):
                         discontinuity'.format(str(p), str(fp)))
             #otherwise we're good
             self._legs[vertex.arm][vertex.dist] = value
+            self._pad_lists()
 
     def _mappingDereference(self, point):
         #point is in non-normalized tuple form
@@ -392,15 +395,18 @@ class Mapping(object):
         vHigh = int(vertex+1)
         if vHigh > N:  # gone past endpoint, therefore vertex is the endpoint
             vHigh = N
-        #dereference vLow
-        if vLow == 0:  # look at branchpoint
-            fLow = self(0, 1)
-        else:
-            fLow = self(arm+1, vLow-1)[1]
-        #dereference vHigh
-        fHigh = self(arm+1, vHigh-1)[1]
-        #find the arm that the new point now resides on
-        fArm = self(arm+1, vHigh-1)[0]
+        try:
+            #dereference vLow
+            if vLow == 0:  # look at branchpoint
+                fLow = self(0, 0)[1]
+            else:
+                fLow = self(arm+1, vLow-1)[1]
+            #dereference vHigh
+            fHigh = self(arm+1, vHigh-1)[1]
+            #find the arm that the new point now resides on
+            fArm = self(arm+1, vHigh-1)[0]
+        except TypeError:
+            return None
         #decimal portion of vertex indicates where it lies between fLow and
         #fHigh.
         vP = vertex % 1.0
