@@ -12,20 +12,47 @@ class AbstractPoint(tuple):
     '''
     __metaclass__ = ABCMeta
 
-    def __init__(self, a, b=None):
-        if b is not None:
-            a = (a, b)
-        tuple.__init__(self, a)
+    def __init__(self, *args):
+        if len(args) == 1:
+            a = args[0]
+            if type(a) is not type(self):
+                raise TypeError("First arg must be of type {}".format(
+                    str(type(self))[7:-2]))
+            tuple.__init__(self, a)
+        elif len(args) == 2:
+            # subclasses should perform their own bounds checking
+            arm, t = args
+            if not isinstance(arm, int):
+                raise TypeError("First argument must be of type 'int'")
+            if not isinstance(t, (int, float)):
+                raise TypeError("Second argument must be of type 'int' or\
+                        'float'")
+            tuple.__init__(self, (arm, t))
+        else:
+            raise TypeError("Constructor must be called with 1 or 2 arguments")
 
-    def __new__(self, a, b=None):
+    def __new__(self, *args):
         '''
         Redefinition of the tuple method so that points can be constructed
         as p(1, 2) as opposed to p((1, 2)).
         '''
-        #apparently we need this because tuples are immutable.
-        if b is not None:
-            a = (a, b)
-        return tuple.__new__(self, a)
+        if len(args) == 1:
+            a = args[0]
+            if type(a) is not type(self):
+                raise TypeError("First arg must be of type {}".format(
+                    str(type(self))[7:-2]))
+            tuple.__new__(self, a)
+        elif len(args) == 2:
+            # subclasses should perform their own bounds checking
+            arm, t = args
+            if not isinstance(arm, int):
+                raise TypeError("First argument must be of type 'int'")
+            if not isinstance(t, (int, float)):
+                raise TypeError("Second argument must be of type 'int' or\
+                        'float'")
+            tuple.__new__(self, (arm, t))
+        else:
+            raise TypeError("Constructor must be called with 1 or 2 arguments")
 
     def __eq__(self, y):
         '''
@@ -184,35 +211,74 @@ class Mapping(object):
     '''
     Mapping class represents a single mapping from a triod to a triod
     '''
+    _legs = []
+    endpointMap = []
+    _basepoint = Vertex(0, 0)
+    id = 0  # used for identification in empty generators.
 
-    def __init__(self, mapList=None, basepoint=None, endpointMap=None):
+    def __init__(self, a):
         '''
-        initalize in the following order:
-        1. If a maplist is given, initialize to that maplist.
-        2. If a basepoint is given, initialize to an empty mapping containing
-        only that basepoint.
-        3. If the endpointMap is supplied, save it as well.
+        Initialize in the following way:
+        - If a is None, an empty mapping with basepoint at v(0, 0) will be
+          created.
+        - If a is of type 'Vertex', create an empty mapping with that vertex at
+          the basepoint
+        - If a is of type 'Mapping', construct a copy of that mapping.
+        - If a ls of type 'list', create the mapping described by that list. If
+          the argument is of this type, the list must be of the following form:
+          1. The first element must be of type 'Vertex'
+          2. The consecutive elements must be lists containing values of type
+          'Vertex' or None. 
+          3. The list will only be parsed until the mapping has bounds which
+          correspond to N, M, and T in config.py.
         '''
-        self._legs = []
-        self.endpointMap = []
-        self._basepoint = Vertex(0, 0)
-        if mapList is not None:
-            if type(mapList) is not list:
-                raise TypeError("mapList must be a list")
-            self._basepoint = mapList[0]
-            self._legs = mapList[1:]
-        elif basepoint is not None:
-            #type-checking
-            if type(basepoint) is not Vertex:
-                raise TypeError("Basepoint must be of vertex type")
-            self._basepoint = basepoint
-            self._legs += ([list() for i in range(T)])
-        else:
-            self._legs += ([list() for i in range(T)])
+        # first initialize empty legs
+        self._legs = [list() for i in range(T)]
+        # populate based on argument
+        if a is None:
+            pass
+        elif isinstance(a, Vertex):
+            # Vertex must lie in codomain
+            if not a.isCodomain():
+                raise ValueError('Vertex {} is not in codomain.'.format(a))
+            self._basepoint = a
+        elif isinstance(a, Mapping):
+            # perform a deep copy
+            self._basepoint = a._basepoint
+            self.id = a.id
+            self.endpointMap = list(a.endpointMap)
+            for i in range(T):
+                self._legs[i] = list(a._legs[i])
+        elif isinstance(a, list):
+            # verify list structure
+            if not isinstance(a[0], Vertex):
+                raise TypeError("First element of list must be 'Vertex' type.")
+            if not a[0].isCodomain():
+                raise ValueError('Vertex {} is not in codomain.'.format(a))
+            for leg in a[1:T+1]:
+                if type(leg) is not list:
+                    raise TypeError("Remaining elements of list must be type \
+                            'list'")
+                for v in leg:
+                    if not isinstance(v, Vertex):
+                        raise TypeError("Sublist elements must be type \
+                                'Vertex'")
+                    # Verify bounds of each vertex.
+                    if not v.isCodomain():
+                        raise ValueError("Vertex {} is not in codomain."\
+                                .format(v))
+            # list is good, unpack
+            self._basepoint = a[0]
+            for i in range(T):
+                self._legs[i] = list(a[i+1])
+            # and now pack the lists
+            self._pad_lists()
 
-        if endpointMap is not None:
-            self.endpointMap = endpointMap
-        #append the ends of leg lists to pad to proper lengths
+    def _pad_lists(self):
+        '''
+        pad the entries in _legs so that they are all of the proper size.  This
+        should be done after every mapping update.
+        '''
         for leg in self._legs:
             while len(leg) < N:
                 leg.append(None)
