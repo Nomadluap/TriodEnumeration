@@ -1,6 +1,6 @@
 '''
-mappingIterators.py - classes which facilitate iterating over different types of
-mappings.
+mappingIterators.py - classes which facilitate iterating over different types
+of mappings.
 
 The class heirarchy is as follows:
 ->MappingIterator(Abstract)
@@ -148,8 +148,9 @@ class FullMappingIterator(MappingIterator):
     legs = None
     completions = None
     isFirst = False
-    
+
     def __init__(self, originalMapping, length=None):
+        self.N = N
         # type checking
         if not isinstance(originalMapping, Mapping):
             raise TypeError("First argument must be of type 'Mapping'")
@@ -167,7 +168,7 @@ class FullMappingIterator(MappingIterator):
         # pre-fill arms and completions with what's already in the mapping.
         for i in range(T):
             oLeg = self.originalMapping.getLeg(i)
-            for j in range(N):
+            for j in range(self.N):
                 if oLeg[j] is None:
                     break
                 # append to the completion stack
@@ -178,14 +179,25 @@ class FullMappingIterator(MappingIterator):
 
         # now pre-load the first completion.
         for l in range(T):
-            for p in range(len(self.legs[l]), N):
+            prevPoint = self.originalMapping(l, len(self.legs[l]))
+            for p in range(len(self.legs[l]), self.N):
                 #get the completions list
-                prevPoint = self.originalMapping(l, p)
                 cpl = prevPoint.ajacentCodomain()
                 self.completions[l].append(cpl)
                 self.legs[l].append(cpl[0])
+                prevPoint = cpl[0]
         # signal that next() has not run yet
         self.isFirst = True
+
+    def _vIncrement(self, l, p):
+        '''
+        Increment stack counters l and p
+        '''
+        p += 1
+        if p >= self.N:
+            p = 0
+            l += 1
+        return l, p
 
     def next(self):
         #special condition for first run of next()
@@ -194,18 +206,18 @@ class FullMappingIterator(MappingIterator):
             mapList = [self.originalMapping(0, 0)] + self.legs
             newMap = Mapping(mapList)
             return newMap
-        
+
         # we always start off with the previous complete mapping
         # Thus, we first move backwards down the mapping, finding the first
         # vertex which is not already at its last possible completion.
         l = T-1
-        p = N - 1
+        p = self.N - 1
         while self.legs[l][p] == self.completions[l][p][-1]:
             #if we get all the way down to l=0, p=0, we're done
             if l == 0 and (p == 0 or self.originalMapping(l, p) is not None):
                 raise StopIteration
             if p == 0 or self.originalMapping(l, p) is not None:
-                p - N - 1
+                p = self.N - 1
                 l -= 1
             else:
                 p -= 1
@@ -218,10 +230,45 @@ class FullMappingIterator(MappingIterator):
         self.legs[l][p] = self.completions[l][p][i+1]
         # and finally re-load the completion past that point
         # remembering to take into consideration pre-completed portions of the
-        # mapping.
+        # mapping. First, complete the leg we're currently on, then the rest.
+        originalLeg = l
+        prevPoint = self.legs[l][p]
+        l, p = self._vIncrement(l, p)
+        while l == originalLeg:
+            cpl = prevPoint.ajacentCodomain()
+            self.completions[l][p] = cpl
+            self.legs[l][p] = cpl[0]
+            prevPoint = self.legs[l][p]
+            l, p = self._vIncrement(l, p)
+        # now do the remaining legs
+        for l in range(l, T):
+            p = 0
+            # increment p until original mapping stops being defined.
+            while self.originalMapping(l, p) is not None:
+                p += 1
+            # now get what the first completion should be from the completion
+            # map of the last point in the original mapping
+            prevPoint = self.originalMapping(l, p-1)
+            cpl = prevPoint.ajacentCodomain()
+            self.completions[l][p-1] = cpl
+            self.legs[l][p-1] = cpl[0]
+            p += 1
+            #now finish the leg
+            while p <= self.N:
+                prevPoint = self.legs[l][p-2]
+                cpl = prevPoint.ajacentCodomain()
+                self.completions[l][p-1] = cpl
+                self.legs[l][p-1] = cpl[0]
+                p += 1
 
-
+        #and now we have the next full mapping, so we can return it.
+        mapList = [self.originalMapping(0, 0)] + self.legs
+        newMap = Mapping(mapList)
+        return newMap
 
 if __name__ == "__main__":
-    for p in BasicEmptyMapIterator():
-        print p
+    print 'start...'
+    mapp = Mapping(Vertex(0, 0))
+    print 'original map', mapp
+    for m in FullMappingIterator(mapp, length=1):
+        print m

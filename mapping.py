@@ -22,7 +22,7 @@ class AbstractPoint(tuple):
             if type(a) is not type(self):
                 raise TypeError("First arg must be of type {}".format(
                     str(type(self))[7:-2]))
-            tuple.__new__(self, a)
+            return tuple.__new__(self, a)
         elif len(args) == 2:
             # subclasses should perform their own bounds checking
             arm, t = args
@@ -35,7 +35,10 @@ class AbstractPoint(tuple):
                 raise ValueError("First argument must be non-negative")
             if t < 0:
                 raise ValueError("Second argument must be non-negative")
-            tuple.__new__(self, (arm, t))
+            #simplify arm
+            if t == 0:
+                arm = 0
+            return tuple.__new__(self, (arm, t))
         else:
             raise TypeError("Constructor must be called with 1 or 2 arguments")
 
@@ -97,7 +100,7 @@ class Point(AbstractPoint):
             arm, t = args
             if t < 0.0 or t > 1.0:
                 raise ValueError("Second argument must be in range [0, 1]")
-        super().__new__(self, *args)
+        return super(Point, self).__new__(self, *args)
 
     def __str__(self):
         return "p" + tuple(self).__str__()
@@ -108,7 +111,7 @@ class Point(AbstractPoint):
 
 class Vertex(AbstractPoint):
     '''
-    A class which abstracts a tuple. 
+    A class which abstracts a tuple.
     A point is defined as having an integer arm value and a floating-point dist
     value where:
     0<=arm<T
@@ -119,8 +122,8 @@ class Vertex(AbstractPoint):
             arm, t = args
             if not isinstance(t, int):
                 raise TypeError("Second argument must be of type 'int'.")
-        super().__new__(self, *args)
-        
+        return super(Vertex, self).__new__(self, *args)
+
     def __str__(self):
         return "v" + tuple(self).__str__()
 
@@ -186,10 +189,10 @@ class Vertex(AbstractPoint):
         Returns True if the vertex lies in the domain
         '''
         #test leg number
-        if self.arm < 0 or self.arm >= T:
+        if self.arm() < 0 or self.arm() >= T:
             return False
         #test distance
-        if self.dist < 0 or self.dist > N:
+        if self.dist() < 0 or self.dist() > N:
             return False
         #otherwise good
         return True
@@ -200,10 +203,10 @@ class Vertex(AbstractPoint):
         Returns True if the vertex lies in the domain
         '''
         #test leg number
-        if self.arm < 0 or self.arm >= T:
+        if self.arm() < 0 or self.arm() >= T:
             return False
         #test distance
-        if self.dist < 0 or self.dist > M:
+        if self.dist() < 0 or self.dist() > M:
             return False
         #otherwise good
         return True
@@ -316,7 +319,7 @@ class Mapping(object):
             if b == 0:
                 return self._basepoint
             else:
-                return self._legs[a][b]
+                return self._legs[a][b-1]
 
         if len(args) == 1:
             if type(args[0]) is Point:
@@ -333,10 +336,10 @@ class Mapping(object):
                 'Vertex'")
 
     def __str__(self):
-        s = "map[" + str(self._basepoint) + ", "
+        s = "map[" + str(self._basepoint)
         for leg in self._legs:
-            s += str(leg) + " "
-        s += "]"
+            s += ", " + str(leg)
+        s += " ]"
         return s
 
     def __repr__(self):
@@ -349,14 +352,14 @@ class Mapping(object):
         l = [] + self._basepoint + self._legs
         return l
 
-    def getLeg(n):
+    def getLeg(self, n):
         '''
         Returns a list representing leg number N of the mapping, not including
         the base point.
         '''
         if n < 0 or n >= T:
             raise ValueError("n is out of range")
-        return _legs[n]
+        return self._legs[n]
 
     def set(self, vertex, value):
         '''
@@ -384,7 +387,7 @@ class Mapping(object):
             self._basepoint = value
         else:
             #make sure value we're trying to set is ajacent to values of
-            #neibhouring points, if they are defined. 
+            #neibhouring points, if they are defined.
             for p in vertex.ajacentDomain():
                 #dereference p
                 fp = self(p)
