@@ -53,6 +53,9 @@ class AbstractPoint(tuple):
         else:
             return tuple.__eq__(self, y)
 
+    def __ne__(self, y):
+        return not self.__eq__(y)
+
     def __sub__(self, y):
         '''
         Defines subtraction between two Points such that the distance between
@@ -345,6 +348,15 @@ class Mapping(object):
         '''
         l = [] + self._basepoint + self._legs
         return l
+
+    def getLeg(n):
+        '''
+        Returns a list representing leg number N of the mapping, not including
+        the base point.
+        '''
+        if n < 0 or n >= T:
+            raise ValueError("n is out of range")
+        return _legs[n]
 
     def set(self, vertex, value):
         '''
