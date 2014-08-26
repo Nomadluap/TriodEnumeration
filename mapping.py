@@ -211,6 +211,25 @@ class Vertex(AbstractPoint):
         #otherwise good
         return True
 
+    def toward(self, v):
+        '''
+        Return the vertex q such that (v-q) == (self-q) -1, or None if v ==
+        self.
+        '''
+        if not isinstance(v, Vertex):
+            raise TypeError("v must be of type 'Vertex'")
+        # if we are v, return None
+        if self == v:
+            return None
+        # if we are the branch point, simply go down the proper leg
+        if self == Vertex(0, 0):
+            return Vertex(v[0], 1)
+        # if v is toward branch point, go that way
+        if v[1] < self[1]:
+            return Vertex(self[0], self[1]-1)
+        else:
+            return Vertex(self[0], self[1]+1)
+
 
 class Mapping(object):
     '''
@@ -263,15 +282,15 @@ class Mapping(object):
             for leg in a[1:T+1]:
                 if type(leg) is not list:
                     raise TypeError("Remaining elements of list must be type \
-                            'list'")
+'list'")
                 for v in leg:
-                    if not isinstance(v, Vertex):
+                    if not (isinstance(v, Vertex) or v is None):
                         raise TypeError("Sublist elements must be type \
-                                'Vertex'")
+'Vertex'")
                     # Verify bounds of each vertex.
-                    if not v.isCodomain():
-                        raise ValueError("Vertex {} is not in codomain."\
-                                .format(v))
+                    if v is not None and not v.isCodomain():
+                        raise ValueError("Vertex {} is not in codomain."
+                                         .format(v))
             # list is good, unpack
             self._basepoint = a[0]
             for i in range(T):
@@ -280,7 +299,6 @@ class Mapping(object):
             raise TypeError("Argument of wrong type")
         # and now pack the lists
         self._pad_lists()
-
 
     def _pad_lists(self):
         '''
@@ -330,7 +348,7 @@ class Mapping(object):
                 if vertex == Vertex(0, 0):
                     return self._basepoint
                 else:
-                    return self._legs[vertex[0]][vertex[1]]
+                    return self._legs[vertex[0]][vertex[1]-1]
             else:
                 raise TypeError("Argument must be of type 'Point' or type \
                 'Vertex'")
