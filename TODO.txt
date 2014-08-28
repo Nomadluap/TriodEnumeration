@@ -1,0 +1,7 @@
+2014-08-28
+- Plug objectified code into MPI framework
+- Fix logical errors in worker code concerning disjointness comparison
+- Change behaviour of worker processes to report any functions which pass
+  the disjointness check, reporting both their disjointness number and
+  commutativity score.
+- Run new code on sharcnet with N=4, M=2
