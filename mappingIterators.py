@@ -120,6 +120,10 @@ class EndpointEmptyMappingIterator(EmptyMappingIterator):
                     if self.currentEpm[arm] == Vertex(0, 0) and \
                             self.currentMap(0, 0) != Vertex(arm, M):
                                 raise ValueError
+                # Endpoint map cannot contain what is already the basepoint
+                for arm in range(T):
+                    if self.currentEpm[arm] == self.currentMap(0, 0):
+                        raise ValueError
                 # verify that dist(image of basepoint, endpoint) <=
                 # dist(Vertex(0, 0), preimage of endpoint
                 for arm in range(T):
@@ -312,6 +316,7 @@ class SurjectiveMappingIterator(FullMappingIterator):
     legs = None
     completions = None
     isFirst = False
+    failOnFirst = False
     N = 0
 
     def surjCompletions(self, l, p):
@@ -319,11 +324,15 @@ class SurjectiveMappingIterator(FullMappingIterator):
         Get the completion list for the current point using the method
         described above.
         '''
+        # print '----'
+        # print 'getting surjective completion list for position', l, p
         # first, generate an object representing the partial mapping so far
         mapList = [self.originalMapping(0, 0)] + self.legs
         mapp = Mapping(mapList)
+        # print '--working with mapping', mapp, '--'
 
-        lastVertex = Vertex(l, p)
+        lastVertex = mapp(Vertex(l, p))
+        # print 'lastVertex is', lastVertex
         # find the lowest endpoint in the endpointlist which is not yet mapped
         endpointIndex = None
         for i in range(T):
@@ -332,7 +341,7 @@ class SurjectiveMappingIterator(FullMappingIterator):
             if v[0] != l:
                 continue
             # must be larger than current point
-            if v[1] < p:
+            if v[1] <= p:
                 continue
             # must be smallest in series
             if endpointIndex is None or v[1] < \
@@ -340,24 +349,43 @@ class SurjectiveMappingIterator(FullMappingIterator):
                 endpointIndex = i
         # if no endpoint found, return completions in the usual way.
         if endpointIndex is None:
+            # print 'found no endpoint'
+            # print 'returning:', lastVertex.ajacentCodomain()
             return lastVertex.ajacentCodomain()
+        # print 'found endpoint, number=', endpointIndex
         # generate X and Y
-        X = lastVertex - self.originalMapping.endpointMap[endpointIndex]
-        Y = mapp(lastVertex) - Vertex(endpointIndex, M)
+        X = Vertex(l, p) - self.originalMapping.endpointMap[endpointIndex]
+        Y = mapp(Vertex(l, p)) - Vertex(endpointIndex, M)
+        # print 'x, y are', X, Y
         # mapping has no valid completions
         if X < Y:
+            # print 'no valid completions'
             raise StopIteration
         # we are one space away yet already at the endpoint. We can't move.
-        if X == 1 and Y == 0:
+        elif X == 1 and Y == 0:
+            # print 'one off, only valid completion is to stay'
+            # print 'returning:', [lastVertex]
+            return [lastVertex]
+        # we are already here. We must stay.
+        elif X == 0 and Y == 0:
+            # print 'were here, stay'
+            # print 'returning:', [lastVertex]
             return [lastVertex]
         # only valid completion is toward the endpoint
         elif X == Y:
+            # print 'only valid completion toward endpoint'
+            # print 'returning:', [lastVertex.toward(Vertex(endpointIndex, M))]
             return [lastVertex.toward(Vertex(endpointIndex, M))]
         # remain in place or go towards
         elif X == Y + 1:
+            # print 'completions: remain in place or advance'
+            # print 'returning:', [lastVertex,
+            #                    lastVertex.toward(Vertex(endpointIndex, M))]
             return [lastVertex, lastVertex.toward(Vertex(endpointIndex, M))]
         #otherwise we can go anywhere
         else:
+            # print 'go anywhere'
+            # print 'return:', lastVertex.ajacentCodomain()
             return lastVertex.ajacentCodomain()
 
     def __init__(self, originalMapping, length=None):
@@ -376,6 +404,7 @@ class SurjectiveMappingIterator(FullMappingIterator):
         self.originalMapping = originalMapping
         self.legs = [[] for i in range(T)]
         self.completions = [[] for i in range(T)]
+
         # pre-fill arms and completions with what's already in the mapping.
         for i in range(T):
             oLeg = self.originalMapping.getLeg(i)
@@ -383,24 +412,29 @@ class SurjectiveMappingIterator(FullMappingIterator):
                 if oLeg[j] is None:
                     break
                 # append to the completion stack
-                self.legs[i].append(j)
+                self.legs[i].append(oLeg[j])
                 # Also append to the completion stack, since it is the only
                 # 'valid completion' for that location
                 self.completions[i].append([oLeg[j]])
 
         # now pre-load the first completion.
-        for l in range(T):
-            for p in range(len(self.legs[l]), self.N):
-                #get the completions list
-                cpl = self.surjCompletions(l, p)
-                self.completions[l].append(cpl)
-                self.legs[l].append(cpl[0])
-        # signal that next() has not run yet
+        try:
+            for l in range(T):
+                for p in range(len(self.legs[l]), self.N):
+                    #get the completions list
+                    cpl = self.surjCompletions(l, p)
+                    self.completions[l].append(cpl)
+                    self.legs[l].append(cpl[0])
+            # signal that next() has not run yet
+        except StopIteration:
+            self.failOnFirst = True
         self.isFirst = True
 
     def next(self):
         #special condition for first run of next()
         if self.isFirst:
+            if self.failOnFirst is True:
+                raise StopIteration
             self.isFirst = False
             mapList = [self.originalMapping(0, 0)] + self.legs
             newMap = Mapping(mapList)
@@ -420,6 +454,9 @@ class SurjectiveMappingIterator(FullMappingIterator):
                 l -= 1
             else:
                 p -= 1
+        # print 'mutating at', l, p
+        # print 'original point', self.legs[l][p]
+        # print 'possible completions are:', self.completions[l][p]
         # now we change that vertex to the next one in the completion list
         # first find where we are at the moment in the completion line
         i = 0
@@ -427,34 +464,28 @@ class SurjectiveMappingIterator(FullMappingIterator):
             i += 1
         # now go one higher and substitute that in
         self.legs[l][p] = self.completions[l][p][i+1]
+        # print 'mutated to', self.legs[l][p]
         # and finally re-load the completion past that point
         # remembering to take into consideration pre-completed portions of the
         # mapping. First, complete the leg we're currently on, then the rest.
         originalLeg = l
         l, p = self._vIncrement(l, p)
-        cpl = self.surjCompletions(l, p)
         while l == originalLeg:
+            cpl = self.surjCompletions(l, p)
             self.completions[l][p] = cpl
             self.legs[l][p] = cpl[0]
             l, p = self._vIncrement(l, p)
-            cpl = self.surjCompletions(l, p)
         # now do the remaining legs
         for l in range(l, T):
             p = 0
             # increment p until original mapping stops being defined.
-            while self.originalMapping(l, p) is not None:
+            while self.originalMapping(l, p+1) is not None:
                 p += 1
-            # now get what the first completion should be from the completion
-            # map of the last point in the original mapping
-            cpl = self.surjCompletions(l, p)
-            self.completions[l][p-1] = cpl
-            self.legs[l][p-1] = cpl[0]
-            p += 1
             #now finish the leg
-            while p <= self.N:
+            while p < self.N:
                 cpl = self.surjCompletions(l, p)
-                self.completions[l][p-1] = cpl
-                self.legs[l][p-1] = cpl[0]
+                self.completions[l][p] = cpl
+                self.legs[l][p] = cpl[0]
                 p += 1
 
         #and now we have the next full mapping, so we can return it.
@@ -465,6 +496,7 @@ class SurjectiveMappingIterator(FullMappingIterator):
 if __name__ == "__main__":
     print 'start...'
     for pm in EndpointEmptyMappingIterator():
-        for m in SurjectiveMappingIterator(pm):
-            print 'about to get mapping'
-            print m
+        print 'original mapping is', str(pm)
+#        print 'with endpointmap', str(pm.endpointMap)
+#        for m in SurjectiveMappingIterator(pm):
+#            print 'got', m

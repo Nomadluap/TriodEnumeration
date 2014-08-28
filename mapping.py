@@ -224,6 +224,9 @@ class Vertex(AbstractPoint):
         # if we are the branch point, simply go down the proper leg
         if self == Vertex(0, 0):
             return Vertex(v[0], 1)
+        # if we are on different legs, go toward the endpoint
+        if self[0] != v[0]:
+            return Vertex(self[0], self[1]-1)
         # if v is toward branch point, go that way
         if v[1] < self[1]:
             return Vertex(self[0], self[1]-1)
