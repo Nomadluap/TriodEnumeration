@@ -458,3 +458,12 @@ class Mapping(object):
         if f == 0:
             fArm = 0
         return Point(fArm, f)
+
+
+class MappingPair(tuple):
+    '''A class which represents a pair of mappings, and its assosciated id'''
+    id = 0
+
+    def __new__(self, id, map1, map2):
+        self.id = id
+        return tuple.__new__((map1, map2))

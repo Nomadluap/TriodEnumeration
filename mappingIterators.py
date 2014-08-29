@@ -9,6 +9,7 @@ The class heirarchy is as follows:
         ->EndpointEmptyMappingIterator
     ->FullMappingIterator
         ->SurjectiveMappingIterator
+->EndpointEmptyMappingPairIterator
 
 Empty mapping iterators take no starting mapping, and generally return
 non-complete mappings that need to be further completed. 
@@ -17,7 +18,7 @@ Partial mapping iterators usually take a starting mapping, and generate full
 completions. They are generally used in the worker processes.
 '''
 from config import N, M, T
-from mapping import Mapping, Vertex
+from mapping import Mapping, Vertex, MappingPair
 from abc import ABCMeta, abstractmethod
 from pointIterators import CodomainVertexIterator, DomainVertexIterator
 from itertools import permutations, combinations
@@ -493,6 +494,49 @@ class SurjectiveMappingIterator(FullMappingIterator):
         newMap = Mapping(mapList)
         return newMap
 
+
+class EndpointEMptyMappingPairIterator(object):
+    '''
+    Generates pairs of endpoint empty mapping iterators
+    '''
+    gen = None
+    id = 0
+
+    def __iter__(self):
+        return self
+
+    def __init__(self, skip=None):
+        self.gen = combinations(EndpointEmptyMappingIterator(), 2)
+        if skip is not None:
+            for i in range(skip):
+                self.next()
+
+    def next(self):
+        class PairBad(Exception):
+            def __init__(self):
+                pass
+
+        self.id += 1
+        # gen.next raises StopIteration for us.
+        p = None
+        pp = None
+        while True:
+            try:
+                p = self.gen.next()
+                # elements of p must have differing basepoints
+                if p[0](0, 0) == p[1](0, 0):
+                    raise PairBad
+                # none of the elements of the epm can be similar
+                for i in range(T):
+                    if p[0].endpointMap[i] == p[1].endpointMap[i]:
+                        raise PairBad
+            except PairBad:
+                continue
+            else:
+                pp = MappingPair(id, p[0], p[1])
+                break
+        return pp
+
 if __name__ == "__main__":
     print 'start...'
     for pm in EndpointEmptyMappingIterator():
@@ -500,3 +544,4 @@ if __name__ == "__main__":
 #        print 'with endpointmap', str(pm.endpointMap)
 #        for m in SurjectiveMappingIterator(pm):
 #            print 'got', m
+
