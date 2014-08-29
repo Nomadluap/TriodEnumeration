@@ -6,7 +6,7 @@
   commutativity score.
 - Run new code on sharcnet with N=4, M=2
 
-2014-08-28
+2014-08-29
 - finish worker_processpair
 - finish handle_reply
 - test locally
