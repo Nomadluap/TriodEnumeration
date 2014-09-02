@@ -495,15 +495,12 @@ class SurjectiveMappingIterator(FullMappingIterator):
         return newMap
 
 
-class EndpointEMptyMappingPairIterator(object):
+class EndpointEmptyMappingPairIterator(object):
     '''
     Generates pairs of endpoint empty mapping iterators
     '''
     gen = None
-    id = 0
-
-    def __iter__(self):
-        return self
+    idnum = 0
 
     def __init__(self, skip=None):
         self.gen = combinations(EndpointEmptyMappingIterator(), 2)
@@ -516,7 +513,7 @@ class EndpointEMptyMappingPairIterator(object):
             def __init__(self):
                 pass
 
-        self.id += 1
+        self.idnum += 1
         # gen.next raises StopIteration for us.
         p = None
         pp = None
@@ -533,7 +530,7 @@ class EndpointEMptyMappingPairIterator(object):
             except PairBad:
                 continue
             else:
-                pp = MappingPair(id, p[0], p[1])
+                pp = MappingPair(self.idnum, p[0], p[1])
                 break
         return pp
 

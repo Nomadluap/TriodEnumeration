@@ -1,0 +1,203 @@
+
+---NEW TEST:: started: 2014-09-02 10:47:56.323367
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 3
+
+
+---NEW TEST:: started: 2014-09-02 10:49:41.734885
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 3
+
+
+---NEW TEST:: started: 2014-09-02 10:51:15.457966
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 3
+
+Worker #01 starting pair:
+	Pair id: <built-in function id>
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+Worker #02 starting pair:
+	Pair id: <built-in function id>
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 4)]
+
+Worker #03 starting pair:
+	Pair id: <built-in function id>
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 10:55:37.869560
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 3
+
+Worker #01 starting pair:
+	Pair id: <built-in function id>
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+Worker #02 starting pair:
+	Pair id: <built-in function id>
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 4)]
+
+Worker #03 starting pair:
+	Pair id: <built-in function id>
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 10:57:39.780984
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 3
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+Worker #02 starting pair:
+	Pair id: 2
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 4)]
+
+Worker #03 starting pair:
+	Pair id: 3
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 10:59:51.470047
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 3
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+Worker #02 starting pair:
+	Pair id: 2
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 4)]
+
+Worker #03 starting pair:
+	Pair id: 3
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 11:01:28.654258
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 0
+
+
+---NEW TEST:: started: 2014-09-02 11:01:41.876301
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 11:04:15.576648
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 11:04:53.593648
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 11:06:33.270068
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 11:07:26.340091
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 11:13:17.623388
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-02 11:17:07.512168
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+

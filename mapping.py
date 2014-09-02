@@ -19,9 +19,8 @@ class AbstractPoint(tuple):
         '''
         if len(args) == 1:
             a = args[0]
-            if type(a) is not type(self):
-                raise TypeError("First arg must be of type {}".format(
-                    str(type(self))[7:-2]))
+#                raise TypeError("First arg must be of type {}".format(
+#                    str(type(self))[7:-2]))
             return tuple.__new__(self, a)
         elif len(args) == 2:
             # subclasses should perform their own bounds checking
@@ -100,7 +99,7 @@ class Point(AbstractPoint):
             arm, t = args
             if t < 0.0 or t > 1.0:
                 raise ValueError("Second argument must be in range [0, 1]")
-        return super(Point, self).__new__(self, *args)
+        return AbstractPoint.__new__(self, *args)
 
     def __str__(self):
         return "p" + tuple(self).__str__()
@@ -122,7 +121,7 @@ class Vertex(AbstractPoint):
             arm, t = args
             if not isinstance(t, int):
                 raise TypeError("Second argument must be of type 'int'.")
-        return super(Vertex, self).__new__(self, *args)
+        return AbstractPoint.__new__(self, *args)
 
     def __str__(self):
         return "v" + tuple(self).__str__()
@@ -241,7 +240,7 @@ class Mapping(object):
     _legs = []
     endpointMap = []
     _basepoint = Vertex(0, 0)
-    id = 0  # used for identification in empty generators.
+    idnum = 0  # used for identification in empty generators.
 
     def __init__(self, a):
         '''
@@ -462,8 +461,8 @@ class Mapping(object):
 
 class MappingPair(tuple):
     '''A class which represents a pair of mappings, and its assosciated id'''
-    id = 0
+    idnum = 0
 
-    def __new__(self, id, map1, map2):
-        self.id = id
-        return tuple.__new__((map1, map2))
+    def __new__(self, idnum, map1, map2):
+        self.idnum = idnum
+        return tuple.__new__(self, (map1, map2))

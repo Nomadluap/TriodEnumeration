@@ -6,12 +6,14 @@ Changing of parameters is done in config.py.
 '''
 from __future__ import division
 from mpi4py import MPI
-from config import LOGFILE, N, M, T, PAIRSKIP
+from config import LOGFILE, N, M, T, PAIRSKIP, WORKER_REPORT_INTERVAL
 from mappingIterators import SurjectiveMappingIterator
-from mappingIterators import EndpointEMptyMappingPairIterator
+from mappingIterators import EndpointEmptyMappingPairIterator
 from datetime import datetime
 from comparitors import checkCommutativity, checkDisjointness
-from message import StopMessage, NewPairMessage
+from message import StopMessage, NewPairMessage, ReportPairMessage
+from message import StatusMessage, DonePairMesage, Message
+from mapping import MappingPair, Mapping
 
 # file object used by logger
 f = None
@@ -41,7 +43,7 @@ def main_master():
     # workers working...
     comm.Barrier()
     # empty pair generator
-    pairgen = EndpointEMptyMappingPairIterator()
+    pairgen = EndpointEmptyMappingPairIterator()
     status = [True for i in range(num_workers+2)]
     status[0] = False
     # send initial pairs
@@ -89,26 +91,33 @@ def main_worker():
     '''
     # wait for master to print initialization
     comm.Barrier()
-    report("Worker #{:0>2d} init".format(rank))
+    print "Worker #{:0>2d} init".format(rank)
     # pass back to master
     comm.Barrier()
     # main worker loop
     while True:
-        # recieve a message
-        message = comm.recv()
+        # recieve a message from any worker
+        message = comm.recv(source=MPI.ANY_SOURCE)
         if isinstance(message, StopMessage):
             break
         elif isinstance(message, NewPairMessage):
-            worker_processPair(message.pair)
+            # do the pair completion and then return.
+            message = worker_processPair(message.pair)
+            print "SENDING DONE PAIR MESSAGE"
+            comm.send(message)
         else:
             raise TypeError("Got bad message: {}".format(message))
     # done, wait for master and quit
     comm.Barrier()
     MPI.Finalize()
 
+
 def worker_processPair(pair):
     '''
     Actual processing of a pair by a worker goes here.
+
+    Returns a DonePairMesage when complete  
+
     '''
     countTotal = 0
     countFailures = 0
@@ -122,8 +131,39 @@ def worker_processPair(pair):
     halfLength = N // 2
     for pm1 in SurjectiveMappingIterator(map1, length=halfLength):
         for pm2 in SurjectiveMappingIterator(map2, length=halfLength):
+            #if mappings are not disjoint, try again
+            if checkDisjointness(pm1, pm2) == 0:
+                countTotal += 1
+                countFailures += 1
+                worker_periodicReport(countTotal, countFailures)
+                continue
+            #finish completion
+            for m1 in SurjectiveMappingIterator(pm1):
+                for m2 in SurjectiveMappingIterator(pm2):
+                    djnum = checkDisjointness(m1, m2)
+                    if djnum == 0:
+                        countTotal += 1
+                        countFailures += 1
+                        worker_periodicReport(countTotal, countFailures)
+                        continue
+                    # if we pass disjointness, then report the pair
+                    countTotal += 1
+                    worker_periodicReport(countTotal, countFailures)
+                    comnum = checkCommutativity(m1, m2)
+                    report = ReportPairMessage(rank, MappingPair(m1, m2),
+                                               djnum, comnum)
+                    print "SENDING A PAIR REPORT"
+                    comm.send(report)
+    # done pair. Return a DonePair message
+    message = DonePairMesage(rank, countTotal, countFailures)
+    return message
 
 
+def worker_periodicReport(countTotal, countFail):
+    if countTotal % WORKER_REPORT_INTERVAL == 0:
+        report = StatusMessage(rank, countTotal, countFail)
+        print "SENDING A PERIODIC REPORT"
+        comm.send(report)
 
 
 def report(s):
@@ -141,7 +181,7 @@ def report_startpair(i, pair):
     report that worker i is starting pair 'pair'
     '''
     report("Worker #{:0>2d} starting pair:".format(i))
-    report("\tPair id: {}".format(pair.id))
+    report("\tPair id: {}".format(pair.idnum))
     report("\tMap 1: {}".format(pair[0]))
     report("\tMap 1 epm: {}".format(pair[0].endpointMap))
     report("\tMap 2: {}".format(pair[1]))
@@ -156,6 +196,34 @@ def handle_reply(reply):
     If a 'done pair' message is recieved, return the rank of the messaging
     process. Otherwise, return None.
     '''
+    if not isinstance(reply, Message):
+        raise TypeError("reply must be of type 'Message'")
+    if isinstance(reply, StatusMessage):
+        wrank = reply.sourceRank
+        wtotal = reply.countTotal
+        wfail = reply.countFailures
+        report("STATUS: worker#{}: total:{} fail:{}".format(wrank, wtotal,
+                                                            wfail))
+    elif isinstance(reply, DonePairMesage):
+        wrank = reply.sourceRank
+        wtotal = reply.countTotal
+        wfail = reply.countFailures
+        report("DONEPAIR: worker#{}: total:{} fail:{}".format(wrank, wtotal,
+                                                              wfail))
+        return wrank
+    elif isinstance(reply, ReportPairMessage):
+        wrank = reply.sourceRank
+        djnum = reply.disjointnessNumber
+        comnum = reply.commutativityNumber
+        wpair = reply.pair
+        report("PAIR REPORT")
+        report("\tmap1:{}".format(wpair[0]))
+        report("\tmap2:{}".format(wpair[1]))
+        report("\tdisjointness number:{}".format(djnum))
+        report("\tcommutativity number:{}".format(comnum))
+
+    else:
+        return
 
 
 if __name__ == '__main__':

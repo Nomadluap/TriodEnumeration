@@ -2,7 +2,7 @@
 message.py - Classes representing messages sent over the MPI connection
 '''
 from abc import ABCMeta
-from mapping import Mapping, MappingPair
+from mapping import MappingPair
 
 
 class Message(object):
