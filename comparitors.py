@@ -30,7 +30,6 @@ def checkDisjointness(partialMap1, partialMap2):
     dist = -1
 
     for arm in range(T):
-        print "starting loop with arm=", arm
         curA = baseA
         curB = baseB
         prevA = baseA
@@ -39,8 +38,6 @@ def checkDisjointness(partialMap1, partialMap2):
             curA = partialMap1(arm, t)
             curB = partialMap2(arm, t)
             # break if we reach an undefined portion of either mapping
-            print "arm is {}, t is {}".format(arm, t)
-            print "curA:{} curB:{} prevA:{} prevB:{}".format(curA, curB, prevA,
                     prevB)
             if curA is None or curB is None:
                 break
