@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 '''
 Overseer.py - Module which oversees searching for pairs of triod mappings that
 are both disjoint as well as commutative.
