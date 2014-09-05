@@ -435,11 +435,11 @@ class Mapping(object):
             if vLow == 0:  # look at branchpoint
                 fLow = self(0, 0)[1]
             else:
-                fLow = self(arm+1, vLow-1)[1]
+                fLow = self(arm, vLow-1)[1]
             #dereference vHigh
-            fHigh = self(arm+1, vHigh-1)[1]
+            fHigh = self(arm, vHigh-1)[1]
             #find the arm that the new point now resides on
-            fArm = self(arm+1, vHigh-1)[0]
+            fArm = self(arm, vHigh-1)[0]
         except TypeError:
             return None
         #decimal portion of vertex indicates where it lies between fLow and
@@ -468,6 +468,7 @@ class MappingPair(object):
     def __init__(self, *args):  # :idnum, map1, map2):
         '''
         MappingPair(idnum, map1, map2) -> new MappingPair object
+        MappingPair(map1, map2) -> new MappignPair object
         MappingPair(p) -> Copy of existing MappingPair object
         '''
         if len(args) == 3:
@@ -482,6 +483,16 @@ class MappingPair(object):
             self.idnum = o.idnum
             self.map1 = o[0]
             self.map2 = o[1]
+        elif len(args) == 2:
+            self.idnum = -1
+            self.map1 = args[0]
+            self.map2 = args[1]
+        else:
+            raise TypeError("Bad number of arguments")
+
+        if not (isinstance(self.map1, Mapping) and isinstance(self.map2,
+                Mapping)):
+            raise TypeError("Map1 and Map2 must be of type 'Mapping'")
 
     def __getitem__(self, key):
         if key == 0:

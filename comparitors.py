@@ -79,10 +79,9 @@ def checkCommutativity(map1, map2):
     # generate list of test points
     testpoints = []
     divisions = int(N**2/M)
-    increment = N / divisions
     for arm in xrange(T):
-        for n in xrange(divisions+1):
-            testpoints.append(Point(arm, increment*n))
+        for n in linspace(0.0, 1.0, divisions):
+            testpoints.append(Point(arm, n))
     # keep track of max seperation
     dist = -1
     for p in testpoints:
@@ -94,3 +93,12 @@ def checkCommutativity(map1, map2):
         if d > dist or dist == -1:
             dist = d
     return dist
+
+
+def linspace(start, stop, n):
+    if n == 1:
+        yield stop
+        return
+    h = (stop - start) / (n - 1)
+    for i in range(n):
+        yield start + h * i

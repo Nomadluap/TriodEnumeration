@@ -10,6 +10,6 @@ T = 3
 # log file used for editing
 LOGFILE = "mapping-report.txt"
 # number of pairs for the master to skip before seeding.
-PAIRSKIP = 0
+PAIRSKIP = 100
 # how often workers report their status
 WORKER_REPORT_INTERVAL = 50000

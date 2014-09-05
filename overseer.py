@@ -70,7 +70,6 @@ def main_master():
             try:
                 pair = pairgen.next()
                 report_startpair(i, pair)
-                print "master: about to try to send", NewPairMessage(pair)
                 comm.send(NewPairMessage(pair), dest=i)
                 counts['pairsSent'] += 1
             # run out of pairs, tell worker to stop.
@@ -153,7 +152,6 @@ def worker_processPair(pair):
                     comnum = checkCommutativity(m1, m2)
                     report = ReportPairMessage(rank, MappingPair(m1, m2),
                                                djnum, comnum)
-                    print "SENDING A PAIR REPORT"
                     comm.send(report)
     # done pair. Return a DonePair message
     message = DonePairMesage(rank, countTotal, countFailures)
@@ -163,7 +161,6 @@ def worker_processPair(pair):
 def worker_periodicReport(countTotal, countFail):
     if countTotal % WORKER_REPORT_INTERVAL == 0:
         report = StatusMessage(rank, countTotal, countFail)
-        print "SENDING A PERIODIC REPORT"
         comm.send(report)
 
 

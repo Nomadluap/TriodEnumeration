@@ -337,7 +337,15 @@ class SurjectiveMappingIterator(FullMappingIterator):
         # find the lowest endpoint in the endpointlist which is not yet mapped
         endpointIndex = None
         for i in range(T):
-            v = self.originalMapping.endpointMap[i]
+            v = None
+            try:
+                v = self.originalMapping.endpointMap[i]
+            except IndexError:
+                print "something went wrong!!!!!"
+                print "i is {}, epm is {}".format(i,
+                        self.originalMapping.endpointMap)
+                raise IndexError
+
             # leg must be correct
             if v[0] != l:
                 continue
@@ -401,7 +409,9 @@ class SurjectiveMappingIterator(FullMappingIterator):
             if length < 0 or length > N:
                 raise ValueError("length must be in range [0, N]")
             self.N = length
-
+        # originalMapping should have an endpointmap
+        if len(originalMapping.endpointMap) != T:
+            raise ValueError("Original mapping must have endpoint map")
         self.originalMapping = originalMapping
         self.legs = [[] for i in range(T)]
         self.completions = [[] for i in range(T)]
@@ -439,6 +449,7 @@ class SurjectiveMappingIterator(FullMappingIterator):
             self.isFirst = False
             mapList = [self.originalMapping(0, 0)] + self.legs
             newMap = Mapping(mapList)
+            newMap.endpointMap = self.originalMapping.endpointMap
             return newMap
 
         # we always start off with the previous complete mapping
@@ -492,6 +503,7 @@ class SurjectiveMappingIterator(FullMappingIterator):
         #and now we have the next full mapping, so we can return it.
         mapList = [self.originalMapping(0, 0)] + self.legs
         newMap = Mapping(mapList)
+        newMap.endpointMap = self.originalMapping.endpointMap
         return newMap
 
 
