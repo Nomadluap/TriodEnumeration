@@ -74,8 +74,10 @@ def checkCommutativity(map1, map2):
     if not isinstance(map2, Mapping):
         raise TypeError("Argument 2 must be of type 'Mapping'")
     # generate the composite functions
-    fog = lambda p: map1(map2(p))
-    gof = lambda p: map2(map1(p))
+#    fog = lambda p: map1(map2(p))
+#    gof = lambda p: map2(map1(p))
+    fog = map1
+    gof = map2
     # generate list of test points
     testpoints = []
     divisions = int(N**2/M)
@@ -90,6 +92,9 @@ def checkCommutativity(map1, map2):
         if map2(p) is None:
             raise ValueError("map2 is not complete.")
         d = (fog(p) - gof(p))
+        print ""
+        print "fog(p)={}, gof(p)={}".format(fog(p), gof(p))
+        print "At point {}, we got d={}".format(p, d)
         if d > dist or dist == -1:
             dist = d
     return dist
@@ -106,9 +111,9 @@ def linspace(start, stop, n):
 
 if __name__ == "__main__":
     from mapping import Vertex as v
-    m = Mapping([v(0, 0), [None, None, None, None], [v(0, 0), v(1, 1), v(1, 1),
-        v(1, 1)], [None, None, None, None]])
-    n = Mapping([v(1, 1), [None, None, None, None], [v(1, 1), v(0, 0), v(0, 0),
-        v(0, 0)], [None, None, None, None]])
 
-    print checkDisjointness(m, n)
+    m1 = Mapping([v(0, 0), [v(0, 1), v(0, 2), v(0, 1), v(0, 1)], [v(1, 1), v(1, 2), v(1, 1), v(1, 2)], [v(0, 1), v(0, 0), v(2, 1), v(2, 2)] ])
+    m2 = Mapping([v(2, 1), [v(2, 2), v(2, 2), v(2, 2), v(2, 2)], [v(0, 0), v(0, 1), v(0, 2), v(0, 2)], [v(0, 0), v(1, 1), v(1, 2), v(1, 2)] ])
+
+
+    print "Returned: ", checkCommutativity(m1, m2)
