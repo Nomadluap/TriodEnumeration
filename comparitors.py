@@ -38,7 +38,6 @@ def checkDisjointness(partialMap1, partialMap2):
             curA = partialMap1(arm, t)
             curB = partialMap2(arm, t)
             # break if we reach an undefined portion of either mapping
-                    prevB)
             if curA is None or curB is None:
                 break
             # if mappings co-incide
