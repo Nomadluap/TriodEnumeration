@@ -459,10 +459,40 @@ class Mapping(object):
         return Point(fArm, f)
 
 
-class MappingPair(tuple):
+class MappingPair(object):
     '''A class which represents a pair of mappings, and its assosciated id'''
     idnum = 0
+    map1 = None
+    map2 = None
 
-    def __new__(self, idnum, map1, map2):
-        self.idnum = idnum
-        return tuple.__new__(self, (map1, map2))
+    def __init__(self, *args):  # :idnum, map1, map2):
+        '''
+        MappingPair(idnum, map1, map2) -> new MappingPair object
+        MappingPair(p) -> Copy of existing MappingPair object
+        '''
+        if len(args) == 3:
+            self.idnum = args[0]
+            self.map1 = args[1]
+            self.map2 = args[2]
+        elif len(args) == 1:
+            o = args[0]
+            if type(o) is not type(self):
+                raise TypeError("ASDFFADF")
+            print type(o)
+            self.idnum = o.idnum
+            self.map1 = o[0]
+            self.map2 = o[1]
+
+    def __getitem__(self, key):
+        if key == 0:
+            return self.map1
+        elif key == 1:
+            return self.map2
+        else:
+            raise IndexError("Index out of range")
+
+    def __str__(self):
+        return "id: {} {{{} , {}}}".format(self.idnum, self.map1, self.map2)
+
+    def __repr__(self):
+        return self.__str__()

@@ -19,7 +19,7 @@ def checkDisjointness(partialMap1, partialMap2):
     '''
     if not isinstance(partialMap1, Mapping):
         raise TypeError("Argument 1 must be of type 'Mapping'")
-    if not isinstance(partialMap2, Maping):
+    if not isinstance(partialMap2, Mapping):
         raise TypeError("Argument 2 must be of type 'Mapping'")
 
     # if mappings share a basepoint, we have a failure.

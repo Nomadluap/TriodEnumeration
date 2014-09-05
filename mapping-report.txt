@@ -265,3 +265,1822 @@ Worker #03 starting pair:
 	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
 	Map 2 epm: [v(0, 3), v(1, 4), v(2, 3)]
 
+
+---NEW TEST:: started: 2014-09-04 22:27:39.911292
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-04 22:29:08.389924
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-04 22:32:56.683182
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-04 23:07:04.242442
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+
+---NEW TEST:: started: 2014-09-04 23:07:38.764128
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-04 23:08:15.945643
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-04 23:09:31.070358
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 2
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 3
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 4
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 5
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 6
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 7
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 8
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 9
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 10
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 11
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 12
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 13
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 14
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 15
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 16
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 17
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 18
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 19
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 20
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 21
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 22
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 23
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 24
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 25
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 26
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 27
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 28
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 29
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 30
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 31
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 32
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 33
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 34
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 35
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 36
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 37
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 38
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 39
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 40
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 41
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 42
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 43
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 44
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 45
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 46
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 47
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 48
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 49
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 50
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 51
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 52
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 53
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 54
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 55
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 56
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 57
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 58
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 59
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 60
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 61
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 62
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 63
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 64
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 65
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 66
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 67
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 68
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 69
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 70
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 71
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 72
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 73
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 74
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 75
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 76
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 77
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 78
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 79
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 80
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 81
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 82
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 83
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 84
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 85
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 86
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 87
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 1), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 88
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 1), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 89
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 90
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 91
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 92
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 93
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 94
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 95
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 96
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 97
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 98
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 99
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 100
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 101
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 102
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 103
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 104
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 105
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 106
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 107
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 108
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 109
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(1, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+
+---NEW TEST:: started: 2014-09-04 23:10:12.902648
+N = 4, M = 2, T = 3, PAIRSKIP:0
+Workers: 1
+
+Worker #01 starting pair:
+	Pair id: 1
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 2
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 3
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 4
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 5
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 6
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 7
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 8
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 9
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 10
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 11
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 12
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 13
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 14
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 15
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 16
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 17
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 18
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 19
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 20
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 21
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 22
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 23
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 24
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 25
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 26
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 27
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 28
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 29
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 30
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 31
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 32
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 33
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 34
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 35
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 36
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 37
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 38
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 39
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 40
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 41
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 3), v(2, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 42
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 3), v(2, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 43
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 4), v(2, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 44
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 45
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 46
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 47
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 48
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 49
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 50
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 51
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 52
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 53
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 54
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 55
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 56
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 57
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 58
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 59
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 60
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 61
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 62
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 63
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:6 fail:6
+Worker #01 starting pair:
+	Pair id: 64
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:18 fail:18
+Worker #01 starting pair:
+	Pair id: 65
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 66
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 67
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 68
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 69
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 70
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 71
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:15 fail:15
+Worker #01 starting pair:
+	Pair id: 72
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:45 fail:45
+Worker #01 starting pair:
+	Pair id: 73
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 3), v(1, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 74
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 3), v(1, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 75
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 4), v(1, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 76
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 77
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 3), v(0, 3)]
+
+DONEPAIR: worker#1: total:7 fail:7
+Worker #01 starting pair:
+	Pair id: 78
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 3), v(0, 4)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 79
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 4), v(0, 3)]
+
+DONEPAIR: worker#1: total:21 fail:21
+Worker #01 starting pair:
+	Pair id: 80
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:63 fail:63
+Worker #01 starting pair:
+	Pair id: 81
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 82
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 83
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 84
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 85
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 86
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 0), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 87
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 1), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 88
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 1), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 89
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 90
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 91
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(1, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 92
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 4), v(2, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 93
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 94
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 1), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 95
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 96
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 2), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 97
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 98
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 3), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 99
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(0, 4), v(2, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 100
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(1, 4), v(2, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 101
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 102
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 1), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 103
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 104
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 2), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:2 fail:2
+Worker #01 starting pair:
+	Pair id: 105
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 106
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 3), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:4 fail:4
+Worker #01 starting pair:
+	Pair id: 107
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(0, 4), v(1, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 108
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(2, 4), v(1, 4), v(0, 4)]
+
+DONEPAIR: worker#1: total:5 fail:5
+Worker #01 starting pair:
+	Pair id: 109
+	Map 1: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 1 epm: [v(0, 2), v(1, 2), v(2, 2)]
+	Map 2: map[v(1, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+	Map 2 epm: [v(0, 3), v(1, 3), v(2, 3)]
+

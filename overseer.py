@@ -70,6 +70,7 @@ def main_master():
             try:
                 pair = pairgen.next()
                 report_startpair(i, pair)
+                print "master: about to try to send", NewPairMessage(pair)
                 comm.send(NewPairMessage(pair), dest=i)
                 counts['pairsSent'] += 1
             # run out of pairs, tell worker to stop.
@@ -98,13 +99,12 @@ def main_worker():
     # main worker loop
     while True:
         # recieve a message from any worker
-        message = comm.recv(source=MPI.ANY_SOURCE)
+        message = comm.recv(source=0)
         if isinstance(message, StopMessage):
             break
         elif isinstance(message, NewPairMessage):
             # do the pair completion and then return.
             message = worker_processPair(message.pair)
-            print "SENDING DONE PAIR MESSAGE"
             comm.send(message)
         else:
             raise TypeError("Got bad message: {}".format(message))
