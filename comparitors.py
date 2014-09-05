@@ -30,6 +30,7 @@ def checkDisjointness(partialMap1, partialMap2):
     dist = -1
 
     for arm in range(T):
+        print "starting loop with arm=", arm
         curA = baseA
         curB = baseB
         prevA = baseA
@@ -38,6 +39,9 @@ def checkDisjointness(partialMap1, partialMap2):
             curA = partialMap1(arm, t)
             curB = partialMap2(arm, t)
             # break if we reach an undefined portion of either mapping
+            print "arm is {}, t is {}".format(arm, t)
+            print "curA:{} curB:{} prevA:{} prevB:{}".format(curA, curB, prevA,
+                    prevB)
             if curA is None or curB is None:
                 break
             # if mappings co-incide
@@ -53,12 +57,12 @@ def checkDisjointness(partialMap1, partialMap2):
             # and prepare for next iteration
             prevA = curA
             prevB = curB
-        # if we haven't returned already, then we are properly disjoint.
-        if dist == 0:
-            raise ValueError("dist should not be zero in this case")
-        elif dist == -1:
-            dist = baseA - baseB
-        return dist
+    # if we haven't returned already, then we are properly disjoint.
+    if dist == 0:
+        raise ValueError("dist should not be zero in this case")
+    elif dist == -1:
+        dist = baseA - baseB
+    return dist
 
 
 def checkCommutativity(map1, map2):
@@ -102,3 +106,13 @@ def linspace(start, stop, n):
     h = (stop - start) / (n - 1)
     for i in range(n):
         yield start + h * i
+
+
+if __name__ == "__main__":
+    from mapping import Vertex as v
+    m = Mapping([v(0, 0), [None, None, None, None], [v(0, 0), v(1, 1), v(1, 1),
+        v(1, 1)], [None, None, None, None]])
+    n = Mapping([v(1, 1), [None, None, None, None], [v(1, 1), v(0, 0), v(0, 0),
+        v(0, 0)], [None, None, None, None]])
+
+    print checkDisjointness(m, n)
