@@ -271,7 +271,7 @@ class Mapping(object):
         elif isinstance(a, Mapping):
             # perform a deep copy
             self._basepoint = a._basepoint
-            self.id = a.id
+            self.idnum = a.idnum
             self.endpointMap = list(a.endpointMap)
             for i in range(T):
                 self._legs[i] = list(a._legs[i])
@@ -286,7 +286,8 @@ class Mapping(object):
                     raise TypeError("Remaining elements of list must be type \
 'list'")
                 for v in leg:
-                    if not (isinstance(v, Vertex) or v is None):
+                    if v is not None and not isinstance(v, Vertex):
+                        print v
                         raise TypeError("Sublist elements must be type \
 'Vertex'")
                     # Verify bounds of each vertex.

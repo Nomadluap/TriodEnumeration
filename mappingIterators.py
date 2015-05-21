@@ -211,7 +211,7 @@ class FullMappingIterator(MappingIterator):
         #special condition for first run of next()
         if self.isFirst:
             self.isFirst = False
-            mapList = [self.originalMapping(0, 0)] + self.legs
+            mapList = [self.originalMapping(Vertex(0, 0))] + self.legs
             newMap = Mapping(mapList)
             return newMap
 
