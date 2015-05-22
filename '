@@ -282,7 +282,6 @@ class Mapping(object):
             if not a[0].isCodomain():
                 raise ValueError('Vertex {} is not in codomain.'.format(a))
             for leg in a[1:T+1]:
-                if type(leg) is not list:
                     raise TypeError("Remaining elements of list must be type \
 'list'")
                 for v in leg:

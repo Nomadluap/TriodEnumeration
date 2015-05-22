@@ -90,6 +90,7 @@ class EndpointEmptyMappingIterator(EmptyMappingIterator):
 
     def __init__(self, skip=0):
         self.mapIterator = BasicEmptyMapIterator()
+        #self.mapIterator = [Mapping(Vertex(0, 0))].__iter__()
         self.epmIterator = permutations(self.domainPoints, T)
 
         self.currentMap = self.mapIterator.next()
@@ -180,7 +181,7 @@ class FullMappingIterator(MappingIterator):
                 if oLeg[j] is None:
                     break
                 # append to the completion stack
-                self.legs[i].append(j)
+                self.legs[i].append(oLeg[j])
                 # Also append to the completion stack, since it is the only
                 # 'valid completion' for that location
                 self.completions[i].append([oLeg[j]])
