@@ -4,7 +4,7 @@ N, M, and T
 '''
 # Mapping constants
 N = 5
-M = 3
+M = 5
 T = 3
 
 # log file used for editing

@@ -38,11 +38,11 @@ if __name__ == "__main__":
     grandtotal = 0
     grandtotal_surjective = 0
     basemaps = list(BasicEmptyMapIterator())
-    raw_input("Press any key to begin")
     #p = Pool(processes=4)
     f = open("results-stats.txt", "a")
     f.write("starting new run\n\n\n")
     f.write("N= {} M={} T={}\n".format(N, M, T))
+    print "N= {} M={} T={}\n".format(N, M, T)
     for i in xrange(len(basemaps)):
         print "starting basemap: {} of {}: {}".format(i, len(basemaps), basemaps[i])
         f.write("starting basemap: {} of {}: {}\n".format(i, len(basemaps),
@@ -63,10 +63,3 @@ if __name__ == "__main__":
     f.write("super grand total: {} grand surjective: {}\n".format(grandtotal,
         grandtotal_surjective))
     f.close()
-
-        
-
-
-    #results = p.map(countCompletions, bpPairs)
-
-    raw_input("press any key")

@@ -23,3 +23,306 @@ grand total so far: 185039937 surjective: 86094
 starting basemap: 9 of 10: map[v(2, 3), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
 grand total so far: 186132664 surjective: 86094
 super grand total: 186132664 grand surjective: 86094
+starting new run
+
+
+N= 1 M=1 T=3
+starting basemap: 0 of 4: map[v(0, 0), [None], [None], [None] ]
+grand total so far: 64 surjective: 6
+starting basemap: 1 of 4: map[v(0, 1), [None], [None], [None] ]
+grand total so far: 72 surjective: 6
+starting basemap: 2 of 4: map[v(1, 1), [None], [None], [None] ]
+grand total so far: 80 surjective: 6
+starting basemap: 3 of 4: map[v(2, 1), [None], [None], [None] ]
+grand total so far: 88 surjective: 6
+super grand total: 88 grand surjective: 6
+starting new run
+
+
+N= 2 M=1 T=3
+starting basemap: 0 of 4: map[v(0, 0), [None, None], [None, None], [None, None] ]
+grand total so far: 1000 surjective: 162
+starting basemap: 1 of 4: map[v(0, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 1216 surjective: 192
+starting basemap: 2 of 4: map[v(1, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 1432 surjective: 222
+starting basemap: 3 of 4: map[v(2, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 1648 surjective: 252
+super grand total: 1648 grand surjective: 252
+starting new run
+
+
+N= 2 M=1 T=3
+starting basemap: 0 of 4: map[v(0, 0), [None, None], [None, None], [None, None] ]
+grand total so far: 1000 surjective: 162
+starting basemap: 1 of 4: map[v(0, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 1216 surjective: 192
+starting basemap: 2 of 4: map[v(1, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 1432 surjective: 222
+starting basemap: 3 of 4: map[v(2, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 1648 surjective: 252
+super grand total: 1648 grand surjective: 252
+starting new run
+
+
+N= 3 M=1 T=3
+starting basemap: 0 of 4: map[v(0, 0), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 21952 surjective: 8748
+starting basemap: 1 of 4: map[v(0, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 26048 surjective: 9900
+starting basemap: 2 of 4: map[v(1, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 30144 surjective: 11052
+starting basemap: 3 of 4: map[v(2, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 34240 surjective: 12204
+super grand total: 34240 grand surjective: 12204
+starting new run
+
+
+N= 4 M=1 T=3
+starting basemap: 0 of 4: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 438976 surjective: 244500
+starting basemap: 1 of 4: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 524160 surjective: 285002
+starting basemap: 2 of 4: map[v(1, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 609344 surjective: 325504
+starting basemap: 3 of 4: map[v(2, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 694528 surjective: 366006
+super grand total: 694528 grand surjective: 366006
+starting new run
+
+
+N= 5 M=1 T=3
+starting basemap: 0 of 4: map[v(0, 0), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 8998912 surjective: 6186318
+starting basemap: 1 of 4: map[v(0, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 10726912 surjective: 7261086
+starting basemap: 2 of 4: map[v(1, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 12454912 surjective: 8335854
+starting basemap: 3 of 4: map[v(2, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 14182912 surjective: 9410622
+super grand total: 14182912 grand surjective: 9410622
+starting new run
+
+
+N= 2 M=2 T=3
+starting basemap: 0 of 7: map[v(0, 0), [None, None], [None, None], [None, None] ]
+grand total so far: 2197 surjective: 6
+starting basemap: 1 of 7: map[v(0, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 2926 surjective: 6
+starting basemap: 2 of 7: map[v(0, 2), [None, None], [None, None], [None, None] ]
+grand total so far: 3051 surjective: 6
+starting basemap: 3 of 7: map[v(1, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 3780 surjective: 6
+starting basemap: 4 of 7: map[v(1, 2), [None, None], [None, None], [None, None] ]
+grand total so far: 3905 surjective: 6
+starting basemap: 5 of 7: map[v(2, 1), [None, None], [None, None], [None, None] ]
+grand total so far: 4634 surjective: 6
+starting basemap: 6 of 7: map[v(2, 2), [None, None], [None, None], [None, None] ]
+grand total so far: 4759 surjective: 6
+super grand total: 4759 grand surjective: 6
+starting new run
+
+
+N= 3 M=2 T=3
+starting basemap: 0 of 7: map[v(0, 0), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 64000 surjective: 384
+starting basemap: 1 of 7: map[v(0, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 83683 surjective: 438
+starting basemap: 2 of 7: map[v(0, 2), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 86427 surjective: 438
+starting basemap: 3 of 7: map[v(1, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 106110 surjective: 492
+starting basemap: 4 of 7: map[v(1, 2), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 108854 surjective: 492
+starting basemap: 5 of 7: map[v(2, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 128537 surjective: 546
+starting basemap: 6 of 7: map[v(2, 2), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 131281 surjective: 546
+super grand total: 131281 grand surjective: 546
+starting new run
+
+
+N= 4 M=2 T=3
+starting basemap: 0 of 7: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 1771561 surjective: 20250
+starting basemap: 1 of 7: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 2303002 surjective: 24300
+starting basemap: 2 of 7: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 2371923 surjective: 24540
+starting basemap: 3 of 7: map[v(1, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 2903364 surjective: 28590
+starting basemap: 4 of 7: map[v(1, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 2972285 surjective: 28830
+starting basemap: 5 of 7: map[v(2, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 3503726 surjective: 32880
+starting basemap: 6 of 7: map[v(2, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 3572647 surjective: 33120
+super grand total: 3572647 grand surjective: 33120
+starting new run
+
+
+N= 5 M=2 T=3
+starting basemap: 0 of 7: map[v(0, 0), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 48228544 surjective: 843648
+starting basemap: 1 of 7: map[v(0, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 62577451 surjective: 1095060
+starting basemap: 2 of 7: map[v(0, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 64393299 surjective: 1120116
+starting basemap: 3 of 7: map[v(1, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 78742206 surjective: 1371528
+starting basemap: 4 of 7: map[v(1, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 80558054 surjective: 1396584
+starting basemap: 5 of 7: map[v(2, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 94906961 surjective: 1647996
+starting basemap: 6 of 7: map[v(2, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 96722809 surjective: 1673052
+super grand total: 96722809 grand surjective: 1673052
+starting new run
+
+
+N= 3 M=3 T=3
+starting basemap: 0 of 10: map[v(0, 0), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 79507 surjective: 6
+starting basemap: 1 of 10: map[v(0, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 109298 surjective: 6
+starting basemap: 2 of 10: map[v(0, 2), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 121465 surjective: 6
+starting basemap: 3 of 10: map[v(0, 3), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 123662 surjective: 6
+starting basemap: 4 of 10: map[v(1, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 153453 surjective: 6
+starting basemap: 5 of 10: map[v(1, 2), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 165620 surjective: 6
+starting basemap: 6 of 10: map[v(1, 3), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 167817 surjective: 6
+starting basemap: 7 of 10: map[v(2, 1), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 197608 surjective: 6
+starting basemap: 8 of 10: map[v(2, 2), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 209775 surjective: 6
+starting basemap: 9 of 10: map[v(2, 3), [None, None, None], [None, None, None], [None, None, None] ]
+grand total so far: 211972 surjective: 6
+super grand total: 211972 grand surjective: 6
+starting new run
+
+
+N= 4 M=3 T=3
+starting basemap: 0 of 10: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 2515456 surjective: 750
+starting basemap: 1 of 10: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 3428129 surjective: 834
+starting basemap: 2 of 10: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 3728892 surjective: 834
+starting basemap: 3 of 10: map[v(0, 3), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 3775548 surjective: 834
+starting basemap: 4 of 10: map[v(1, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 4688221 surjective: 918
+starting basemap: 5 of 10: map[v(1, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 4988984 surjective: 918
+starting basemap: 6 of 10: map[v(1, 3), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 5035640 surjective: 918
+starting basemap: 7 of 10: map[v(2, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 5948313 surjective: 1002
+starting basemap: 8 of 10: map[v(2, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 6249076 surjective: 1002
+starting basemap: 9 of 10: map[v(2, 3), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 6295732 surjective: 1002
+super grand total: 6295732 grand surjective: 1002
+starting new run
+
+
+N= 4 M=4 T=3
+starting basemap: 0 of 13: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 2685619 surjective: 6
+starting basemap: 1 of 13: map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 3746827 surjective: 6
+starting basemap: 2 of 13: map[v(0, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 4278268 surjective: 6
+starting basemap: 3 of 13: map[v(0, 3), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 4516596 surjective: 6
+starting basemap: 4 of 13: map[v(0, 4), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 4559471 surjective: 6
+starting basemap: 5 of 13: map[v(1, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 5620679 surjective: 6
+starting basemap: 6 of 13: map[v(1, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 6152120 surjective: 6
+starting basemap: 7 of 13: map[v(1, 3), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 6390448 surjective: 6
+starting basemap: 8 of 13: map[v(1, 4), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 6433323 surjective: 6
+starting basemap: 9 of 13: map[v(2, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 7494531 surjective: 6
+starting basemap: 10 of 13: map[v(2, 2), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 8025972 surjective: 6
+starting basemap: 11 of 13: map[v(2, 3), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 8264300 surjective: 6
+starting basemap: 12 of 13: map[v(2, 4), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
+grand total so far: 8307175 surjective: 6
+super grand total: 8307175 grand surjective: 6
+starting new run
+
+
+N= 5 M=4 T=3
+starting basemap: 0 of 13: map[v(0, 0), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 88121125 surjective: 1296
+starting basemap: 1 of 13: map[v(0, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 121507373 surjective: 1416
+starting basemap: 2 of 13: map[v(0, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 136213498 surjective: 1416
+starting basemap: 3 of 13: map[v(0, 3), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 141853250 surjective: 1416
+starting basemap: 4 of 13: map[v(0, 4), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 142765923 surjective: 1416
+starting basemap: 5 of 13: map[v(1, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 176152171 surjective: 1536
+starting basemap: 6 of 13: map[v(1, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 190858296 surjective: 1536
+starting basemap: 7 of 13: map[v(1, 3), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 196498048 surjective: 1536
+starting basemap: 8 of 13: map[v(1, 4), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 197410721 surjective: 1536
+starting basemap: 9 of 13: map[v(2, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 230796969 surjective: 1656
+starting basemap: 10 of 13: map[v(2, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 245503094 surjective: 1656
+starting basemap: 11 of 13: map[v(2, 3), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 251142846 surjective: 1656
+starting basemap: 12 of 13: map[v(2, 4), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 252055519 surjective: 1656
+super grand total: 252055519 grand surjective: 1656
+starting new run
+
+
+N= 5 M=5 T=3
+starting basemap: 0 of 16: map[v(0, 0), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 89915392 surjective: 6
+starting basemap: 1 of 16: map[v(0, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 125202944 surjective: 6
+starting basemap: 2 of 16: map[v(0, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 143812569 surjective: 6
+starting basemap: 3 of 16: map[v(0, 3), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 154902136 surjective: 6
+starting basemap: 4 of 16: map[v(0, 4), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 159990584 surjective: 6
+starting basemap: 5 of 16: map[v(0, 5), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 160875320 surjective: 6
+starting basemap: 6 of 16: map[v(1, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 196162872 surjective: 6
+starting basemap: 7 of 16: map[v(1, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 214772497 surjective: 6
+starting basemap: 8 of 16: map[v(1, 3), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 225862064 surjective: 6
+starting basemap: 9 of 16: map[v(1, 4), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 230950512 surjective: 6
+starting basemap: 10 of 16: map[v(1, 5), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 231835248 surjective: 6
+starting basemap: 11 of 16: map[v(2, 1), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 267122800 surjective: 6
+starting basemap: 12 of 16: map[v(2, 2), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 285732425 surjective: 6
+starting basemap: 13 of 16: map[v(2, 3), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 296821992 surjective: 6
+starting basemap: 14 of 16: map[v(2, 4), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 301910440 surjective: 6
+starting basemap: 15 of 16: map[v(2, 5), [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None] ]
+grand total so far: 302795176 surjective: 6
+super grand total: 302795176 grand surjective: 6
