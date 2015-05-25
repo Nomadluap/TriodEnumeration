@@ -42,6 +42,7 @@ if __name__ == "__main__":
     #p = Pool(processes=4)
     f = open("results-stats.txt", "a")
     f.write("starting new run\n\n\n")
+    f.write("N= {} M={} T={}\n".format(N, M, T))
     for i in xrange(len(basemaps)):
         print "starting basemap: {} of {}: {}".format(i, len(basemaps), basemaps[i])
         f.write("starting basemap: {} of {}: {}\n".format(i, len(basemaps),
