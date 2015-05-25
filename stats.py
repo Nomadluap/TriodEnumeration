@@ -11,16 +11,14 @@ from multiprocessing import Pool
 from comparitors import checkDisjointness   
 
 
-def countCompletions(bpPair):
-    bp1, bp2 = bpPair
+def countCompletions(basemap):
     total = 0
     surjective = 0
     #count every successful mapping
-    for i in FullMappingIterator(bp1):
-        for j in FullMappingIterator(bp2):
-            total += 1
-            if checkSurjectivity(m):
-                surjective+=1
+    for i in FullMappingIterator(basemap):
+        total += 1
+        if checkSurjectivity(i):
+            surjective+=1
     #and return 
     return (total, surjective)
 
@@ -39,18 +37,17 @@ def checkSurjectivity(m):
 if __name__ == "__main__":
     grandtotal = 0
     grandtotal_surjective = 0
-    basemaps = list(EmptyMappingIterator())
-    bpPairs = list(combinations(basemaps, 2))
+    basemaps = list(BasicEmptyMapIterator())
     raw_input("Press any key to begin")
     #p = Pool(processes=4)
     f = open("results-stats.txt", "a")
     f.write("starting new run\n\n\n")
-    for i in xrange(len(bpPairs)):
-        print "starting pair: {} of {}: {}".format(i, len(bpPairs), bpPairs[i])
-        f.write("starting pair: {} of {}: {}\n".format(i, len(bpPairs),
-            bpPairs[i]))
+    for i in xrange(len(basemaps)):
+        print "starting basemap: {} of {}: {}".format(i, len(basemaps), basemaps[i])
+        f.write("starting basemap: {} of {}: {}\n".format(i, len(basemaps),
+            basemaps[i]))
 
-        total, surjective= countCompletions(bpPairs[i])
+        total, surjective= countCompletions(basemaps[i])
         grandtotal += total
         grandtotal_surjective += surjective
 

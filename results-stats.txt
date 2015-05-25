@@ -14597,3 +14597,11 @@ starting pair: 7296 of 259590: (map[v(0, 0), [None, None, None, None], [None, No
 grand total so far: 272352210
 starting pair: 7297 of 259590: (map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ], map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ])
 grand total so far: 272376210
+starting new run
+
+
+starting pair: 0 of 21: (map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ], map[v(0, 1), [None, None, None, None], [None, None, None, None], [None, None, None, None] ])
+starting new run
+
+
+starting basemap: 0 of 7: map[v(0, 0), [None, None, None, None], [None, None, None, None], [None, None, None, None] ]
