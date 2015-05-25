@@ -3,8 +3,8 @@ config.py - Contains configuration options for project including definitions of
 N, M, and T
 '''
 # Mapping constants
-N = 4
-M = 2
+N = 5
+M = 3
 T = 3
 
 # log file used for editing
